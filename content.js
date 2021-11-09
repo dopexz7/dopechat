@@ -1,61 +1,4 @@
 (function() { 
-    var yourUsername = "Dopexz";
-    
-    var storage = chrome.storage.local;
-
-    storage.get('chatBackground', function(result) {
-        
-        if (result['chatBackground']) {
-        document.documentElement.style.setProperty('--chatbg', result['chatBackground']); 
-        } else {
-           document.documentElement.style.setProperty('--chatbg', '#18181b');  
-        } 
-    })
-
-    storage.get('chatTextSize', function(result) {
-        document.documentElement.style.setProperty('--textsize', result['chatTextSize']);
-    })
-
-    storage.get('chatTextColor', function(result) {
-        if (result['topbarColor']) {
-            document.documentElement.style.setProperty('--textcolor', result['chatTextColor']);
-        } else {
-            document.documentElement.style.setProperty('--textcolor', '#FFF');  
-        }
-
-    })
-
-    storage.get('topbarColor', function(result) {
-        if (result['topbarColor']) {
-        document.documentElement.style.setProperty('--topbarcolor', result['topbarColor']);
-        } else {
-           document.documentElement.style.setProperty('--topbarcolor', '#18181b');  
-        }
-    })
-
-
-    
-    
-
-    storage.get('chattopbarColor', function(result) {
-        if (result['chattopbarColor']) {
-        document.documentElement.style.setProperty('--chattopbarcolor', result['chattopbarColor']); 
-        } else {
-           document.documentElement.style.setProperty('--chattopbarcolor', '#18181b');  
-        }
-    })
-
-    storage.get('threedots', function(result) {
-        if (result['threedots'] === 'hide') {
-            document.getElementsByClassName("pgctjfs5").style.display = "none";
-        }
-    })
-
-    
-
-    
-
-
     var yourUsernameColor = "#000";
     var hideChatProfilePictures = true; 
     var topBarStyle = true; 
@@ -63,68 +6,123 @@
     var userNameColor = "random"; 
     var topBarColor = "#18181b"; 
     var textFontFamily = "Roboto"; 
-    var widthOfChat = "310px"; 
-
-    
-
-    
-    
+    var widthOfChat = "310px";  
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
     document.documentElement.style.setProperty('--fontfamily', textFontFamily);
     document.documentElement.style.setProperty('--chatwidth', widthOfChat);
+    document.documentElement.style.setProperty('--chattopbarcolor', '#18181b'); 
 
 
 
- 
-
-
-   
-
-    
-    
-    // Random Colors func
-    function getRandomColor(){
-        return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
-    }
-
-    var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id");
-    
-    var userNameColors = {};
-    storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
-        yourUsername = result['yourUsername'];
-        yourUsernameColor = result['yourUsernameColor']
-        userNameColors[yourUsername] = yourUsernameColor;
-
-    })
-    
-
-    var fireOnHashChangesToo = true;
-    var pageURLCheckTimer = setInterval (
-    function () {
-       for(var i = 0; i < usernameElement.length; i++) {
-        if(userNameColor != undefined && userNameColor != "random") {
-                usernameElement[i].style.color = userNameColor;
-            }else{
-            if (usernameElement[i].textContent in userNameColors) {
-                usernameElement[i].style.color = userNameColors[usernameElement[i].textContent];
-            } else{
-            
-            var randomGeneratedColor = getRandomColor();
-            usernameElement[i].style.color = randomGeneratedColor;
-            //var currentUsername = usernameElement.textContent;
-            userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
-
-            //console.log(usernameElement[i].textContent);
-        }
-            }
-        }  
+    function enableStyles(){
         
-    }
-    , 10
-);
-    
-    
+        var a = browser.runtime.getURL("content_new.css"); //chrome.runtime.getURL
+        var head = document.head;
+        var link = document.createElement("link");
 
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = a;
+
+        head.appendChild(link);
+
+
+        
+        var yourUsername = "Dopexz";
+                var storage = chrome.storage.local;
+                storage.get('chatBackground', function(result) {
+                    
+                    if (result['chatBackground']) {
+                    document.documentElement.style.setProperty('--chatbg', result['chatBackground']); 
+                    } else {
+                       document.documentElement.style.setProperty('--chatbg', '#18181b');  
+                    } 
+                })
+                storage.get('chatTextSize', function(result) {
+                    document.documentElement.style.setProperty('--textsize', result['chatTextSize']);
+                })
+                storage.get('chatTextColor', function(result) {
+                    if (result['chatTextColor']) {
+                        document.documentElement.style.setProperty('--textcolor', result['chatTextColor']);
+                    } else {
+                        document.documentElement.style.setProperty('--textcolor', '#FFF');  
+                    }
+
+                })
+                storage.get('topbarColor', function(result) {
+                    if (result['topbarColor']) {
+                    document.documentElement.style.setProperty('--topbarcolor', result['topbarColor']);
+                    } else {
+                       document.documentElement.style.setProperty('--topbarcolor', '#18181b');  
+                    }
+                })
+                storage.get('chattopbarColor', function(result) {
+                    if (result['chattopbarColor']) {
+                    document.documentElement.style.setProperty('--chattopbarcolor', result['chattopbarColor']); 
+                    } else {
+                       document.documentElement.style.setProperty('--chattopbarcolor', '#18181b');  
+                    }
+                })
+
+                storage.get('hideChatProfilePictures', function(result) {
+                    if (result['hideChatProfilePictures'] === 'hide') {
+                        document.documentElement.style.setProperty('--pfpdisplay', 'none');
+                    } else if (result['hideChatProfilePictures'] === 'show') {
+                        document.documentElement.style.setProperty('--pfpdisplay', 'block');
+                    }
+                })
+
+                storage.get('threedots', function(result) {
+                    if (result['threedots'] === 'hide') {
+                        document.getElementsByClassName("pgctjfs5").style.display = "none";
+                    } 
+                })
+
+
+                var all = document.getElementsByClassName('someClass');
+
+                
+                // Random Colors func
+                function getRandomColor(){
+                    return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
+                }
+
+                var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id");
+                
+                var userNameColors = {};
+                storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
+                    yourUsername = result['yourUsername'];
+                    yourUsernameColor = result['yourUsernameColor']
+                    userNameColors[yourUsername] = yourUsernameColor;
+
+                })
+                
+
+                var fireOnHashChangesToo = true;
+                var pageURLCheckTimer = setInterval (
+                function () {
+                   for(var i = 0; i < usernameElement.length; i++) {
+                    if(userNameColor != undefined && userNameColor != "random") {
+                            usernameElement[i].style.color = userNameColor;
+                        }else{
+                        if (usernameElement[i].textContent in userNameColors) {
+                            usernameElement[i].style.color = userNameColors[usernameElement[i].textContent];
+                        } else{
+                        
+                        var randomGeneratedColor = getRandomColor();
+                        usernameElement[i].style.color = randomGeneratedColor;
+                        //var currentUsername = usernameElement.textContent;
+                        userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
+
+                        //console.log(usernameElement[i].textContent);
+                    }
+                        }
+                    }  
+                    
+                }
+                , 10
+            );
+    }
 
 
     var emotes = []; //array for emote objects
@@ -204,6 +202,7 @@
 
     chrome.storage.sync.get(['ON'], function(result) { //check if the extension is on at page load
         if (result.ON == 1) {
+            enableStyles();
             initiate();
         }
     });
@@ -241,30 +240,6 @@
                 var hn = window.top.location.hostname; //get hostname of top frame
                 sendResponse({ hostname: hn });
             }
-        }
-        if (request.sitelist == "edit") {
-            chrome.storage.sync.get(['HOSTS'], function(result) {
-                hostnames = result.HOSTS;
-                chrome.storage.sync.get(['ON'], function(result) {
-                    if (result.ON == 1) {
-                        var hn = window.location.hostname; //get hostname of frame
-                        var found = false;
-                        for (var i = 0; i < hostnames.length; i++) {
-                            if (hn == hostnames[i]) { //if hostname included
-                                substitute(document.body); //activated substitution
-                                observer.observe(document.body, { //start checking
-                                    childList: true, subtree: true
-                                });
-                                found = true;
-                                break;
-                            }
-                        }
-                        if (found == false) {
-                            observer.disconnect();
-                        }
-                    }
-                });
-            });
         }
         if (request.context == "add") {
             if (typeof target.alt !== "undefined") {

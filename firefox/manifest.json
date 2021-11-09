@@ -1,0 +1,40 @@
+{
+    "manifest_version": 2,
+    "name": "Better FB Gaming",
+    "version": "0.1.1",
+    "description": "Emotes + Chat Extension with Settings",
+    "icons": {
+        "128": "icons/ico.png"
+    },
+    "permissions": [ "storage", "contextMenus", "activeTab", "tabs"],
+    "browser_action": {
+        "default_popup": "menu.html"
+    },
+    "web_accessible_resources": ["content_new.css"],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://*.facebook.com/*"
+            ],
+            "all_frames": true,
+            "run_at": "document_end",
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ]
+        }
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "applications": {
+        "gecko": {
+            "id": "betterfbgaming@dopexz7",
+            "strict_min_version": "57.0"
+        }
+    }
+}

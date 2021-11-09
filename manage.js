@@ -110,6 +110,18 @@
                 }
     });
 
+   document.getElementById("addpfp").addEventListener('click', function() { //add emote to set
+                var c = document.getElementById("pfp").value;
+                if (c == "") {//if code field is blank
+                    document.getElementById("feedback6").textContent = "Nothing given.";
+                    document.getElementById("found").className = "hide";
+                } else {
+                    obj['hideChatProfilePictures'] = c;
+                    storage.set(obj);
+                    document.getElementById("feedback6").textContent = "Successfully set.";                 
+                }
+    });
+
    document.getElementById("addthreedots").addEventListener('click', function() { //add emote to set
                 var c = document.getElementById("threedots").value;
                 if (c == "") {//if code field is blank
