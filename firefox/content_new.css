@@ -6,6 +6,9 @@ color: var(--usernamecolor) !important;
     color: #fff;
 }*/
 
+#facebook ._-kb span {font-family: var(--fontfamily) !important;}
+#facebook ._-kb div {font-family: var(--fontfamily) !important;}
+
 .n1l5q3vz.d1544ag0.tw6a2znq {
     background: rgba(0,0,0,0.2);
     border-radius: 6px;
@@ -182,7 +185,7 @@ pinned comment*/
 } /* Username + Badge + Text */
 .btwxx1t3.nc684nl6.bp9cbjyn {
     display: inline-flex !important;
-    float: left !important;
+    float: var(--messagestyle) !important;
 } /* Username and badge */
 .ecm0bbzt.e5nlhep0.a8c37x1j {
     display: inline !important;

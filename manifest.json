@@ -7,14 +7,14 @@
    },
    "web_accessible_resources": [
     {
-      "resources": [ "content_new.css" ],
+      "resources": [ "content_new.css", "managebuttons.js" ],
       "matches": [ "https://*.facebook.com/*" ]
     }
  ],
    "content_scripts": [ {
       "all_frames": true,
       "css": ["content.css"],
-      "js": ["content.js"],
+      "js": ["content.js", "managebuttons.js"],
       "matches": [ "https://*.facebook.com/*" ],
       "run_at": "document_end"
    } ],

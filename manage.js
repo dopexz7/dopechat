@@ -1,115 +1,335 @@
+
+    var first = document.getElementById('chatset');
+    var second = document.getElementById('textset');
+    var third = document.getElementById('otherset');
+    document.getElementById("chatsettings").addEventListener("click", (function() {
+        if (first.style.display !== 'inline') {
+            first.style.display = "inline";
+            second.style.display = "none";
+            third.style.display = "none";
+        } else{
+            first.style.display = "none";
+
+            
+        }
+
+        
+    }));
+    document.getElementById("textsettings").addEventListener("click", (function() {
+        if (second.style.display !== 'inline') {
+            second.style.display = "inline";
+            first.style.display = "none";
+            third.style.display = "none";
+        } else{
+            second.style.display = "none"
+            
+        }
+
+        
+    }));
+
+    document.getElementById("othersettings").addEventListener("click", (function() {
+        if (third.style.display !== 'inline') {
+            third.style.display = "inline";
+            first.style.display = "none";
+            second.style.display = "none";
+        } else{
+            third.style.display = "none"
+            
+        }
+
+        
+    }));
+
+
+
+
 (function() {
 
     var storage = chrome.storage.local;
     var obj = {};
 
+    
+
     window.onload=function(){
+        const timeout = document.getElementById("feedback6");
+        
         document.getElementById("addusername").addEventListener('click', (function() { 
                     var c = document.getElementById("usernm").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj["yourUsername"] = c;
                         storage.set(obj);
                         document.getElementById("feedback6").textContent = "Successfully set.";
+                        
+                          setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                     }
         }));
 
 
         document.getElementById("addyourucolor").addEventListener('click', (function() { 
                     var c = document.getElementById("usernmc").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {    
                         obj["yourUsernameColor"] = c;
                         storage.set(obj);
                         document.getElementById("feedback6").textContent = "Successfully set."; 
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                     }
         }));
        
        document.getElementById("addchatBG").addEventListener('click', (function() {
                     var c = document.getElementById("chatbg").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj["chatBackground"] = c;
                         storage.set(obj);
                         document.getElementById("feedback6").textContent = "Successfully set.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                     }
         }));
 
 
        document.getElementById("addtextsize").addEventListener('click', (function() {
                     var c = document.getElementById("textsize").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj['chatTextSize'] = c;
                         storage.set(obj);
                         document.getElementById("feedback6").textContent = "Successfully set.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                     }
         }));
 
        document.getElementById("addtextcolor").addEventListener('click', (function() { 
                     var c = document.getElementById("textcolor").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj['chatTextColor'] = c;
                         storage.set(obj);
-                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                        document.getElementById("feedback6").textContent = "Successfully set.";  
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }               
                     }
         }));
        document.getElementById("addtopbar").addEventListener('click', (function() { 
                     var c = document.getElementById("topbarx").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj['topbarColor'] = c;
                         storage.set(obj);
-                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                        document.getElementById("feedback6").textContent = "Successfully set."; 
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }                
                     }
         }));
 
        document.getElementById("addchattopbar").addEventListener('click', (function() { 
                     var c = document.getElementById("chattopbarx").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj['chattopbarColor'] = c;
                         storage.set(obj);
-                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                        document.getElementById("feedback6").textContent = "Successfully set.";   
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }              
                     }
         }));
 
        document.getElementById("addpfp").addEventListener('click', (function() { 
                     var c = document.getElementById("pfp").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj['hideChatProfilePictures'] = c;
                         storage.set(obj);
-                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                        document.getElementById("feedback6").textContent = "Successfully set."; 
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }                
+                    }
+        }));
+
+
+       document.getElementById("addfont").addEventListener('click', (function() { 
+                    var c = document.getElementById("font").value;
+                    timeout.style.display = 'block';
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['changefont'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";  
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }               
+                    }
+        }));
+
+       document.getElementById("addchatwidth").addEventListener('click', (function() { 
+                    var c = document.getElementById("chatwidth").value;
+                    timeout.style.display = 'block';
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['changeChatWidth'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";  
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }               
+                    }
+        }));
+
+       document.getElementById("addmessagestyle").addEventListener('click', (function() { 
+                    var c = document.getElementById("messagestyle").value;
+                    timeout.style.display = 'block';
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['messageStyle'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";  
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }               
                     }
         }));
 
        document.getElementById("addthreedots").addEventListener('click', (function() { 
                     var c = document.getElementById("threedots").value;
+                    timeout.style.display = 'block';
                     if (c == "") {
                         document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj['threedots'] = c;
                         storage.set(obj);
-                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                        document.getElementById("feedback6").textContent = "Successfully set.";  
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }               
                     }
         }));
    }

@@ -4,12 +4,9 @@
     var topBarStyle = true; 
     var showThreeDots = false; 
     var userNameColor = "random"; 
-    var topBarColor = "#18181b"; 
-    var textFontFamily = "Roboto"; 
-    var widthOfChat = "310px";  
+    var topBarColor = "#18181b";   
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
-    document.documentElement.style.setProperty('--fontfamily', textFontFamily);
-    document.documentElement.style.setProperty('--chatwidth', widthOfChat);
+    document.documentElement.style.setProperty('--chatwidth', '310px'); 
     document.documentElement.style.setProperty('--chattopbarcolor', '#18181b'); 
 
 
@@ -64,6 +61,32 @@
                     }
                 })
 
+                storage.get('changefont', function(result) {
+                    if (result['changefont']) {
+                    document.documentElement.style.setProperty('--fontfamily', result['changefont']); 
+                    } else {
+                       document.documentElement.style.setProperty('--fontfamily', 'Roboto');  
+                    }
+                })
+                storage.get('changeChatWidth', function(result) {
+                    if (result['changeChatWidth']) {
+                    document.documentElement.style.setProperty('--chatwidth', result['changeChatWidth']); 
+                    } else {
+                       document.documentElement.style.setProperty('--chatwidth', '310px');  
+                    }
+                })
+
+                storage.get('messageStyle', function(result) {
+                    if (result['messageStyle'] === '2') {
+                        document.documentElement.style.setProperty('--messagestyle', ''); 
+                    } else if (result['messageStyle'] === '1') {
+                       document.documentElement.style.setProperty('--messagestyle', 'left');  
+                    }
+                    else {
+                        document.documentElement.style.setProperty('--messagestyle', 'left'); 
+                    }
+                })
+
                 storage.get('hideChatProfilePictures', function(result) {
                     if (result['hideChatProfilePictures'] === 'hide') {
                         document.documentElement.style.setProperty('--pfpdisplay', 'none');
@@ -72,15 +95,12 @@
                     }
                 })
 
+
                 storage.get('threedots', function(result) {
                     if (result['threedots'] === 'hide') {
                         document.getElementsByClassName("pgctjfs5").style.display = "none";
                     } 
                 })
-
-
-                var all = document.getElementsByClassName('someClass');
-
                 
                 // Random Colors func
                 function getRandomColor(){

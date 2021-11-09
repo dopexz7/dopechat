@@ -7,18 +7,84 @@
     --greytext: rgb(242, 242, 242);
 }
 
+
+#chatset {display: none; transition: .5s}
+#textset {display: none; transition: .5s}
+#otherset {display: none;}
 body {
+    background: #18181b;
     font-family: Roboto;
     text-align: center;
     margin: 0;
     padding: 0;
     font-size: 13px;
+
 }
+
+
+
+.modal2 {
+    margin: 0;
+    width: 80%;
+    display: inline-block;
+    margin-top: 5em;
+    height: auto;
+    background-color: rgba(255,255,255,0.01);
+    border-radius: 6px;
+}
+.inner2 {
+    max-width: 1140px;
+    width: 100%;
+    padding: 15px;
+    padding: 0;
+    margin-left: 10%;
+    margin-bottom: 30px
+
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: 0;
+    margin-left: 0;
+    padding: 3px;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.show-button {
+    background: #ffbe76;
+    padding:35px;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: rgba(0,0,0,0.7);
+    height: 20px;
+    text-align: left;
+    margin-left: 6px;    
+    border-radius: 3px;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    max-width: 100%;
+}
+.textformx {
+    margin-top: 30px;
+    padding: 5px;
+    display: flex;
+    position: relative;
+
+    
+}
+.show-button:hover {cursor: pointer;}
+
 .hide {
     display: none;
 }
 .show {
-    display: inline-block;
+    display: flex;
 }
 .nohighlight {
     user-select: none;
@@ -63,7 +129,7 @@ body {
     height: 30px;
     line-height: 30px;
     padding: 10px;
-    width: 10%;
+    width: 15%;
 }
 .people {
     
@@ -78,10 +144,11 @@ body {
     transition: .5s;
 }
 input[type=textx] {
-    width: 30%;
+    width: 73%;
     float: left;
     background-color: var(--offblack);
     color: var(--greytext);
+    display: inline-block;
     border: 0 !important;
     padding: 10px;
     height: 30px;
@@ -104,8 +171,8 @@ input[type=textx] {
     transition: .5s;
 }
 .modal {
-    margin: auto;
-    width: 70%;
+    margin: 0;
+    width: 80%;
     display: inline-block;
     margin-top: 5em;
 
@@ -123,9 +190,11 @@ input[type=textx] {
     float: right;
 }
 .inner {
-    margin:0;
+    margin:0; 
     display: inline-block;
     width: 100%;
+    margin-bottom: 5%;
+    margin-top: 2%;
 }
 .rule {
     display: block;
@@ -134,9 +203,7 @@ input[type=textx] {
 
 .help li {list-style-type: none !important;}
 .feedback1 {
-    position: fixed;
-    float: right;
-    color: var(--greytext);
+        color: var(--greytext);
     border-top-left-radius: 6px;
     border-bottom-left-radius: 6px;
 }
@@ -145,7 +212,7 @@ input[type=textx] {
     
     
     color: var(--greytext);
-    float: left;
+    margin-top:  15px;
 }
 
 .help {
@@ -157,8 +224,11 @@ input[type=textx] {
     color: #ffbe76;
 }
 .textform {
-    margin: 0;
+    margin-top: 30px;
     padding: 5px;
+    display: inline;
+    position: relative;
+
     
 }
 input[type=text] {
