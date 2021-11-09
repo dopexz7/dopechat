@@ -16,7 +16,7 @@
 
     function enableStyles(){
         
-        var a = chrome.runtime.getURL("content_new.css");
+        var a = browser.runtime.getURL("content_new.css"); //chrome.runtime.getURL
         var head = document.head;
         var link = document.createElement("link");
 

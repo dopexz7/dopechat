@@ -22,10 +22,8 @@
    "icons": {
       "128": "icons/ico.png"
    },
-   "key": "MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCcZktn1HF0khmMZi9Rpo9iHoVTdbnr/NtclON1HNvUWTK9aPvlhR7k9wApySLJC6unhvZ+acVm3DBJ+qSN6iVJuKM8sRvLfu8+WExG05quDTV6Qhk4UiSSdIs26Kp1dy1eQ5NRFNOgKUkNrmmkLyCGX6g+jVeAioC1EEAd1c9cQb66uJAVK8ZXnMPyTsLaTXqTC64iaBzSNDbdcTGuzlXwZVewFit53LsDhr91lNtnLA7j4Li9wcH8hMy3uU9PBjO1Q05TdHYomz9Cf2Xpfh8U/qMno1Qc4ZMwx5ezN6yg+Bdu1cyyqUWCDEOifGPY/wB8VqMSSfsMOkS9Qw5LSB03AgMBAAECggEALZnj7ZOzOuZoXZfjvx5d2yGEBUgjnAufWBivU1PFQt55HWHxZEQStHbSTNyw8EafV5rR3xzu6iVUTRWwChLVqW+U5NrM/GH31sk/AD2tcYc3avy/xryoni0t9CYVoWdMypnQZ8k3RREUlFEgyzbUeGmGsCpc84UurtxcnXZcXgz2mvvAucZuYVh5NS5mUk5aw4preN02m4VP90ydxKiFvoYWqPnERxHRU7vCzJt+EZFDDx1aUYhowDawnB9eE/102bmts/cY/CPXshDtTOgJ7aEbQTNdYaS7o4WIouUNztKHlwR5q+qxCgLmO7NPUqBxz9nDP1iAhDuhxTreY2XLTQKBgQDNRzaGEKHWq9z2wjTg0wuqjrOrOEcGhQtSCR7pVSP20aXtybr/HiIJG2ACKudoM+2hG9SbQGK9TQWO9TdWk1M60KlvPL/9SvuewMRtoKKKCYqe6W/IwpEStYx+B+oFIjFcDsAiPzuXTABBI7Yy0egzdCWRj76ZgscnuIJabztzDQKBgQDDC0lYnlz1tZWv0ABvWII0hiWH2CJkytb6G/tY8GFARcF+lY8JfNbRJ7MdWDRsmewPsCC6R0iguIjDJr0vOLAIoCJnLphFkJJtH4OUvTUr3jC7FWRV9U4NmN6rx52gQyym82EJK58TlblD90SRGYbV7Hw9GKE09GQCC5HuctUQUwKBgF5fG8jcgpp/XlEvDUJCo/1gJ2dSswxjQ8YOHWDl3GfPD/pWoJpCjyEirauxb7svDFLhyYcqPXqLmz+SqkMp7bx/SzWxdw4KV80vD97aV38gTdMqvFJOaIVyY0lZeBOuGYUZ3uifq1SuAvvvYAbTC24EOnVF4TkPr2EqaPsMYgdNAoGABfhUeGfwhHzYZhdBzCazZZQtlejhtKAY0HMG0IQbFfKMp6lARZQSpzhF3UIT6LcVaK2Fcu43pOPBG+gVplpf2QO9yda9RnPUZ46tYmIgPIWCjFdtSMxHZVcmia+EfaFQvpN4huVU6y6MCy6IZMCZRfcFHoGgfZR1czKTdu8A4o0CgYBNGOnUWaTp5oXjUdMnQVOnmRfj3UiSRB493CocQ1jaRVolzoh5ixL5GO+Cma/4kRiOF4QcUQ5mca88x0shD8PiI/6+CdBP7gS4TWqv+KnDcqadD+0p0U+2dgVeVhf6yJI/KRpbd0Xlq9wXefwBRtSbe5mmYVD5St6TQ+mfJiybmA==",
    "manifest_version": 3,
    "name": "Better FB Gaming",
    "permissions": [ "storage", "contextMenus", "activeTab", "tabs"],
-   "update_url": "https://clients2.google.com/service/update2/crx",
-   "version": "0.1"
+   "version": "0.1.1"
 }
