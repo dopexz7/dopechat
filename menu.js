@@ -28,12 +28,12 @@
         }
     });
 
-    document.getElementById("manage").addEventListener('click', function() { //show emote settings menu
+    document.getElementById("manage").addEventListener('click', function() { 
         window.open(chrome.runtime.getURL('manage.html'));
     });
-    document.getElementById("close2").addEventListener('click', function() { //hide hostname settings menu
+    document.getElementById("close2").addEventListener('click', (function() { 
         document.getElementById("modal").className = "modal closed";
-    });
+    }));
 
     function listremove(s, i, el) { //add functionality to the hostname delete button
         el.addEventListener('click', function rmv() {

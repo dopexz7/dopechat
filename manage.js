@@ -3,169 +3,122 @@
     var storage = chrome.storage.local;
     var obj = {};
 
-
-    document.getElementById("addusername").addEventListener('click', function () { //add emote to set
-                var c = document.getElementById("usernm").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    
-                   
-                    
-                    obj["yourUsername"] = c;
-
-                    storage.set(obj);
-                    
-                    document.getElementById("feedback6").textContent = "Successfully set.";
-                    
-                    
-                }
-    });
+    window.onload=function(){
+        document.getElementById("addusername").addEventListener('click', (function() { 
+                    var c = document.getElementById("usernm").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj["yourUsername"] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";
+                    }
+        }));
 
 
-    document.getElementById("addyourucolor").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("usernmc").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    
-                    
-                    
-                    obj["yourUsernameColor"] = c;
-
-                    storage.set(obj);
-                    
-                    document.getElementById("feedback6").textContent = "Successfully set.";
-                    
-                    
-                }
-    });
-   
-   document.getElementById("addchatBG").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("chatbg").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    
-                    
-                    
-                    obj["chatBackground"] = c;
-
-                    storage.set(obj);
-                    
-                    document.getElementById("feedback6").textContent = "Successfully set.";
-                    
-                    
-                }
-    });
+        document.getElementById("addyourucolor").addEventListener('click', (function() { 
+                    var c = document.getElementById("usernmc").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {    
+                        obj["yourUsernameColor"] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set."; 
+                    }
+        }));
+       
+       document.getElementById("addchatBG").addEventListener('click', (function() {
+                    var c = document.getElementById("chatbg").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj["chatBackground"] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";
+                    }
+        }));
 
 
-   document.getElementById("addtextsize").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("textsize").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    obj['chatTextSize'] = c;
-                    storage.set(obj);
-                    document.getElementById("feedback6").textContent = "Successfully set.";
-                }
-    });
+       document.getElementById("addtextsize").addEventListener('click', (function() {
+                    var c = document.getElementById("textsize").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['chatTextSize'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";
+                    }
+        }));
 
-   document.getElementById("addtextcolor").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("textcolor").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    obj['chatTextColor'] = c;
-                    storage.set(obj);
-                    document.getElementById("feedback6").textContent = "Successfully set.";                 
-                }
-    });
-   document.getElementById("addtopbar").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("topbarx").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    obj['topbarColor'] = c;
-                    storage.set(obj);
-                    document.getElementById("feedback6").textContent = "Successfully set.";                 
-                }
-    });
+       document.getElementById("addtextcolor").addEventListener('click', (function() { 
+                    var c = document.getElementById("textcolor").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['chatTextColor'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                    }
+        }));
+       document.getElementById("addtopbar").addEventListener('click', (function() { 
+                    var c = document.getElementById("topbarx").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['topbarColor'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                    }
+        }));
 
-   document.getElementById("addchattopbar").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("chattopbarx").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    obj['chattopbarColor'] = c;
-                    storage.set(obj);
-                    document.getElementById("feedback6").textContent = "Successfully set.";                 
-                }
-    });
+       document.getElementById("addchattopbar").addEventListener('click', (function() { 
+                    var c = document.getElementById("chattopbarx").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['chattopbarColor'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                    }
+        }));
 
-   document.getElementById("addpfp").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("pfp").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    obj['hideChatProfilePictures'] = c;
-                    storage.set(obj);
-                    document.getElementById("feedback6").textContent = "Successfully set.";                 
-                }
-    });
+       document.getElementById("addpfp").addEventListener('click', (function() { 
+                    var c = document.getElementById("pfp").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['hideChatProfilePictures'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                    }
+        }));
 
-   document.getElementById("addthreedots").addEventListener('click', function() { //add emote to set
-                var c = document.getElementById("threedots").value;
-                if (c == "") {//if code field is blank
-                    document.getElementById("feedback6").textContent = "Nothing given.";
-                    document.getElementById("found").className = "hide";
-                } else {
-                    obj['threedots'] = c;
-                    storage.set(obj);
-                    document.getElementById("feedback6").textContent = "Successfully set.";                 
-                }
-    });
+       document.getElementById("addthreedots").addEventListener('click', (function() { 
+                    var c = document.getElementById("threedots").value;
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        obj['threedots'] = c;
+                        storage.set(obj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";                 
+                    }
+        }));
+   }
 
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    document.getElementById("close").addEventListener('click', function() { //hide emote settings menu
+    document.getElementById("close").addEventListener('click', function(event) { 
         window.close();
     });
 
-    document.getElementById("hints").addEventListener('click', function() { //show menu usage information
+    document.getElementById("hints").addEventListener('click', function(event) { 
         var matches = document.querySelectorAll(".help");
         for (var i = 0; i < matches.length; i++) {
             matches[i].classList.remove("hide");
