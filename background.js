@@ -1725,7 +1725,7 @@
 
     chrome.contextMenus.removeAll();
     chrome.contextMenus.create({ //add an option to the context menu
-        title: "Add to Emotes Everywhere",
+        title: "Mod menu",
         id: "imagetoemote",
         contexts: ["image"],
         documentUrlPatterns: ["https://*.facebook.com/*"] //sites the context menu option will appear on

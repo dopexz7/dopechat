@@ -7,14 +7,17 @@
    },
    "web_accessible_resources": [
     {
-      "resources": [ "content_new.css", "managebuttons.js" ],
+      "resources": [ "content_new.css"],
       "matches": [ "https://*.facebook.com/*" ]
     }
  ],
+   "host_permissions": [
+    "https://*.facebook.com/*"
+   ],
    "content_scripts": [ {
       "all_frames": true,
       "css": ["content.css"],
-      "js": ["content.js", "managebuttons.js"],
+      "js": ["content.js"],
       "matches": [ "https://*.facebook.com/*" ],
       "run_at": "document_end"
    } ],
@@ -25,5 +28,5 @@
    "manifest_version": 3,
    "name": "Better FB Gaming",
    "permissions": [ "storage", "contextMenus", "activeTab", "tabs"],
-   "version": "0.1.2"
+   "version": "0.1.4"
 }

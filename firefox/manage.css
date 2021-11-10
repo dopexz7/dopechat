@@ -23,6 +23,30 @@ body {
 
 
 
+.button-help {
+    color: rgba(0,0,0,0.7);
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.2s;
+    float: left;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    padding: 10px;
+    width: 3%;
+    background-color: #ffbe76;
+}
+
+.button-help:hover {
+    opacity: .5;
+    transition: .5s;
+}
+
+
+
+
 .modal2 {
     margin: 0;
     width: 80%;
@@ -75,6 +99,7 @@ body {
     padding: 5px;
     display: flex;
     position: relative;
+    left: 4%;
 
     
 }
@@ -115,6 +140,10 @@ body {
     opacity: .5;
     transition: .5s;
 }
+
+
+
+
 
 .button {
     color: rgba(0,0,0,0.7);
@@ -159,15 +188,17 @@ input[type=textx] {
     input:focus-visible {border: 0 !important;}
 
 .red {
-    padding: 6px;
-    background-color: #e74c3c;
+    padding: 4px 8px;
+    background-color: #eb4d4b;
+    border-radius: 20px;
+    opacity: .5;
 }
 .red:hover {
-    opacity: .5;
+    opacity: 1;
     transition: .5s;
 }
 .red:active {
-    opacity: .5;
+    opacity: 1;
     transition: .5s;
 }
 .modal {
@@ -247,14 +278,12 @@ img {
     font-size: 13px;
     
 }
-tr:hover {
-    background-color: rgba(255,255,255,0.01);
-}
+
 td {
     word-break: break-all;
 }
 #emotetable td {
-    width: 50%;
+    width: 2%;
 }
 @media (prefers-color-scheme: dark) {
     :root {
