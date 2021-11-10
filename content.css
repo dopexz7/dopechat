@@ -16,7 +16,6 @@ span.emote_wrapper span.tooltiptext {
     line-height: 1;
     font-weight: 400;
     font-size: 12px;
-    background: rgb(15, 12, 20);
     color: rgb(255, 255, 255);
     padding: 6px;
     border-radius: 2px;
@@ -42,6 +41,5 @@ span.emote_wrapper span.tooltiptext::after {
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
-    border-style: solid;
-    border-color: rgb(0, 0, 0) transparent transparent;
+    border: 0;
 }

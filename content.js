@@ -18,9 +18,9 @@
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
     document.documentElement.style.setProperty('--chatwidth', '310px'); 
     document.documentElement.style.setProperty('--chattopbarcolor', '#18181b'); 
-
-
-
+    document.documentElement.style.setProperty('--pfppadleft', '0');
+    document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
+    document.documentElement.style.setProperty('--pfpwidth', '82'); 
     function enableStyles(){
         
         var a = chrome.runtime.getURL("content_new.css");
@@ -35,7 +35,7 @@
 
 
         
-        var yourUsername = "Dopexz";
+        var yourUsername = "Dopexz Ed";
        	var storage = chrome.storage.local;
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
@@ -52,6 +52,7 @@
         	storage.get(resultValue, (function(result) {
 		        if (result[resultValue] === firstCond) {
 		            document.documentElement.style.setProperty(styleRootValue, firstValue); 
+
 		            } else if (result[resultValue] === secondCond) {
 		                document.documentElement.style.setProperty(styleRootValue, defaultValue);  
 		                } 
@@ -65,7 +66,22 @@
 		    storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
 		    storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
 		   	storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
+
+
 		    storageSetValueSettingsConditional('hideChatProfilePictures', '--pfpdisplay', 'block', 'none', 'hide', 'show');
+
+        	storage.get('hideChatProfilePictures', (function(result) {
+		        if (result['hideChatProfilePictures'] === 'hide') {
+		            document.documentElement.style.setProperty('--pfppadleft', '5px');
+				    document.documentElement.style.setProperty('--pfpmargleft', '0px'); 
+				    document.documentElement.style.setProperty('--pfpwidth', '100%'); 
+		        } else if (result['hideChatProfilePictures'] === 'show') {
+		                document.documentElement.style.setProperty('--pfppadleft', '0');
+					    document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
+					    document.documentElement.style.setProperty('--pfpwidth', '82%'); 
+		        } 
+	        }));
+
 		    storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', '', '2', '1');
         }
         function usernameElementInterval() {
@@ -103,7 +119,7 @@
         var pageURLCheckTimer = setInterval (
         	function () {
         		try {
-		        storageSetValueInterval()
+		        storageSetValueInterval();
                   } catch(e){
         			console.log(e);
    					 }  

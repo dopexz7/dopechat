@@ -18,9 +18,9 @@
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
     document.documentElement.style.setProperty('--chatwidth', '310px'); 
     document.documentElement.style.setProperty('--chattopbarcolor', '#18181b'); 
-
-
-
+    document.documentElement.style.setProperty('--pfppadleft', '0');
+    document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
+    document.documentElement.style.setProperty('--pfpwidth', '82'); 
     function enableStyles(){
         
         var a = browser.runtime.getURL("content_new.css");
@@ -35,50 +35,66 @@
 
 
         
-        var yourUsername = "Dopexz";
-        var storage = chrome.storage.local;
+        var yourUsername = "Dopexz Ed";
+       	var storage = chrome.storage.local;
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
-            storage.get(resultValue, (function(result) {
-                if (result[resultValue]) {
-                    document.documentElement.style.setProperty(styleRootValue, result[resultValue]); 
-                    } else {
-                        document.documentElement.style.setProperty(styleRootValue, defaultValue);  
-                        } 
-            }));
+        	storage.get(resultValue, (function(result) {
+		        if (result[resultValue]) {
+		            document.documentElement.style.setProperty(styleRootValue, result[resultValue]); 
+		            } else {
+		                document.documentElement.style.setProperty(styleRootValue, defaultValue);  
+		                } 
+	        }));
         }
 
         function storageSetValueSettingsConditional(resultValue, styleRootValue, defaultValue, firstValue, firstCond, secondCond) {
-            storage.get(resultValue, (function(result) {
-                if (result[resultValue] === firstCond) {
-                    document.documentElement.style.setProperty(styleRootValue, firstValue); 
-                    } else if (result[resultValue] === secondCond) {
-                        document.documentElement.style.setProperty(styleRootValue, defaultValue);  
-                        } 
-            }));
+        	storage.get(resultValue, (function(result) {
+		        if (result[resultValue] === firstCond) {
+		            document.documentElement.style.setProperty(styleRootValue, firstValue); 
+
+		            } else if (result[resultValue] === secondCond) {
+		                document.documentElement.style.setProperty(styleRootValue, defaultValue);  
+		                } 
+	        }));
         }
         function storageSetValueInterval() {
-            storageSetValueSettings('chatBackground', '--chatbg', '#18181b');
-            storageSetValueSettings('chatTextSize', '--textsize', '13px');
-            storageSetValueSettings('chatTextColor', '--textcolor', '#FFF');
-            storageSetValueSettings('topbarColor', '--topbarcolor', '#18181b');
-            storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
-            storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
-            storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
-            storageSetValueSettingsConditional('hideChatProfilePictures', '--pfpdisplay', 'block', 'none', 'hide', 'show');
-            storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', '', '2', '1');
+        	storageSetValueSettings('chatBackground', '--chatbg', '#18181b');
+		    storageSetValueSettings('chatTextSize', '--textsize', '13px');
+		    storageSetValueSettings('chatTextColor', '--textcolor', '#FFF');
+		    storageSetValueSettings('topbarColor', '--topbarcolor', '#18181b');
+		    storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
+		    storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
+		   	storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
+
+
+		    storageSetValueSettingsConditional('hideChatProfilePictures', '--pfpdisplay', 'block', 'none', 'hide', 'show');
+
+        	storage.get('hideChatProfilePictures', (function(result) {
+		        if (result['hideChatProfilePictures'] === 'hide') {
+		            document.documentElement.style.setProperty('--pfppadleft', '5px');
+				    document.documentElement.style.setProperty('--pfpmargleft', '0px'); 
+				    document.documentElement.style.setProperty('--pfpwidth', '100%'); 
+		        } else if (result['hideChatProfilePictures'] === 'show') {
+		                document.documentElement.style.setProperty('--pfppadleft', '0');
+					    document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
+					    document.documentElement.style.setProperty('--pfpwidth', '82%'); 
+		        } 
+	        }));
+
+		    storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', '', '2', '1');
         }
         function usernameElementInterval() {
-            storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
-                    if (result['yourUsername'] && result['yourUsernameColor']) {
-                        yourUsername = result['yourUsername'];
-                        yourUsernameColor = result['yourUsernameColor'];
-                        userNameColors[yourUsername] = yourUsernameColor;
-                    } else{
-                        yourUsername = 'Dopexz Ed';
-                        yourUsernameColor = 'blue';
-                        userNameColors[yourUsername] = yourUsernameColor;
-                    }
+        	storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
+                	if (result['yourUsername'] && result['yourUsernameColor']) {
+	                    yourUsername = result['yourUsername'];
+	                    yourUsernameColor = result['yourUsernameColor'];
+	                    userNameColors[yourUsername] = yourUsernameColor;
+	                } else{
+	                	yourUsername = 'Dopexz Ed';
+	                    yourUsernameColor = 'blue';
+	                    userNameColors[yourUsername] = yourUsernameColor;
+	                }
 
                 })
                    for(var i = 0; i < usernameElement.length; i++) {
@@ -95,18 +111,18 @@
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
 
                         //console.log(usernameElement[i].textContent);
-                        }
+                    	}
                         }
                     }  
         }
         var fireOnHashChangesToo = true;
         var pageURLCheckTimer = setInterval (
-            function () {
-                try {
-                storageSetValueInterval()
+        	function () {
+        		try {
+		        storageSetValueInterval();
                   } catch(e){
-                    console.log(e);
-                     }  
+        			console.log(e);
+   					 }  
             }
                 , 1000
             );
@@ -123,10 +139,10 @@
 
                 var fireOnHashChangesToo = true;
                 var pageURLCheckTimer = setInterval (function () {
-                    try { usernameElementInterval();
-                    } catch(e){
-                    console.log(e);
-                    }                   
+                	try { usernameElementInterval();
+                	} catch(e){
+        			console.log(e);
+        			}                   
                 }
                 , 1000
             );
