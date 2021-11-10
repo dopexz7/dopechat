@@ -16,11 +16,16 @@
     var userNameColor = "random"; 
     var topBarColor = "#18181b";   
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
+    document.documentElement.style.setProperty('--fontfamily', 'Roboto');
     document.documentElement.style.setProperty('--chatwidth', '310px'); 
     document.documentElement.style.setProperty('--chattopbarcolor', '#18181b'); 
     document.documentElement.style.setProperty('--pfppadleft', '0');
     document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
-    document.documentElement.style.setProperty('--pfpwidth', '82'); 
+    document.documentElement.style.setProperty('--pfpwidth', '82%'); 
+    document.documentElement.style.setProperty('--messagestyle', 'left');
+
+
+
     function enableStyles(){
         
         var a = browser.runtime.getURL("content_new.css");
@@ -68,13 +73,14 @@
 		   	storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
 
 
+
 		    storageSetValueSettingsConditional('hideChatProfilePictures', '--pfpdisplay', 'block', 'none', 'hide', 'show');
 
         	storage.get('hideChatProfilePictures', (function(result) {
 		        if (result['hideChatProfilePictures'] === 'hide') {
 		            document.documentElement.style.setProperty('--pfppadleft', '5px');
 				    document.documentElement.style.setProperty('--pfpmargleft', '0px'); 
-				    document.documentElement.style.setProperty('--pfpwidth', '100%'); 
+				    document.documentElement.style.setProperty('--pfpwidth', ''); 
 		        } else if (result['hideChatProfilePictures'] === 'show') {
 		                document.documentElement.style.setProperty('--pfppadleft', '0');
 					    document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
@@ -82,7 +88,17 @@
 		        } 
 	        }));
 
-		    storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', '', '2', '1');
+		    storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', 'none', '2', '1');
+
+
+		    storage.get('messageStyle', (function(result) {
+		        if (result['messageStyle'] === '1') {
+		            document.documentElement.style.setProperty('--messagestyle', 'left');
+		        } else if (result['messageStyle'] === '2') {
+		                document.documentElement.style.setProperty('--messagestyle', 'none');
+		        } 
+	        }));
+
         }
         function usernameElementInterval() {
         	storage.get(['yourUsername', 'yourUsernameColor'], function(result) {

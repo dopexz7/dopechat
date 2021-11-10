@@ -6,8 +6,7 @@ color: var(--usernamecolor) !important;
     color: #fff;
 }*/
 
-#facebook ._-kb span {font-family: var(--fontfamily) !important;}
-#facebook ._-kb div {font-family: var(--fontfamily) !important;}
+
 
 .n1l5q3vz.d1544ag0.tw6a2znq {
     background: rgba(0,0,0,0.2);
@@ -192,7 +191,7 @@ pinned comment*/
     overflow: hidden !important;
 } /* Text */
 .kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.c1et5uql {
-    padding-top: 8px !important;
+    padding-top: 7px !important;
 } /* Ensure text is horizontally aligned */
 /* custom small black scrollbar */
 ::-webkit-scrollbar { width: 4px; height: 3px; background: rgba(255,255,255,0.03);}
@@ -243,7 +242,7 @@ pinned comment*/
 .a8c37x1j.ni8dbmo4.stjgntxs.l9j0dhe7.ojkyduve {
     padding-left: var(--pfppadleft) !important;
     padding-top: 3px !important; 
-    margin-bottom: -2px !important; 
+    margin-bottom: 2px !important; 
     margin-left: var(--pfpmargleft) !important;
     width: var(--pfpwidth) !important;
 }
@@ -265,6 +264,8 @@ pinned comment*/
 .pfnyh3mw.km676qkl.discj3wi.hv4rvrfc.ihqw7lf3.dati1w0a.du4w35lb.cwj9ozl2.j83agx80.btwxx1t3.lzcic4wl {
     background: transparent;
     }
+    #facebook ._-kb span {font-family: var(--fontfamily) !important;}
+    #facebook ._-kb div {font-family: var(--fontfamily) !important;}
     body {
         font-family: var(--fontfamily) !important;
     }
