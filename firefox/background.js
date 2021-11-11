@@ -1712,14 +1712,6 @@
                     chrome.storage.local.set({ SET: emotes }); //save default set
                 }
             });
-            chrome.storage.sync.get(['HOSTS'], function(result) { //check for custom hostnames at install
-                if (result.HOSTS == null) { //if no hostname set is saved
-                    var hostnames = [
-                        "www.facebook.com",
-                    ];
-                    chrome.storage.sync.set({ HOSTS: hostnames }); //save default set
-                }
-            });
         }
     });
 
