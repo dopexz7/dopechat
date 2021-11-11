@@ -248,9 +248,6 @@
     });
 
     var target = null;
-    document.addEventListener("contextmenu", function(event) {
-        target = event.target;
-    });
 
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) { //menu actions
         if (request.order == "stop") { //switch extension off

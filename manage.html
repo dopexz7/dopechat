@@ -7,16 +7,7 @@
 </head>
 <body>
 
-<div id="modal" class="modal2">
-  <label for="hints" class="btn ppl tool l">?</label>
-    <input type="button" id="hints" class="hide">
-  <label for="close" class="btn ppl tool r">X</label>
-    <input type="button" id="close" class="hide">
-  <br>
-  <br>
-
-
-   
+<div id="modal" class="modal2">  
     <div class="inner2">
       <div class="row">
         <a class="show-button" id="chatsettings" style="">
@@ -116,11 +107,15 @@
 
 
   <div id="modal" class="modal">
-    
+     <label for="hints" class="btn ppl tool l">?</label>
+    <input type="button" id="hints" class="hide">
     <div class="inner">
-      <ul class="help hide">
-        <li><span class="hl">426 emotes</span> are already imported. </li>
-        <li>You can still <span class="hl">import emotes</span> below.</li>
+      <ul class="help" id="helpx">
+        <li>Latest set of <span class="hl">426 emotes</span> is imported by default. </li>
+        <li>You can still <span class="hl">import emotes</span> or sets below.</li>
+        <li>Press <span class="hl">Add</span> to add a new emote to the set.</li>
+        <li>If a unique code and an image link are given, the emote will be added.</li>
+        <li>Emotes can be removed/replaced from search, or the <span class="hl">See All</span> menu below.</li>
       </ul>
       <label for="export" class="btn ppl">Export Set</label>
       <input type="button" id="export" class="hide">
@@ -128,11 +123,7 @@
       <input type="file" id="import" class="hide" accept=".emotes">
       <div id="feedback1" class="feedback"></div>
       <div class="rule"></div>
-      <ul class="help hide">
-        <li>Press <span class="hl">Add/Search</span> to check if an emote is included in your current set.</li>
-        <li>If a unique code and an image link are given, the emote will be added.</li>
-        <li>Emotes can be removed/replaced from search, or the <span class="hl">See All</span> menu below.</li>
-      </ul>
+      
       
       <input type="button" id="add" class="hide">
       <div class="textform">
@@ -147,7 +138,7 @@
         <input type="button" id="del" class="hide">
       </span>
       <div class="rule"></div>
-      <label for="add" class="btn ppl">Add/Search</label>
+      <label for="add" class="btn ppl">Add</label>
       <label for="see" class="btn ppl">See All</label>
       <input type="button" id="see" class="hide">
       <div id="feedback3" class="feedback"></div>

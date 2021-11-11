@@ -1723,44 +1723,4 @@
         }
     });
 
-    chrome.contextMenus.removeAll();
-    chrome.contextMenus.create({ //add an option to the context menu
-        title: "Mod menu",
-        id: "imagetoemote",
-        contexts: ["image"],
-        documentUrlPatterns: ["https://*.facebook.com/*"] //sites the context menu option will appear on
-    });
-
-    chrome.contextMenus.onClicked.addListener(function(info, tab) {
-        if (info.menuItemId == "imagetoemote") {
-            chrome.tabs.sendMessage(tab.id, { context: "add" }, function(target) {
-                var src = target.src;
-                var alt = target.alt;
-                alt = alt.trim(); //remove leading and trailing spaces (provisional change for related extension compatability)
-                if (alt.match("^[A-Za-z0-9:_]+$")) {
-                    chrome.storage.local.get(['SET'], function(result) { //check for custom emotes
-                        var emotes = result.SET;
-                        var found = false;
-                        for (var i = 0; i < emotes.length; i++) {
-                            if (alt == emotes[i].code) {
-                                found = true;
-                                emotes[i].src = src; //overwrite
-                                break;
-                            }
-                        }
-                        if (found == false) {
-                            emotes.push({ code: alt, src: src }); //add
-                        }
-                        chrome.storage.local.set({ SET: emotes }, function() { //save the changed set
-                            chrome.tabs.query({}, function(tabs) { //use changed emote set in current tabs
-                                for (var i = 0; i < tabs.length; i++) {
-                                    chrome.tabs.sendMessage(tabs[i].id, { newemotes: "change" });
-                                }
-                            });
-                        });
-                    });
-                }
-            });
-        }
-    });
 }());

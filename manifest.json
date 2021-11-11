@@ -28,5 +28,5 @@
    "manifest_version": 3,
    "name": "Better FB Gaming",
    "permissions": [ "storage", "contextMenus", "activeTab", "tabs"],
-   "version": "0.1.5"
+   "version": "0.1.6"
 }

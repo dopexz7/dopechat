@@ -96,16 +96,14 @@
         setValueSettings("addmessagestyle", "messagestyle", "messageStyle");
 
 
-    document.getElementById("close").addEventListener('click', function(event) { 
-        window.close();
-    });
-
-    document.getElementById("hints").addEventListener('click', function(event) { 
-        var matches = document.querySelectorAll(".help");
-        for (var i = 0; i < matches.length; i++) {
-            matches[i].classList.remove("hide");
-        }
-    });
+    document.getElementById("hints").addEventListener('click', (function() { 
+        const mydivx = document.getElementById("helpx");
+        if (mydivx.style.display != 'block') {
+            mydivx.style.display = 'block';
+        } else {
+            mydivx.style.display = 'none';
+        }   
+    }));
 
     document.getElementById("import").addEventListener('change', function(event) { //import emote set file
         var reader = new FileReader();
@@ -149,7 +147,6 @@
                 document.body.appendChild(a); //must append or certain browsers will not click()
                 a.click(); //activates download
                 a.remove();
-                document.getElementById("feedback1").textContent = "Emote set exported.";
             }
         });
     });
@@ -250,7 +247,8 @@
         chrome.storage.local.get(['SET'], function(result) {
             var emotes = result.SET;
             var table = document.getElementById("emotetable");
-            document.getElementById("alltable1").style.display = "block";
+            
+            
             while (table.firstChild) {
                 table.removeChild(table.firstChild); //clears emotes
             }
@@ -258,7 +256,15 @@
                 document.getElementById("feedback3").textContent = "No emote set to show (default will be set on first webpage load).";
             }
             else {
-                document.getElementById("feedback3").textContent = "Your set has " + emotes.length + " emote(s):";
+                if (document.getElementById("alltable1").style.display != 'block') {
+                    document.getElementById("alltable1").style.display = 'block';
+                    document.getElementById("feedback3").textContent = "Your set has " + emotes.length + " emote(s):";
+                    
+                } else {
+                    document.getElementById("alltable1").style.display = 'none';
+                    document.getElementById("feedback3").textContent = "";
+
+                }
                 var list = document.createDocumentFragment();
                 for (var i = 0; i < emotes.length; i++) {
                     var item = document.createElement("tr"); //table row
