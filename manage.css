@@ -37,6 +37,7 @@ body {
     padding: 10px;
     width: 3%;
     background-color: #ffbe76;
+
 }
 
 .button-help:hover {
@@ -90,6 +91,12 @@ body {
     -ms-flex-positive: 1;
     flex-grow: 1;
     max-width: 100%;
+    -webkit-transition: opacity, transform .5s;
+  transition: opacity, transform .5s;
+}
+.show-button:hover {
+    transform: scale(0.97);
+    cursor: pointer;
 }
 .textformx {
     margin-top: 30px;
@@ -100,7 +107,7 @@ body {
 
     
 }
-.show-button:hover {cursor: pointer;}
+
 
 .hide {
     display: none;
@@ -158,12 +165,17 @@ body {
     line-height: 30px;
     padding: 10px;
     width: 15%;
+    -webkit-transition: opacity, transform .5s;
+  transition: opacity, transform .5s;
+
 }
 .people {
-    
+    -webkit-transition: opacity, transform .5s;
+  transition: opacity, transform .5s;
     background-color: #ffbe76;
 }
 .people:hover {
+    transform: scale(0.99);
     opacity: .5;
     transition: .5s;
 }
