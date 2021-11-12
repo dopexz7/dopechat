@@ -26,13 +26,13 @@
        <div id="chatset">
         <input type="button" id="addchatBG" class="hide">
         <div class="textformx">
-          <input type="textx" id="chatbg" placeholder="e.g. #FFFFF or color or url(your-image-url)">
+          <input type="color-picker" id="chatbg"  placeholder="e.g. #FFFFF or color or url(your-image-url)">
           <label for="addchatBG" class="button people">Set chat background</label>
         </div>
 
         <input type="button" id="addchattopbar" class="hide">
         <div class="textformx">
-          <input type="textx" id="chattopbarx" placeholder="e.g. #FFFFF or color">
+          <input type="color-picker" id="chattopbarx" placeholder="e.g. #FFFFF or color">
           <label for="addchattopbar" class="button people">Set top bar color</label>
         </div>
         <input type="button" id="addchatwidth" class="hide">
@@ -53,7 +53,7 @@
         </div>
         <input type="button" id="addyourucolor" class="hide">
         <div class="textformx">
-          <input type="textx" id="usernmc" placeholder="e.g. #FFFFF or color">
+          <input type="color-picker" id="usernmc" placeholder="e.g. #FFFFF or color">
           <label for="addyourucolor" class="button people">Set your name color</label>
         </div>
         <input type="button" id="addtextsize" class="hide">
@@ -63,7 +63,7 @@
         </div>
         <input type="button" id="addtextcolor" class="hide">
         <div class="textformx">
-          <input type="textx" id="textcolor" placeholder="e.g. #FFFFF or color">
+          <input type="color-picker" id="textcolor" placeholder="e.g. #FFFFF or color">
           <label for="addtextcolor" class="button people">Set text color</label>
         </div>
     </div>
@@ -74,28 +74,32 @@
 
       <input type="button" id="addtopbar" class="hide">
       <div class="textformx">
-        <input type="textx" id="topbarx" placeholder="e.g. #FFFFF or color">
+        <input type="color-picker" id="topbarx" placeholder="e.g. #FFFFF or color">
         <label for="addtopbar" class="button people">Set FB top bar color</label>
       </div>
-
-      <input type="button" id="addpfp" class="hide">
-      <div class="textformx">
-        <input type="textx" id="pfp" placeholder="e.g. 'hide' or 'show' profile pictures">
-        <label for="addpfp" class="button people">Set profile pictures</label>
-      </div>
-
-
       <input type="button" id="addfont" class="hide">
       <div class="textformx">
         <input type="textx" id="font" placeholder="e.g. Arial, Roboto, calibri">
         <label for="addfont" class="button people">Set font</label>
       </div>
-
-      <input type="button" id="addmessagestyle" class="hide">
+      
       <div class="textformx">
-        <input type="textx" id="messagestyle" placeholder="type 1 - messages next to usernames, 2 - messages under usernames">
-        <label for="addmessagestyle" class="button people">Set message style</label>
+        <div class="togglechatx">hide chat profile pictures
+          <label class="switch">
+          <input name="checkboxx" type="checkbox" value="hidePfp">
+          <div class="slider"></div>
+          </label>
+        </div>
+        <div class="togglechatx" style="margin-left: 10px">messages under usernames
+          <label class="switch">
+          <input name="checkboxxd" type="checkbox" value="messagestyle">
+          <div class="slider"></div>
+          </label>
+        </div>
       </div>
+      
+
+
 
     </div>
 

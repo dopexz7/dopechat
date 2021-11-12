@@ -45,8 +45,8 @@
 
             $("body").mouseup(function () {
             if (!PICKER.mouse_is_inside) {
-                PICKER.close();
                 $(input).css({'background-color': '#18181b'});
+                PICKER.close();
             } 
             });
             
@@ -149,20 +149,43 @@
     }));
 
 
-
-
 (function() {
+
+	
 
     var storage = chrome.storage.local;
     var obj = {};
+    function checkboxCheck(resultValue, firstValue, secondValue, checkboxValue) {
+	    document.addEventListener('DOMContentLoaded', function () {
+	    	var checkbox = document.querySelector("input[name=" + checkboxValue + "]");
+		  	checkbox.addEventListener('change', function () {
+			    if (checkbox.checked) {
+			      obj[resultValue] = firstValue;
+			      obj[checkboxValue] = true;
+			      console.log('Is checked');
+			      console.log(obj[checkboxValue]);
+			      storage.set(obj);
+			    } else {
+			      obj[resultValue] = secondValue;
+			      obj[checkboxValue] = false;
+			      console.log('Is n checked');
+
+			      console.log(obj[checkboxValue]);
+			      storage.set(obj);
+			    }
+			 });
+		});
+	}
+
+	checkboxCheck('hideChatProfilePictures', 'hide', 'show', 'checkboxx');
+	checkboxCheck('messageStyle', '2', '1', 'checkboxxd');
 
     
 
+    const timeout = document.getElementById("feedback6");
 
-        const timeout = document.getElementById("feedback6");
 
-
-        function setValueSettings(addusername, usernm, resultUsername) {
+    function setValueSettings(addusername, usernm, resultUsername) {
             document.getElementById(addusername).addEventListener('click', (function() {
                 var c = document.getElementById(usernm).value;
                     timeout.style.display = 'block';
@@ -196,10 +219,10 @@
         setValueSettings("addtextcolor", "textcolor", "chatTextColor");
         setValueSettings("addtopbar", "topbarx", "topbarColor");
         setValueSettings("addchattopbar", "chattopbarx", "chattopbarColor");
-        setValueSettings("addpfp", "pfp", "hideChatProfilePictures");
-        setValueSettings("addfont", "font", "changefont");
+
+		setValueSettings("addfont", "font", "changefont");
         setValueSettings("addchatwidth", "chatwidth", "changeChatWidth");
-        setValueSettings("addmessagestyle", "messagestyle", "messageStyle");
+        
 
 
     document.getElementById("hints").addEventListener('click', (function() { 
