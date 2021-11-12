@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="manage.css" rel="stylesheet" type="text/css">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+<div id="modal" class="modal2">  
+    <div class="inner2">
+      <div class="row">
+        <a class="show-button" id="chatsettings" style="">
+          Chat settings
+        </a>
+        <a class="show-button" id="textsettings">
+          Text settings
+        </a>
+        <a class="show-button" id="othersettings">
+          Other settings
+        </a>
+      </div>
+      
+      
+
+       <div id="chatset">
+        <input type="button" id="addchatBG" class="hide">
+        <div class="textformx">
+          <input type="textx" id="chatbg" placeholder="e.g. #FFFFF or color or url(your-image-url)">
+          <label for="addchatBG" class="button people">Set chat background</label>
+        </div>
+
+        <input type="button" id="addchattopbar" class="hide">
+        <div class="textformx">
+          <input type="textx" id="chattopbarx" placeholder="e.g. #FFFFF or color">
+          <label for="addchattopbar" class="button people">Set top bar color</label>
+        </div>
+        <input type="button" id="addchatwidth" class="hide">
+        <div class="textformx">
+          <input type="textx" id="chatwidth" placeholder="e.g. 310px (default) - don't forget to type px after the number">
+          <label for="addchatwidth" class="button people">Set chat width</label>
+        </div>
+      </div>
+
+
+
+
+      <div id="textset">
+        <input type="button" id="addusername" class="hide">
+        <div class="textformx">
+            <input type="textx" id="usernm" placeholder="e.g. Dopexz Ed. (Type your username)">
+            <label for="addusername" class="button people">Your username</label>
+        </div>
+        <input type="button" id="addyourucolor" class="hide">
+        <div class="textformx">
+          <input type="textx" id="usernmc" placeholder="e.g. #FFFFF or color">
+          <label for="addyourucolor" class="button people">Set your name color</label>
+        </div>
+        <input type="button" id="addtextsize" class="hide">
+        <div class="textformx">
+          <input type="textx" id="textsize" placeholder="e.g. 11px (type px after the number)">
+          <label for="addtextsize" class="button people">Set text size</label>
+        </div>
+        <input type="button" id="addtextcolor" class="hide">
+        <div class="textformx">
+          <input type="textx" id="textcolor" placeholder="e.g. #FFFFF or color">
+          <label for="addtextcolor" class="button people">Set text color</label>
+        </div>
+    </div>
+
+     
+
+      <div id="otherset">
+
+      <input type="button" id="addtopbar" class="hide">
+      <div class="textformx">
+        <input type="textx" id="topbarx" placeholder="e.g. #FFFFF or color">
+        <label for="addtopbar" class="button people">Set FB top bar color</label>
+      </div>
+
+      <input type="button" id="addpfp" class="hide">
+      <div class="textformx">
+        <input type="textx" id="pfp" placeholder="e.g. 'hide' or 'show' profile pictures">
+        <label for="addpfp" class="button people">Set profile pictures</label>
+      </div>
+
+
+      <input type="button" id="addfont" class="hide">
+      <div class="textformx">
+        <input type="textx" id="font" placeholder="e.g. Arial, Roboto, calibri">
+        <label for="addfont" class="button people">Set font</label>
+      </div>
+
+      <input type="button" id="addmessagestyle" class="hide">
+      <div class="textformx">
+        <input type="textx" id="messagestyle" placeholder="type 1 - messages next to usernames, 2 - messages under usernames">
+        <label for="addmessagestyle" class="button people">Set message style</label>
+      </div>
+
+    </div>
+
+
+
+      <div id="feedback6" class="feedback1" style="float:left;"></div>
+  </div>
+</div>
+
+
+  <div id="modal" class="modal">
+     <label for="hints" class="btn ppl tool l">?</label>
+    <input type="button" id="hints" class="hide">
+    <div class="inner">
+      <ul class="help" id="helpx">
+        <li>Latest set of <span class="hl">426 emotes</span> is imported by default. </li>
+        <li>You can still <span class="hl">import emotes</span> or sets below.</li>
+        <li>Press <span class="hl">Add</span> to add a new emote to the set.</li>
+        <li>If a unique code and an image link are given, the emote will be added.</li>
+        <li>Emotes can be removed/replaced from search, or the <span class="hl">See All</span> menu below.</li>
+      </ul>
+      <label for="export" class="btn ppl">Export Set</label>
+      <input type="button" id="export" class="hide">
+      <label for="import" class="btn ppl">Import Set</label>
+      <input type="file" id="import" class="hide" accept=".emotes">
+      <div id="feedback1" class="feedback"></div>
+      <div class="rule"></div>
+      
+      
+      <input type="button" id="add" class="hide">
+      <div class="textform">
+        <label for="code">Code: </label><input type="text" id="code" placeholder="ex 'LULW', 'KEKW'">
+        <br>
+        <label for="src">Image: </label><input type="text" id="src" placeholder="ex 'i.imgur.com/qwerty.png', any image url">
+      </div>
+      <div id="feedback2" class="feedback"></div>
+      <span id="found" class="hide">
+        <img id="addedimg" src="">
+        <label for="del" class="btn red" title="remove">X</label>
+        <input type="button" id="del" class="hide">
+      </span>
+      <div class="rule"></div>
+      <label for="add" class="btn ppl">Add</label>
+      <label for="see" class="btn ppl">See All</label>
+      <input type="button" id="see" class="hide">
+      <div id="feedback3" class="feedback"></div>
+      <table id="alltable1" class="alltable">
+        <tbody id="emotetable"></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="manage.js"></script>
+  <script src="content.js"></script>
+</body>
+
+</html>
