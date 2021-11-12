@@ -197,6 +197,19 @@ input[type=textx] {
 
     }
     input:focus-visible {border: 0 !important;}
+input[type=color-picker] {
+    width: 73%;
+    float: left;
+    background-color: var(--offblack);
+    color: var(--greytext);
+    display: inline-block;
+    border: 0 !important;
+    padding: 10px;
+    height: 30px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+
+    }
 
 .red {
     padding: 4px 8px;
