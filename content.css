@@ -8,7 +8,8 @@ span.emote_wrapper {
 }
 span.emote_wrapper img.inserted_emote {
     vertical-align: middle;
-    height: 2em;
+    height: 25px !important;
+    width: 25px;
     display: inline-block;
 }
 span.emote_wrapper span.tooltiptext {

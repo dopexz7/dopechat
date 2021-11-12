@@ -21,12 +21,12 @@
       "matches": [ "https://*.facebook.com/*" ],
       "run_at": "document_end"
    } ],
-   "description": "Better FB Gaming. Emotes + Chat Extension with Settings",
+   "description": "FB Gaming Better. Emotes + Chat Extension with Settings",
    "icons": {
       "128": "icons/ico.png"
    },
    "manifest_version": 3,
-   "name": "Better FB Gaming",
-   "permissions": [ "storage", "contextMenus", "activeTab", "tabs"],
+   "name": "FB Gaming Better",
+   "permissions": [ "storage", "activeTab", "tabs"],
    "version": "0.1.6"
 }
