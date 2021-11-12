@@ -24,7 +24,7 @@
 
     function enableStyles(){
         
-        var a = browser.runtime.getURL("content_new.css");
+        var a = chrome.runtime.getURL("content_new.css");
         var head = document.head;
         var link = document.createElement("link");
 
@@ -37,7 +37,7 @@
 
         
         var yourUsername = "Dopexz Ed";
-       	var storage = chrome.storage.local;
+       	var storage = browser.storage.local;
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
         	storage.get(resultValue, (function(result) {
