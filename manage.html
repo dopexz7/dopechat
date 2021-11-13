@@ -26,13 +26,13 @@
        <div id="chatset">
         <input type="button" id="addchatBG" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="chatbg"  placeholder="e.g. #FFFFF or color or url(your-image-url)">
+          <input type="color-picker" id="chatbg"  placeholder="e.g. #FFFFF or pick a color">
           <label for="addchatBG" class="button people">Set chat background</label>
         </div>
 
         <input type="button" id="addchattopbar" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="chattopbarx" placeholder="e.g. #FFFFF or color">
+          <input type="color-picker" id="chattopbarx" placeholder="e.g. #FFFFF or pick a color">
           <label for="addchattopbar" class="button people">Set top bar color</label>
         </div>
         <input type="button" id="addchatwidth" class="hide">
@@ -53,19 +53,23 @@
         </div>
         <input type="button" id="addyourucolor" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="usernmc" placeholder="e.g. #FFFFF or color">
+          <input type="color-picker" id="usernmc" placeholder="e.g. #FFFFF or pick a color">
           <label for="addyourucolor" class="button people">Set your name color</label>
-        </div>
-        <input type="button" id="addtextsize" class="hide">
-        <div class="textformx">
-          <input type="textx" id="textsize" placeholder="e.g. 11px (type px after the number)">
-          <label for="addtextsize" class="button people">Set text size</label>
         </div>
         <input type="button" id="addtextcolor" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="textcolor" placeholder="e.g. #FFFFF or color">
+          <input type="color-picker" id="textcolor" placeholder="e.g. #FFFFF or pick a color">
           <label for="addtextcolor" class="button people">Set text color</label>
         </div>
+        
+      <div class="textformx" style="height:50px">
+        <div class="wrapper">
+        <div class="msg" style="float:left">
+          Set text size
+        </div>
+        <custom-slider min="0" max="23" value="13" style="margin-left: 15px;display: flex ;align-items: center ;justify-content: center ;flex-direction: column ;"></custom-slider>
+      </div>
+</div>
     </div>
 
      
@@ -74,7 +78,7 @@
 
       <input type="button" id="addtopbar" class="hide">
       <div class="textformx">
-        <input type="color-picker" id="topbarx" placeholder="e.g. #FFFFF or color">
+        <input type="color-picker" id="topbarx" placeholder="e.g. #FFFFF or pick a color">
         <label for="addtopbar" class="button people">Set FB top bar color</label>
       </div>
       <input type="button" id="addfont" class="hide">
@@ -116,9 +120,9 @@
     <div class="inner">
       <ul class="help" id="helpx">
         <li>Latest set of <span class="hl">426 emotes</span> is imported by default. </li>
-        <li>You can still <span class="hl">import emotes</span> or sets below.</li>
+        <li>You can still <span class="hl">add emotes</span> or import custom sets below.</li>
         <li>Press <span class="hl">Add</span> to add a new emote to the set.</li>
-        <li>If a unique code and an image link are given, the emote will be added.</li>
+        <li>If an unique code and an image link are given, the emote will be added.</li>
         <li>Emotes can be removed/replaced from search, or the <span class="hl">See All</span> menu below.</li>
       </ul>
       <label for="export" class="btn ppl">Export Set</label>
@@ -151,8 +155,8 @@
       </table>
     </div>
   </div>
-  <script src="manage.js"></script>
-  <script src="content.js"></script>
+  <script src="manage.min.js"></script>
+  <script src="content.min.js"></script>
 </body>
 
 </html>

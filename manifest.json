@@ -3,7 +3,7 @@
       "default_popup": "menu.html"
    },
    "background": {
-      "service_worker": "background.js"
+      "service_worker": "background.min.js"
    },
    "web_accessible_resources": [
     {
@@ -17,7 +17,7 @@
    "content_scripts": [ {
       "all_frames": true,
       "css": ["content.css"],
-      "js": ["content.js"],
+      "js": ["content.min.js"],
       "matches": [ "https://*.facebook.com/*" ],
       "run_at": "document_end"
    } ],
@@ -28,5 +28,5 @@
    "manifest_version": 3,
    "name": "FB Gaming Better",
    "permissions": [ "storage", "activeTab", "tabs"],
-   "version": "0.1.7"
+   "version": "0.1.8"
 }
