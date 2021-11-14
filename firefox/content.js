@@ -165,36 +165,41 @@
                 var node = elements[i].childNodes[j];
                 if (node.nodeType === 3) { //if the node is a text node
                     var text = node.nodeValue.split(" "); //split text by spaces
-                    var new_node = document.createDocumentFragment();
-                    for (var k = 0; k < text.length; k++) {
-                        var found = false;
-                        for (var l = 0; l < emotes.length; l++) {
-                            if (text[k] == emotes[l].code) { //if emote match is found
-                                found = true;
-                                var wrapper = document.createElement("span");
-                                wrapper.className = "emote_wrapper";
-                                var icon = document.createElement("img");
-                                icon.className = "inserted_emote";
-                                icon.src = emotes[l].src; //emote image source
-                                icon.alt = emotes[l].code; //alternate text (for copy/paste)
-                                var tip = document.createElement("span");
-                                tip.className = "tooltiptext";
-                                tip.textContent = emotes[l].code;
-                                wrapper.appendChild(icon);
-                                wrapper.appendChild(tip);
-                                new_node.appendChild(wrapper);
-                                break; //break loop when a match is found (only one emote can match)
+                    if (text.length < 38) {
+                        var new_node = document.createDocumentFragment();
+                        for (var k = 0; k < text.length; k++) {
+                            var found = false;
+                            for (var l = 0; l < emotes.length; l++) {
+                                if (text[k] == emotes[l].code) { //if emote match is found
+                                    found = true;
+                                    var wrapper = document.createElement("span");
+                                    wrapper.className = "emote_wrapper";
+                                    var icon = document.createElement("img");
+                                    icon.className = "inserted_emote";
+                                    icon.src = emotes[l].src; //emote image source
+                                    icon.alt = emotes[l].code; //alternate text (for copy/paste)
+                                    var tip = document.createElement("span");
+                                    tip.className = "tooltiptext";
+                                    tip.textContent = emotes[l].code;
+                                    wrapper.appendChild(icon);
+                                    wrapper.appendChild(tip);
+                                    new_node.appendChild(wrapper);
+                                    break; //break loop when a match is found (only one emote can match)
+                                }
+                            }
+                            if (found == false) { //if no emote match has been found
+                                new_node.appendChild(document.createTextNode(text[k])); //re-insert word
+                            }
+                            if (k < text.length - 1) { //miss last word
+                                new_node.appendChild(document.createTextNode(" ")); //add a space
                             }
                         }
-                        if (found == false) { //if no emote match has been found
-                            new_node.appendChild(document.createTextNode(text[k])); //re-insert word
-                        }
-                        if (k < text.length - 1) { //miss last word
-                            new_node.appendChild(document.createTextNode(" ")); //add a space
-                        }
+                        new_node.normalize(); //concatenate adjacent text nodes
+                        elements[i].replaceChild(new_node, node); //replace text node with fragment including inserted emotes
                     }
-                    new_node.normalize(); //concatenate adjacent text nodes
-                    elements[i].replaceChild(new_node, node); //replace text node with fragment including inserted emotes
+                    else {
+                        break
+                    }
                 }
             }
         }

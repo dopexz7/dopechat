@@ -151,7 +151,7 @@ class customSlider extends HTMLElement {
         // style.href = "/src/custom-slider-style.css" ;
 
         let style = document.createElement("style") ;
-        style.innerHTML = stylesheetText ;
+        style.textContent = stylesheetText ;
 
         // set properties
         slider.type = "range" ;
