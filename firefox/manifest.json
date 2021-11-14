@@ -6,7 +6,7 @@
     "icons": {
         "128": "icons/ico.png"
     },
-    "permissions": [ "storage", "activeTab", "tabs"],
+    "permissions": [ "storage"],
     "browser_action": {
         "default_popup": "menu.html"
     },
@@ -19,7 +19,7 @@
             "all_frames": true,
             "run_at": "document_end",
             "js": [
-                "content.min.js"
+                "content.js"
             ],
             "css": [
                 "content.css"
@@ -28,7 +28,7 @@
     ],
     "background":
     {
-        "scripts": ["background.min.js"]
+        "scripts": ["background.js"]
     },
     "applications": {
         "gecko": {
