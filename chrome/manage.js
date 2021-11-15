@@ -338,6 +338,7 @@ document.getElementById("othersettings").addEventListener("click", function () {
 	       
 	checkboxState('checkboxx', '2', '1');  
 	checkboxState('checkboxxd', '2', '1');  
+    checkboxState('checkboxxd2', '2', '1');
 
 	function checkboxCheck(resultValue, firstValue, secondValue, checkboxValue) {
 	    document.addEventListener('DOMContentLoaded', (function () {
@@ -358,6 +359,8 @@ document.getElementById("othersettings").addEventListener("click", function () {
 
 	checkboxCheck('hideChatProfilePictures', 'hide', 'show', 'checkboxx');
 	checkboxCheck('messageStyle', '2', '1', 'checkboxxd');
+    checkboxCheck('volumeScrollCheck', 'on', 'off', 'checkboxxd2');
+
 
     
 

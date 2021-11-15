@@ -9,9 +9,106 @@
     document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
     document.documentElement.style.setProperty('--pfpwidth', '82%'); 
     document.documentElement.style.setProperty('--messagestyle', 'left');
+    document.documentElement.style.setProperty('--volumeis0', "url('https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/zTi72WTXPIz.png')");
+    document.documentElement.style.setProperty('--volumeis0h', "-21px -74px");
 
 
+    let body = document.documentElement || document.body || document.getElementsByTagName("body")[0];
+    let settings = {
+        volume: 20,
+        volumeIncrement: 3,
+    };
 
+    let handleScroll = function (element, video) {
+        if (!Boolean(video.webkitAudioDecodedByteCount)) //video has audio. If not stops volume scrolling
+            return;
+
+        let volume = 1;
+
+        if (video.volume > settings.volumeIncrement / 100 || (video.volume === settings.volumeIncrement / 100 && event.deltaY < 0)) {
+            volume = video.volume + (settings.volumeIncrement / 100) * (event.deltaY / 100 * -1); //deltaY is how much the wheel scrolled, 100 up, -100 down. Divided by 100 to only get direction, then inverted
+
+            //Rounding the volume to the nearest increment, in case the original volume was not on the increment.
+            volume = volume * 100;
+            volume = volume / settings.volumeIncrement;
+            volume = Math.round(volume);
+            volume = volume * settings.volumeIncrement;
+            volume = volume / 100;
+        } else {
+            volume = video.volume + (1 / 100) * (event.deltaY / 100 * -1);
+        }
+
+        //Limiting the volume to between 0-1
+        if (volume < 0) {
+            volume = 0;
+
+        } else if (volume > 1) {
+            volume = 1;
+        }
+
+        video.muted = volume <= 0;
+
+        if (video.muted) {
+            document.documentElement.style.setProperty('--volumeis0', "url('https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/zTi72WTXPIz.png')");
+            document.documentElement.style.setProperty('--volumeis0h', "-21px -116px");
+        } else {
+            document.documentElement.style.setProperty('--volumeis0', "url('https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/zTi72WTXPIz.png')");
+            document.documentElement.style.setProperty('--volumeis0h', "-21px -74px");
+        }
+
+        video.volume = volume;
+        video.dataset.volume = volume;
+
+        let currentvol = Math.round(video.volume * 100); 
+        document.querySelector('.k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s').style['height'] = currentvol + '%';
+
+        
+        
+    }
+
+    let onScroll = function (event) {
+        let elements = document.elementsFromPoint(event.clientX, event.clientY);
+        for (const element of elements) {
+            if (element.tagName === "VIDEO") {
+                event.preventDefault();
+                handleScroll(element, element);
+                document.documentElement.style.setProperty('--currentvolon', "1");
+                document.documentElement.style.setProperty('--currentvolonb', "block");
+                setTimeout(function(){
+                    document.documentElement.style.setProperty('--currentvolon', "0");
+                    document.documentElement.style.setProperty('--currentvolonb', "none");
+                }, 6000);
+            }
+        }
+
+
+    }
+
+    let handleDefaultVolume = function (video) {
+        video.volume = settings.volume / 100;
+        video.dataset.volume = settings.volume / 100;
+
+        let change = function () {
+            if (!(video.volume == video.dataset.volume - settings.volumeIncrement || video.volume == video.dataset.volume + settings.volumeIncrement || video.volume == video.dataset.volume)) { //Checks to see if the registered change in volume is equal to the increment. If it is not then it is denied.
+                video.volume = video.dataset.volume;
+            }
+        };
+
+        video.addEventListener("volumechange", change);
+    };
+
+    let setAudio = function (mutations) {
+        for (const mutation of mutations) {
+            for (const node of mutation.addedNodes) {
+                if (node.tagName !== "VIDEO")
+                    continue;
+
+                let video = node;
+
+                handleDefaultVolume(video);
+            }
+        }
+    }
 
     function enableStyles(){
         var a = browser.runtime.getURL("content_new.css");
@@ -28,6 +125,14 @@
         
         var yourUsername = "Dopexz Ed";
        	var storage = chrome.storage.local;
+
+        
+
+        storage.get('volumeScrollCheck', (function(result) {
+                if (result['volumeScrollCheck'] === 'on') {
+                    document.addEventListener("wheel", onScroll, {passive: false});
+                    }
+            }));
 
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
@@ -85,6 +190,15 @@
 		                document.documentElement.style.setProperty('--messagestyle', 'none');
 		        } 
 	        }));
+
+            storage.get('volumeScrollCheck', (function(result) {
+                if (result['volumeScrollCheck'] === 'on') {
+                    scrollwheelvolume = true;
+                } else if (result['messageStyle'] === 'off') {
+                        scrollwheelvolume = false;
+                } 
+            }));
+
 
         }
         function usernameElementInterval() {
