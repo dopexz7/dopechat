@@ -12,6 +12,7 @@
 
 
 
+
     function enableStyles(){
         var a = browser.runtime.getURL("content_new.css");
         var head = document.head;
@@ -159,7 +160,7 @@
     var hostnames = ["www.facebook.com"]; //array for hostname objects
 
     function substitute(nodes) { //substitutes text patterns in generally visible text elements with assigned inline images
-        var elements = nodes.querySelectorAll("span:not(.emote_wrapper):not(.tooltiptext), div:not(.tw-tooltip):not(.bttv-tooltip):not(.ffz__tooltip--inner), p, h1, h2, h3:not(.item-name), h4, h5, h6, a, b, strong, em, i, th, td, li, blockquote");
+        var elements = nodes.querySelectorAll("div:not(.tw-tooltip):not(.bttv-tooltip):not(.ffz__tooltip--inner)");
         for (var i = 0; i < elements.length; i++) {
             for (var j = 0; j < elements[i].childNodes.length; j++) {
                 var node = elements[i].childNodes[j];
