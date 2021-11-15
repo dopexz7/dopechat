@@ -8,3 +8,7 @@ Fully customizable chat appearance, pre-installed 400+ custom emotes and other m
 
 ### 0.2.0
 - Added mouse wheel volume control (enable in settings)
+
+### 0.1.0
+- 426+ pre-installed custom emotes. Can also install your own emotes / import sets.
+- Customize chat appearance with settings in the popup menu.
