@@ -9,8 +9,8 @@
     document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
     document.documentElement.style.setProperty('--pfpwidth', '82%'); 
     document.documentElement.style.setProperty('--messagestyle', 'left');
-    document.documentElement.style.setProperty('--volumeis0', "url('https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/zTi72WTXPIz.png')");
-    document.documentElement.style.setProperty('--volumeis0h', "-21px -74px");
+    document.documentElement.style.setProperty('--currentvolon', '0');
+
 
 
     let body = document.documentElement || document.body || document.getElementsByTagName("body")[0];
@@ -48,18 +48,11 @@
 
         video.muted = volume <= 0;
 
-        if (video.muted) {
-            document.documentElement.style.setProperty('--volumeis0', "url('https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/zTi72WTXPIz.png')");
-            document.documentElement.style.setProperty('--volumeis0h', "-21px -116px");
-        } else {
-            document.documentElement.style.setProperty('--volumeis0', "url('https://static.xx.fbcdn.net/rsrc.php/v3/yC/r/zTi72WTXPIz.png')");
-            document.documentElement.style.setProperty('--volumeis0h', "-21px -74px");
-        }
-
         video.volume = volume;
         video.dataset.volume = volume;
 
         let currentvol = Math.round(video.volume * 100); 
+        //document.querySelector('.k4urcfbm.j9ispegn.pmk7jnqg.pcp91wgn.iuny7tx3.p8fzw8mz.ipjc6fyt.rq0escxv.pqc7ok08').style.opacity = '0';
         document.querySelector('.k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s').style['height'] = currentvol + '%';
 
         
@@ -77,7 +70,7 @@
                 setTimeout(function(){
                     document.documentElement.style.setProperty('--currentvolon', "0");
                     document.documentElement.style.setProperty('--currentvolonb', "none");
-                }, 6000);
+                }, 3000);
             }
         }
 
