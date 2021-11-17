@@ -384,10 +384,10 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
             }));
         }
         storage.get('usernames',  function(result) {
-                            if (document.getElementById("myText").innerHTML !== undefined) {
-                                document.getElementById("myText").innerHTML = result['usernames'];
+                            if (document.getElementById("myText").textContent !== undefined) {
+                                document.getElementById("myText").textContent = result['usernames'];
                             } else {
-                                document.getElementById("myText").innerHTML += result['usernames'];
+                                document.getElementById("myText").textContent += result['usernames'];
                             }
                         });
         function setOValueSettings() {
@@ -407,10 +407,10 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
                         storage.set(otherobj);
                         console.log(otherobj["usernames"]);
                         storage.get('usernames',  function(result) {
-                            if (document.getElementById("myText").innerHTML !== undefined) {
-                                document.getElementById("myText").innerHTML = result['usernames'];
+                            if (document.getElementById("myText").textContent !== undefined) {
+                                document.getElementById("myText").textContent = result['usernames'];
                             } else {
-                                document.getElementById("myText").innerHTML += result['usernames'];
+                                document.getElementById("myText").textContent += result['usernames'];
                             }
                         });
                         //console.log(otherobj);
