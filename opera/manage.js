@@ -448,12 +448,37 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
                     }
             }));
         }
+
+        function setOOValueSColor() {
+            document.getElementById("addootheryucolor").addEventListener('click', (function() {
+                var c = document.getElementById('oocusernm').value;
+                    timeout.style.display = 'block';
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        otherobj['highlightOpacity'] = c;
+                        storage.set(otherobj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";
+                          setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                            }
+                    }
+            }));
+        }
         
         setValueSettings("addchatBG", "chatbg", "chatBackground");
         setValueSettings("addyourucolor", "usernmc", "yourUsernameColor");
         setValueSettings("addusername", "usernm", "yourUsername");
         setOValueSettings();
         setOValueSColor();
+        setOOValueSColor();
         
         setValueSettings("addtextcolor", "textcolor", "chatTextColor");
         setValueSettings("addtopbar", "topbarx", "topbarColor");

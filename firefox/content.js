@@ -196,16 +196,21 @@
 
         function setHighlightWords() {
             var newc = [];
-            storage.get(['usernames', 'highlightColor'],  function(result) {
+            storage.get(['usernames', 'highlightColor', 'highlightOpacity'],  function(result) {
                 if (result['usernames'] && result['highlightColor']) {
                     newc = result['usernames'].split(",");
                     for (var x=0; x<messageElement.length; x++) {
+                        messageElement[x].style.backgroundColor = 'transparent';
+                        messageElement[x].style.opacity = '1';
+                        messageElement[x].style.transform = "none";
                         var textassplit = messageElement[x].textContent.split(" ");
                         for (var l=0; l<textassplit.length; l++) {
                             for (var j=0; j<newc.length; j++) {
                                 if (textassplit[l].includes(newc[j])) {
                                     messageElement[x].style.transform = "scale(1.02)";
+                                    messageElement[x].style.opacity = result['highlightOpacity'];
                                     messageElement[x].style.backgroundColor = result['highlightColor'];
+
                                 }
                             }  
                         }      

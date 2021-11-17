@@ -548,4 +548,14 @@ pinned comment*/
   opacity:  var(--currentvolon);
 }
 
-
+.l9j0dhe7.ll8tlv6m.rq0escxv.j83agx80.pfnyh3mw.e5nlhep0.hv4rvrfc.dati1w0a.ecm0bbzt.btwxx1t3.lzcic4wl:hover {
+    opacity: 1 !important;
+    transition: .5s;
+}
+.l9j0dhe7.ll8tlv6m.rq0escxv.j83agx80.pfnyh3mw.e5nlhep0.hv4rvrfc.dati1w0a.ecm0bbzt.btwxx1t3.lzcic4wl {
+    -webkit-transition: all 1s ease-out;
+   -moz-transition: all 1s ease-out;
+   -o-transition: all 1s ease-out;
+   -ms-transition: all 1s ease-out;
+   transition: all 1s ease-out;
+}
