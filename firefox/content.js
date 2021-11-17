@@ -103,6 +103,8 @@
         }
     }
 
+    
+
     function enableStyles(){
         var a = chrome.runtime.getURL("content_new.css");
         var head = document.head;
@@ -118,22 +120,12 @@
         
         var yourUsername = "Dopexz Ed";
        	var storage = browser.storage.local;
-
         
-
         storage.get('volumeScrollCheck', (function(result) {
                 if (result['volumeScrollCheck'] === 'on') {
                     document.addEventListener("wheel", onScroll, {passive: false});
                     }
             }));
-
-
-
-
-
-
-
-
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
         	storage.get(resultValue, (function(result) {
@@ -201,17 +193,41 @@
 
 
         }
+
+        function setHighlightWords() {
+            var newc = [];
+            storage.get(['usernames', 'highlightColor'],  function(result) {
+                if (result['usernames'] && result['highlightColor']) {
+                    newc = result['usernames'].split(",");
+                    for (var x=0; x<messageElement.length; x++) {
+                        var textassplit = messageElement[x].textContent.split(" ");
+                        for (var l=0; l<textassplit.length; l++) {
+                            for (var j=0; j<newc.length; j++) {
+                                if (textassplit[l].includes(newc[j])) {
+                                    messageElement[x].style.transform = "scale(1.02)";
+                                    messageElement[x].style.backgroundColor = result['highlightColor'];
+                                }
+                            }  
+                        }      
+                    }          
+                }          
+            })
+        }
+
+
+
+
         function usernameElementInterval() {
-        	storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
-                	if (result['yourUsername'] && result['yourUsernameColor']) {
-	                    yourUsername = result['yourUsername'];
-	                    yourUsernameColor = result['yourUsernameColor'];
-	                    userNameColors[yourUsername] = yourUsernameColor;
-	                } else{
-	                	yourUsername = 'Dopexz Ed';
-	                    yourUsernameColor = 'blue';
-	                    userNameColors[yourUsername] = yourUsernameColor;
-	                }
+            storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
+                    if (result['yourUsername'] && result['yourUsernameColor']) {
+                        yourUsername = result['yourUsername'];
+                        yourUsernameColor = result['yourUsernameColor'];
+                        userNameColors[yourUsername] = yourUsernameColor;
+                    } else{
+                        yourUsername = 'Dopexz Ed';
+                        yourUsernameColor = 'blue';
+                        userNameColors[yourUsername] = yourUsernameColor;
+                    }
 
                 })
                    for(var i = 0; i < usernameElement.length; i++) {
@@ -228,15 +244,17 @@
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
 
                         //console.log(usernameElement[i].textContent);
-                    	}
+                        }
                         }
                     }  
         }
+        
         var fireOnHashChangesToo = true;
         var pageURLCheckTimer = setInterval (
         	function () {
         		try {
 		        storageSetValueInterval();
+                
                   } catch(e){
         			console.log(e);
    					 }  
@@ -249,6 +267,8 @@
                 }
 
                 var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id");
+                var messageElement = document.getElementsByClassName("l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl");
+                var textonlyElement = document.getElementsByClassName("kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql");
                 
 
                 
@@ -257,6 +277,7 @@
                 var fireOnHashChangesToo = true;
                 var pageURLCheckTimer = setInterval (function () {
                 	try { usernameElementInterval();
+                        setHighlightWords();
                 	} catch(e){
         			console.log(e);
         			}                   

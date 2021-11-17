@@ -11,6 +11,38 @@
 #chatset {display: none; transition: .5s}
 #textset {display: none; transition: .5s}
 #otherset {display: none;}
+#yourusernamesettings {display: none; -webkit-transition: opacity, transform .5s; transition: opacity, transform .5s;}
+#yourtextsettings {display: none}
+#otherusersettings {display: none}
+
+
+
+
+.in-buttons {
+    background: #18181b;
+    padding:35px;
+    font-size: 16px;
+    font-family: Roboto;
+    font-weight: bold;
+    color: rgba(255,255,255,0.6);
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    height: 20px;    
+    border-radius: 3px;
+    -webkit-transition: opacity, transform .5s, color;
+    transition: opacity, transform .5s, color;
+}
+.in-buttons:hover {
+    transform: scale(0.97);
+    cursor: pointer;
+    color: rgba(255,255,255,1);
+    transition: .5s;
+}
+
+
+
 body {
     background: #18181b;
     font-family: Roboto !important;

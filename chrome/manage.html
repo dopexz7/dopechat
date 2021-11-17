@@ -45,7 +45,15 @@
 
 
 
-      <div id="textset">
+    <div id="textset">
+
+      <div class="textformx" style="left:0">
+        <div class="in-buttons" id="yourusernameinner">
+          Your username settings
+        </div>
+      </div>
+
+      <div id="yourusernamesettings">
         <input type="button" id="addusername" class="hide">
         <div class="textformx">
             <input type="textx" id="usernm" placeholder="e.g. Dopexz Ed. (Type your username)">
@@ -56,6 +64,17 @@
           <input type="color-picker" id="usernmc" placeholder="e.g. #FFFFF or pick a color">
           <label for="addyourucolor" class="button people">Set your name color</label>
         </div>
+      </div>
+
+      
+
+      <div class="textformx" style="left:0">
+        <div class="in-buttons" id="textsettingsinner">
+          Chat text settings
+        </div>
+      </div>
+
+      <div id="yourtextsettings">
         <input type="button" id="addtextcolor" class="hide">
         <div class="textformx">
           <input type="color-picker" id="textcolor" placeholder="e.g. #FFFFF or pick a color">
@@ -64,13 +83,35 @@
         
       <div class="textformx" style="height:50px">
         <div class="wrapper">
-        <div class="msg" style="float:left">
-          Set text size
+          <div class="msg" style="float:left">
+            Set text size
+          </div>
+          <custom-slider min="0" max="23" value="13" style="margin-left: 15px;display: flex ;align-items: center ;justify-content: center ;flex-direction: column ;"></custom-slider>
         </div>
-        <custom-slider min="0" max="23" value="13" style="margin-left: 15px;display: flex ;align-items: center ;justify-content: center ;flex-direction: column ;"></custom-slider>
+        </div>
       </div>
-</div>
-    </div>
+
+      <div class="textformx" style="left:0">
+        <div class="in-buttons" id="otherusernamesettings">
+          Highlighting settings
+        </div>
+      </div>
+
+      <div id="otherusersettings">
+        <input type="button" id="addotherusername" class="hide">
+        <div class="textformx">
+            <input type="textx" id="ousernm" placeholder="Write single words (not phrases) - keywords you want to be highlighted, separated by a comma. (E.g. random,keyword,kek,lul)">
+            <label for="addotherusername" class="button people">Set all keywords</label>
+
+        </div>
+        Current keywords: <span id="myText"></span>
+        <input type="button" id="addotheryucolor" class="hide">
+        <div class="textformx">
+          <input type="color-picker" id="ocusernm" placeholder="e.g. #FFFFF or pick a color">
+          <label for="addotheryucolor" class="button people">Set highlight color</label>
+        </div>
+      </div>
+  </div>
 
      
 

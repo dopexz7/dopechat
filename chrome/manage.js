@@ -1,5 +1,6 @@
 var storage = chrome.storage.local;
 var obj = {};
+var otherobj = {};
 
 let stylesheetText = `
 #slider-container {
@@ -290,38 +291,28 @@ PICKER = {
 
 PICKER.bind_inputs();
 
-var first = document.getElementById("chatset");
-var second = document.getElementById("textset");
-var third = document.getElementById("otherset");
+const first = document.getElementById("chatset"), second = document.getElementById("textset"), third = document.getElementById("otherset");
 
-document.getElementById("chatsettings").addEventListener("click", function () {
-    if (first.style.display !== "inline") {
-    	first.style.display = "inline";
-    	second.style.display = "none";
-    	third.style.display = "none";
-    } else {
-    	first.style.display = "none";
-    }
-});
+const yourusernamesettings = document.getElementById("yourusernamesettings"), yourtextsettings = document.getElementById("yourtextsettings"), otherusersettings = document.getElementById("otherusersettings");
 
-document.getElementById("textsettings").addEventListener("click", function () {
-    if (second.style.display !== "inline") {
-    	second.style.display = "inline";
-    	first.style.display = "none";
-    	third.style.display = "none";
-    } else {
-    	second.style.display = "none";
-    }
-});
-document.getElementById("othersettings").addEventListener("click", function () {
-    if (third.style.display !== "inline") {
-    	third.style.display = "inline";
-    	first.style.display = "none";
-    	second.style.display = "none";
-    } else {
-    	third.style.display = "none";
-    }
-});
+function hideShowButtons(chatsettings, first, second, third) {
+   document.getElementById(chatsettings).addEventListener("click", function () {
+        if (first.style.display !== "inline") {
+            first.style.display = "inline";
+            second.style.display = "none";
+            third.style.display = "none";
+        } else {
+            first.style.display = "none";
+        }
+    }); 
+}
+
+hideShowButtons('chatsettings', first, second, third);
+hideShowButtons('textsettings', second, first, third);
+hideShowButtons('othersettings', third, first, second);
+hideShowButtons('yourusernameinner', yourusernamesettings, yourtextsettings, otherusersettings);
+hideShowButtons('otherusernamesettings', otherusersettings, yourtextsettings, yourusernamesettings);
+hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourusernamesettings);
 
 (function() { 
     function checkboxState(checkboxValue, firstValue, secondValue) {
@@ -392,11 +383,77 @@ document.getElementById("othersettings").addEventListener("click", function () {
                     }
             }));
         }
+        storage.get('usernames',  function(result) {
+                            if (document.getElementById("myText").innerHTML !== undefined) {
+                                document.getElementById("myText").innerHTML = result['usernames'];
+                            } else {
+                                document.getElementById("myText").innerHTML += result['usernames'];
+                            }
+                        });
+        function setOValueSettings() {
+            document.getElementById("addotherusername").addEventListener('click', (function() {
+                var c = document.getElementById('ousernm').value;
+                    timeout.style.display = 'block';
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        otherobj["usernames"] = c;
+                        storage.set(otherobj);
+                        console.log(otherobj["usernames"]);
+                        storage.get('usernames',  function(result) {
+                            if (document.getElementById("myText").innerHTML !== undefined) {
+                                document.getElementById("myText").innerHTML = result['usernames'];
+                            } else {
+                                document.getElementById("myText").innerHTML += result['usernames'];
+                            }
+                        });
+                        //console.log(otherobj);
 
+
+                        document.getElementById("feedback6").textContent = "Successfully set.";
+                          setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                            }
+                    }
+            }));
+        }
+
+        function setOValueSColor() {
+            document.getElementById("addotheryucolor").addEventListener('click', (function() {
+                var c = document.getElementById('ocusernm').value;
+                    timeout.style.display = 'block';
+                    if (c == "") {
+                        document.getElementById("feedback6").textContent = "Nothing given.";
+                        setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                       
+                            }
+                        document.getElementById("found").className = "hide";
+                    } else {
+                        otherobj['highlightColor'] = c;
+                        storage.set(otherobj);
+                        document.getElementById("feedback6").textContent = "Successfully set.";
+                          setTimeout(hideElement, 1000) //milliseconds until timeout//
+                            function hideElement() {
+                                timeout.style.display = 'none'
+                            }
+                    }
+            }));
+        }
         
         setValueSettings("addchatBG", "chatbg", "chatBackground");
         setValueSettings("addyourucolor", "usernmc", "yourUsernameColor");
         setValueSettings("addusername", "usernm", "yourUsername");
+        setOValueSettings();
+        setOValueSColor();
         
         setValueSettings("addtextcolor", "textcolor", "chatTextColor");
         setValueSettings("addtopbar", "topbarx", "topbarColor");

@@ -6,6 +6,9 @@ Fully customizable chat appearance, pre-installed 400+ custom emotes and other m
 
 ## Changelog
 
+### 0.2.2
+- Highlight certain (key)words in chat
+
 ### 0.2.0
 - Added mouse wheel volume control (enable in settings)
 
