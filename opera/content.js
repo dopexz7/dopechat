@@ -196,9 +196,9 @@
 
         function setHighlightWords() {
             var newc = [];
-            storage.get(['usernames', 'highlightColor', 'highlightOpacity'],  function(result) {
-                if (result['usernames'] && result['highlightColor']) {
-                    newc = result['usernames'].split(",");
+            storage.get(['highlightKeywords', 'highlightColor', 'highlightOpacity'],  function(result) {
+                if (result['highlightKeywords'] && result['highlightColor']) {
+                    newc = result['highlightKeywords'].split(",");
                     for (var x=0; x<messageElement.length; x++) {
                         messageElement[x].style.backgroundColor = 'transparent';
                         messageElement[x].style.opacity = '1';
@@ -245,10 +245,7 @@
                         
                         var randomGeneratedColor = getRandomColor();
                         usernameElement[i].style.color = randomGeneratedColor;
-                        //var currentUsername = usernameElement.textContent;
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
-
-                        //console.log(usernameElement[i].textContent);
                         }
                         }
                     }  

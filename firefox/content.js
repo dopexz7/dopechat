@@ -106,7 +106,7 @@
     
 
     function enableStyles(){
-        var a = chrome.runtime.getURL("content_new.css");
+        var a = browser.runtime.getURL("content_new.css");
         var head = document.head;
         var link = document.createElement("link");
 
@@ -119,7 +119,7 @@
 
         
         var yourUsername = "Dopexz Ed";
-       	var storage = browser.storage.local;
+       	var storage = chrome.storage.local;
         
         storage.get('volumeScrollCheck', (function(result) {
                 if (result['volumeScrollCheck'] === 'on') {
@@ -196,9 +196,9 @@
 
         function setHighlightWords() {
             var newc = [];
-            storage.get(['usernames', 'highlightColor', 'highlightOpacity'],  function(result) {
-                if (result['usernames'] && result['highlightColor']) {
-                    newc = result['usernames'].split(",");
+            storage.get(['highlightKeywords', 'highlightColor', 'highlightOpacity'],  function(result) {
+                if (result['highlightKeywords'] && result['highlightColor']) {
+                    newc = result['highlightKeywords'].split(",");
                     for (var x=0; x<messageElement.length; x++) {
                         messageElement[x].style.backgroundColor = 'transparent';
                         messageElement[x].style.opacity = '1';
@@ -245,10 +245,7 @@
                         
                         var randomGeneratedColor = getRandomColor();
                         usernameElement[i].style.color = randomGeneratedColor;
-                        //var currentUsername = usernameElement.textContent;
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
-
-                        //console.log(usernameElement[i].textContent);
                         }
                         }
                     }  

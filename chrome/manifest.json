@@ -14,7 +14,7 @@
    "content_scripts": [ {
       "all_frames": true,
       "css": ["content.css"],
-      "js": ["content.js"],
+      "js": ["content.js", "jquery-3.6.0.min.js"],
       "matches": [ "https://*.facebook.com/*" ],
       "run_at": "document_end"
    } ],
@@ -25,5 +25,5 @@
    "manifest_version": 3,
    "name": "FB Gaming Better",
    "permissions": [ "storage"],
-   "version": "0.2.2"
+   "version": "0.2.3"
 }

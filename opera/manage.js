@@ -2,122 +2,8 @@ var storage = chrome.storage.local;
 var obj = {};
 var otherobj = {};
 
-let stylesheetText = `
-#slider-container {
-    --value : 0 ;
-    --slider-track-color : #18181b;
-    --slider-thumb-color : #ffbe76;
-    --slider-fill-color  : #ffbe76;
-    --slider-fill2-color : #18181b;
-    float: left;
-    width : 100% ;
-    height: 1rem ;
-    display: flex ;
-    align-items: center ;
-    justify-content: center ;
-    padding: 0 ;
-    margin: 0 ;
 
-    animation: color-cycle 1s infinite alternate linear;
-}
-
-@keyframes color-cycle {
-    0% {
-        --slider-fill-color  : #ffbe76  ;
-    }
-    100% {
-        --slider-fill-color : #ffbe76  ;
-    }
-}
-
-#slider {
-    -webkit-appearance: none;
-    appearance: none;
-
-    height: 1rem ;
-    width: 100% ;
-    margin : 0 ;
-    padding: 0 ;
-
-    background-color: #00000000 ;
-    outline: none ;
-    z-index: 99 ;
-}
-
-#slider-track {
-    position: absolute ;
-    top: calc(50% - 0.25rem);
-    left: 0 ;
-    width: 100% ;
-    height: 0.5rem ;
-    border-radius: 0.25rem ;
-    background-color: var(--slider-track-color) ;
-    overflow: hidden ;
-}
-
-#slider-track::before {
-    position: absolute ;
-    content: "" ;
-    left: calc(-100% + 1.5rem) ;
-    top : 0 ;
-    width : calc(100% - 1rem) ;
-    height: 100% ;
-    background-color: var(--slider-fill-color) ;
-    transition: background-color 300ms ease-out ;
-    transform-origin: 100% 0%;
-    transform: translateX(calc( var(--value) * 100% )) scaleX(1.2);
-}
-
-#slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width : 1rem ;
-    height: 1rem ;
-    border-radius: 50% ;
-    background-color: var(--slider-thumb-color) ;
-    cursor: pointer ;
-    z-index: 99 ;
-    border: 2px solid var(--slider-fill-color) ;
-    transition: border-color 300ms ease-out ;
-}
-
-#value {
-    position: absolute ;
-    bottom: calc(100% + 0.5rem) ;
-    left: calc( var(--value) * calc(100% - 1rem) - 0.8rem) ;
-    min-width: 3ch ;
-    border-radius: 6px ;
-    pointer-events: none ;
-
-    padding: 0.5rem ;
-    display: flex ;
-    align-items: center ;
-    justify-content: center ;
-
-    color: rgba(0,0,0,0.7) ;
-    background-color: var(--slider-fill-color);
-    opacity: 0 ;
-
-    transition: left 300ms ease-out , opacity 300ms 300ms ease-out , background-color 300ms ease-out ;
-}
-
-#value::before {
-    position: absolute ;
-    content: "" ;
-    top: 100% ;
-    left: 50% ;
-    width: 1rem ;
-    height: 1rem ;
-    border-radius: 2px ;
-    background-color: inherit ;
-    transform: translate(-50%,-80%) rotate(45deg);
-    z-index: -1 ;
-}
-
-#slider-container:hover  #value {
-    opacity: 1 ;
-} 
-` ;
+let stylesheetText = `#slider-container{--value:0;--slider-track-color:#18181b;--slider-thumb-color:#ffbe76;--slider-fill-color:#ffbe76;--slider-fill2-color:#18181b;float:left;width:100%;height:1rem;display:flex;align-items:center;justify-content:center;padding:0;margin:0;animation:color-cycle 1s infinite alternate linear}@keyframes color-cycle{0%{--slider-fill-color:#ffbe76}100%{--slider-fill-color:#ffbe76}}#slider{-webkit-appearance:none;appearance:none;height:1rem;width:100%;margin:0;padding:0;background-color:#00000000;outline:0;z-index:99}#slider-track{position:absolute;top:calc(50% - .25rem);left:0;width:100%;height:.5rem;border-radius:.25rem;background-color:var(--slider-track-color);overflow:hidden}#slider-track::before{position:absolute;content:"";left:calc(-100% + 1.5rem);top:0;width:calc(100% - 1rem);height:100%;background-color:var(--slider-fill-color);transition:background-color .3s ease-out;transform-origin:100% 0;transform:translateX(calc(var(--value) * 100%)) scaleX(1.2)}#slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:1rem;height:1rem;border-radius:50%;background-color:var(--slider-thumb-color);cursor:pointer;z-index:99;border:2px solid var(--slider-fill-color);transition:border-color .3s ease-out}#value{position:absolute;bottom:calc(100% + .5rem);left:calc(var(--value) * calc(100% - 1rem) - .8rem);min-width:3ch;border-radius:6px;pointer-events:none;padding:.5rem;display:flex;align-items:center;justify-content:center;color:rgba(0,0,0,.7);background-color:var(--slider-fill-color);opacity:0;transition:left .3s ease-out,opacity .3s .3s ease-out,background-color .3s ease-out}#value::before{position:absolute;content:"";top:100%;left:50%;width:1rem;height:1rem;border-radius:2px;background-color:inherit;transform:translate(-50%,-80%) rotate(45deg);z-index:-1}#slider-container:hover #value{opacity:1}` ;
 
 class customSlider extends HTMLElement {
     constructor(){
@@ -126,58 +12,37 @@ class customSlider extends HTMLElement {
         this.min   = parseFloat(this.getAttribute("min"))   || 0;
         this.max   = parseFloat(this.getAttribute("max"))   || 100;
         this.step  = parseFloat(this.getAttribute("step"))  || 1;
-
         this.style.minWidth = "12rem" ;
         this.style.minHeight = "1rem" ;
         this.style.position = "relative" ;
-
-        // Slider Element
         this.root = this.attachShadow({mode:"open"}) ;
-
-        // Functionality
         this.dragging = false ;
-
         this.create();
         this.update();
     }
-
     create(){
         let slider   = document.createElement("input") ;
         let sliderContainer = document.createElement("div");
         let sliderTrack = document.createElement("div");
         let value = document.createElement("div");
-
-        // let style = document.createElement("link");
-        // style.rel = "stylesheet" ;
-        // style.href = "/src/custom-slider-style.css" ;
-
         let style = document.createElement("style") ;
         style.textContent = stylesheetText ;
-
-        // set properties
         slider.type = "range" ;
         slider.id = "slider" ;
         slider.min = this.min ;
         slider.max = this.max ;
         slider.step = this.step ;
         slider.value = this.value ;
-
-        // add ids
         sliderContainer.id = "slider-container" ;
         sliderTrack.id = "slider-track" ;
         value.id = "value" ;
-
-        // add event listeners
         slider.addEventListener("input",this.update.bind(this));
-
-        // Appened Elements
         sliderContainer.appendChild(slider);
         sliderContainer.appendChild(value);
         sliderContainer.appendChild(sliderTrack);
         this.root.appendChild(style);
         this.root.appendChild(sliderContainer);
     }
-
     update(){
         let track  = this.root.getElementById("slider-container");
         let slider = this.root.getElementById("slider");
@@ -190,25 +55,17 @@ class customSlider extends HTMLElement {
         document.documentElement.style.setProperty("--msgfontsize", slider.value + "px"), 
         track.style.setProperty("--value", valuePercentage);
     }
-
-
 }
-
 customElements.define('custom-slider', customSlider );
-
-
 PICKER = {
     mouse_inside: false,
-
     to_hex: function (dec) {
         hex = dec.toString(16);
         return hex.length == 2 ? hex : '0' + hex;
     },
-
     show: function () {
         var input = $(this);
         var position = input.offset();
-
         PICKER.$colors  = $('<canvas width="230" height="150" ></canvas>');
         PICKER.$colors.css({
             'position': 'absolute',
@@ -220,9 +77,7 @@ PICKER = {
         });
         $('body').append(PICKER.$colors.fadeIn());
         PICKER.colorctx = PICKER.$colors[0].getContext('2d');
-
         PICKER.render();
-
         PICKER.$colors
             .click(function (e) {
                 var new_color = PICKER.get_color(e);
@@ -234,85 +89,45 @@ PICKER = {
             }, function () {
                 PICKER.mouse_inside=false;
             });
-
         $("body").mouseup(function () {
             if (!PICKER.mouse_is_inside)  {
                 $(input).css({'background-color': '#18181b'})
                 PICKER.close();
-                }
+            }
         });
     },
-
     bind_inputs: function () {
         $('input[type="color-picker"]').not('.color-picker-binded').each(function () {
             $(this).click(PICKER.show);
         }).addClass('color-picker-binded');
     },
-
     close: function () {PICKER.$colors.fadeOut(PICKER.$colors.remove);},
-
     get_color: function (e) {
         var pos_x = e.pageX - PICKER.$colors.offset().left;
         var pos_y = e.pageY - PICKER.$colors.offset().top;
-
         data = PICKER.colorctx.getImageData(pos_x, pos_y, 1, 1).data;
         return '#' + PICKER.to_hex(data[0]) + PICKER.to_hex(data[1]) + PICKER.to_hex(data[2]);
     },
-
-  // Build Color palette
     render: function () {
         var gradient = PICKER.colorctx.createLinearGradient(0, 0, PICKER.$colors.width(), 0);
-
-        // Create color gradient
-        gradient.addColorStop(0,    "rgb(255,   0,   0)");
-        gradient.addColorStop(0.15, "rgb(255,   0, 255)");
-        gradient.addColorStop(0.33, "rgb(0,     0, 255)");
-        gradient.addColorStop(0.49, "rgb(0,   255, 255)");
-        gradient.addColorStop(0.67, "rgb(0,   255,   0)");
-        gradient.addColorStop(0.84, "rgb(255, 255,   0)");
-        gradient.addColorStop(1,    "rgb(255,   0,   0)");
-
-        // Apply gradient to canvas
+        gradient.addColorStop(0,"rgb(255,   0,   0)"),gradient.addColorStop(.15,"rgb(255,   0, 255)"),gradient.addColorStop(.33,"rgb(0,     0, 255)"),gradient.addColorStop(.49,"rgb(0,   255, 255)"),gradient.addColorStop(.67,"rgb(0,   255,   0)"),gradient.addColorStop(.84,"rgb(255, 255,   0)"),gradient.addColorStop(1,"rgb(255,   0,   0)");
         PICKER.colorctx.fillStyle = gradient;
         PICKER.colorctx.fillRect(0, 0, PICKER.colorctx.canvas.width, PICKER.colorctx.canvas.height);
-
-        // Create semi transparent gradient (white -> trans. -> black)
         gradient = PICKER.colorctx.createLinearGradient(0, 0, 0, PICKER.$colors.height());
-        gradient.addColorStop(0,   "rgba(255, 255, 255, 1)");
-        gradient.addColorStop(0.5, "rgba(255, 255, 255, 0)");
-        gradient.addColorStop(0.5, "rgba(0,     0,   0, 0)");
-        gradient.addColorStop(1,   "rgba(0,     0,   0, 1)");
-
-        // Apply gradient to canvas
+        gradient.addColorStop(0,"rgba(255, 255, 255, 1)"),gradient.addColorStop(.5,"rgba(255, 255, 255, 0)"),gradient.addColorStop(.5,"rgba(0,     0,   0, 0)"),gradient.addColorStop(1,"rgba(0,     0,   0, 1)");
         PICKER.colorctx.fillStyle = gradient;
         PICKER.colorctx.fillRect(0, 0, PICKER.colorctx.canvas.width, PICKER.colorctx.canvas.height);
     }
 };
-
 PICKER.bind_inputs();
 
 const first = document.getElementById("chatset"), second = document.getElementById("textset"), third = document.getElementById("otherset");
-
 const yourusernamesettings = document.getElementById("yourusernamesettings"), yourtextsettings = document.getElementById("yourtextsettings"), otherusersettings = document.getElementById("otherusersettings");
+function hideShowButtons(n,e,i,l){document.getElementById(n).addEventListener("click",function(){"inline"!==e.style.display?(e.style.display="inline",i.style.display="none",l.style.display="none"):e.style.display="none"})}
 
-function hideShowButtons(chatsettings, first, second, third) {
-   document.getElementById(chatsettings).addEventListener("click", function () {
-        if (first.style.display !== "inline") {
-            first.style.display = "inline";
-            second.style.display = "none";
-            third.style.display = "none";
-        } else {
-            first.style.display = "none";
-        }
-    }); 
-}
 
-hideShowButtons('chatsettings', first, second, third);
-hideShowButtons('textsettings', second, first, third);
-hideShowButtons('othersettings', third, first, second);
-hideShowButtons('yourusernameinner', yourusernamesettings, yourtextsettings, otherusersettings);
-hideShowButtons('otherusernamesettings', otherusersettings, yourtextsettings, yourusernamesettings);
-hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourusernamesettings);
+hideShowButtons('chatsettings', first, second, third); hideShowButtons('textsettings', second, first, third); hideShowButtons('othersettings', third, first, second); hideShowButtons('yourusernameinner', yourusernamesettings, yourtextsettings, otherusersettings); hideShowButtons('otherusernamesettings', otherusersettings, yourtextsettings, yourusernamesettings); hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourusernamesettings);
+
 
 (function() { 
     function checkboxState(checkboxValue, firstValue, secondValue) {
@@ -352,11 +167,7 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
 	checkboxCheck('messageStyle', '2', '1', 'checkboxxd');
     checkboxCheck('volumeScrollCheck', 'on', 'off', 'checkboxxd2');
 
-
-    
-
     const timeout = document.getElementById("feedback6");
-
 
     function setValueSettings(addusername, usernm, resultUsername) {
             document.getElementById(addusername).addEventListener('click', (function() {
@@ -367,27 +178,24 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
                         setTimeout(hideElement, 1000) //milliseconds until timeout//
                             function hideElement() {
                                 timeout.style.display = 'none'
-                       
                             }
                         document.getElementById("found").className = "hide";
                     } else {
                         obj[resultUsername] = c;
                         storage.set(obj);
                         document.getElementById("feedback6").textContent = "Successfully set.";
-                        
                           setTimeout(hideElement, 1000) //milliseconds until timeout//
                             function hideElement() {
                                 timeout.style.display = 'none'
-                       
                             }
                     }
             }));
         }
-        storage.get('usernames',  function(result) {
+        storage.get('highlightKeywords',  function(result) {
                             if (document.getElementById("myText").textContent !== undefined) {
-                                document.getElementById("myText").textContent = result['usernames'];
+                                document.getElementById("myText").textContent = result['highlightKeywords'];
                             } else {
-                                document.getElementById("myText").textContent += result['usernames'];
+                                document.getElementById("myText").textContent += result['highlightKeywords'];
                             }
                         });
         function setOValueSettings() {
@@ -403,19 +211,15 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
                             }
                         document.getElementById("found").className = "hide";
                     } else {
-                        otherobj["usernames"] = c;
+                        otherobj['highlightKeywords'] = c;
                         storage.set(otherobj);
-                        console.log(otherobj["usernames"]);
-                        storage.get('usernames',  function(result) {
+                        storage.get('highlightKeywords',  function(result) {
                             if (document.getElementById("myText").textContent !== undefined) {
-                                document.getElementById("myText").textContent = result['usernames'];
+                                document.getElementById("myText").textContent = result['highlightKeywords'];
                             } else {
-                                document.getElementById("myText").textContent += result['usernames'];
+                                document.getElementById("myText").textContent += result['highlightKeywords'];
                             }
                         });
-                        //console.log(otherobj);
-
-
                         document.getElementById("feedback6").textContent = "Successfully set.";
                           setTimeout(hideElement, 1000) //milliseconds until timeout//
                             function hideElement() {
@@ -476,31 +280,17 @@ hideShowButtons('textsettingsinner', yourtextsettings, otherusersettings, yourus
         setValueSettings("addchatBG", "chatbg", "chatBackground");
         setValueSettings("addyourucolor", "usernmc", "yourUsernameColor");
         setValueSettings("addusername", "usernm", "yourUsername");
-        setOValueSettings();
-        setOValueSColor();
-        setOOValueSColor();
-        
         setValueSettings("addtextcolor", "textcolor", "chatTextColor");
         setValueSettings("addtopbar", "topbarx", "topbarColor");
         setValueSettings("addchattopbar", "chattopbarx", "chattopbarColor");
-
-		setValueSettings("addfont", "font", "changefont");
+        setValueSettings("addfont", "font", "changefont");
         setValueSettings("addchatwidth", "chatwidth", "changeChatWidth");
-        
 
+        setOValueSettings();
+        setOValueSColor();
+        setOOValueSColor();
 
-   	document.getElementById("hints").addEventListener("click", function(){
-   		var hintsblock = document.getElementById("helpx");
-   		if (hintsblock.style.display !== "block") {
-   			hintsblock.style.display = "block";
-   		} else {
-   			hintsblock.style.display = "none";
-   		}
-	});
-
-
-
-
+    document.getElementById("hints").addEventListener("click",function(){var e=document.getElementById("helpx");"block"!==e.style.display?e.style.display="block":e.style.display="none"});
 
   	document.getElementById("import").addEventListener('change', function(event) { //import emote set file
         var reader = new FileReader();
