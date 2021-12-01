@@ -10,6 +10,9 @@
 <div id="modal" class="modal2">  
     <div class="inner2">
       <div class="row">
+        <a class="show-button" id="emotesettings" style="">
+          Emote settings
+        </a>
         <a class="show-button" id="chatsettings" style="">
           Chat settings
         </a>
@@ -23,24 +26,44 @@
       
       
 
+      <div id="emoteset">
+        <div class="textformx" style="left:0">
+        <div class="in-buttons" id="useratedemotes">
+          Use RatedEpicz's emote set
+        </div>
+        
+      </div>
+      <div class="in-buttons" id="userameemotes">
+          Use Ramee's emote set
+        </div>
+
+      </div>
+
+
+
        <div id="chatset">
         <input type="button" id="addchatBG" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="chatbg"  placeholder="e.g. #FFFFF or pick a color">
+          <input type="color" id="colorInputId" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="chatbg" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addchatBG" class="button people">Set chat background</label>
-
         </div>
 To set an image as a background, you have to post that image to your Facebook (can set to Only Me), copy the link and paste it like this: url(image-url).
         <input type="button" id="addchattopbar" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="chattopbarx" placeholder="e.g. #FFFFF or pick a color">
+          <input type="color" id="colorInputIdChatTopBar" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="chattopbarx" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addchattopbar" class="button people">Set top bar color</label>
         </div>
+
         <input type="button" id="addchatwidth" class="hide">
         <div class="textformx">
           <input type="textx" id="chatwidth" placeholder="e.g. 310px (default) - don't forget to type px after the number">
           <label for="addchatwidth" class="button people">Set chat width</label>
         </div>
+        
+    </form>
+
       </div>
 
 
@@ -62,7 +85,8 @@ To set an image as a background, you have to post that image to your Facebook (c
         </div>
         <input type="button" id="addyourucolor" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="usernmc" placeholder="e.g. #FFFFF or pick a color">
+          <input type="color" id="colorInputIdYourNameColor" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="usernmc" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addyourucolor" class="button people">Set your name color</label>
         </div>
       </div>
@@ -78,7 +102,8 @@ To set an image as a background, you have to post that image to your Facebook (c
       <div id="yourtextsettings">
         <input type="button" id="addtextcolor" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="textcolor" placeholder="e.g. #FFFFF or pick a color">
+          <input type="color" id="colorInputIdTextColor" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="textcolor" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addtextcolor" class="button people">Set text color</label>
         </div>
         
@@ -87,7 +112,8 @@ To set an image as a background, you have to post that image to your Facebook (c
           <div class="msg" style="float:left">
             Set text size
           </div>
-          <custom-slider min="0" max="23" value="13" style="margin-left: 15px;display: flex ;align-items: center ;justify-content: center ;flex-direction: column ;"></custom-slider>
+          <input type="range" min="0" max="23" value="13" id="sliderInputId" style="margin-left: 15px;display: flex ;align-items: center ;justify-content: center ;flex-direction: column ;"></input>
+          <output id="sliderOutputId">13px</output>
         </div>
         </div>
       </div>
@@ -108,7 +134,8 @@ To set an image as a background, you have to post that image to your Facebook (c
         Current keywords: <span id="myText"></span>
         <input type="button" id="addotheryucolor" class="hide">
         <div class="textformx">
-          <input type="color-picker" id="ocusernm" placeholder="e.g. #FFFFF or pick a color">
+          <input type="color" id="colorInputIdHighlight" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="ocusernm" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addotheryucolor" class="button people">Set highlight color</label>
         </div>
 
@@ -126,7 +153,8 @@ To set an image as a background, you have to post that image to your Facebook (c
 
       <input type="button" id="addtopbar" class="hide">
       <div class="textformx">
-        <input type="color-picker" id="topbarx" placeholder="e.g. #FFFFF or pick a color">
+        <input type="color" id="colorInputIdTopBar" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="topbarx" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
         <label for="addtopbar" class="button people">Set FB top bar color</label>
       </div>
       <input type="button" id="addfont" class="hide">
@@ -136,7 +164,7 @@ To set an image as a background, you have to post that image to your Facebook (c
       </div>
       
       <div class="textformx">
-        <div class="togglechatx">hide chat profile pictures
+        <div class="togglechatx">hide profile pictures
           <label class="switch">
           <input name="checkboxx" type="checkbox" value="hidePfp">
           <div class="slider"></div>
@@ -148,13 +176,21 @@ To set an image as a background, you have to post that image to your Facebook (c
           <div class="slider"></div>
           </label>
         </div>
-        <div class="togglechatx" style="margin-left: 10px; width:27%">mouse wheel scroll to change volume
+        <div class="togglechatx" style="margin-left: 10px;">mouse scroll volume
           <label class="switch">
           <input name="checkboxxd2" type="checkbox" value="scrolltovolume">
           <div class="slider"></div>
           </label>
         </div>
+        <div class="togglechatx" style="margin-left: 10px;">draggable emote menu (BETA!)
+          <label class="switch">
+          <input name="checkboxEmoteMenu" type="checkbox" value="scrolltoemote">
+          <div class="slider"></div>
+          </label>
+        </div>
       </div>
+
+
       
 
 
@@ -209,10 +245,7 @@ To set an image as a background, you have to post that image to your Facebook (c
       </table>
     </div>
   </div>
-  <script src="jquery-3.6.0.min.js"></script>
   <script src="manage.js"></script>
-  <script src="content.js"></script>
-
 </body>
 
 </html>

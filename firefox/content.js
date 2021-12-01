@@ -1,6 +1,5 @@
 (function() { 
-	var yourUsernameColor = "#000";
-    var userNameColor = "random";  
+    var yourUsernameColor = "#000";
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
     document.documentElement.style.setProperty('--fontfamily', 'Roboto');
     document.documentElement.style.setProperty('--chatwidth', '310px'); 
@@ -11,19 +10,16 @@
     document.documentElement.style.setProperty('--messagestyle', 'left');
     document.documentElement.style.setProperty('--currentvolon', '0');
 
-
-
-    let body = document.documentElement || document.body || document.getElementsByTagName("body")[0];
-    let settings = {
+    var settings = {
         volume: 20,
         volumeIncrement: 3,
     };
 
-    let handleScroll = function (element, video) {
+    var handleScroll = function (element, video) {
         if (!Boolean(video.webkitAudioDecodedByteCount)) //video has audio. If not stops volume scrolling
             return;
 
-        let volume = 1;
+        var volume = 1;
 
         if (video.volume > settings.volumeIncrement / 100 || (video.volume === settings.volumeIncrement / 100 && event.deltaY < 0)) {
             volume = video.volume + (settings.volumeIncrement / 100) * (event.deltaY / 100 * -1); //deltaY is how much the wheel scrolled, 100 up, -100 down. Divided by 100 to only get direction, then inverted
@@ -51,154 +47,193 @@
         video.volume = volume;
         video.dataset.volume = volume;
 
-        let currentvol = Math.round(video.volume * 100); 
+
+
+        var currentvol = Math.round(video.volume * 100); 
         //document.querySelector('.k4urcfbm.j9ispegn.pmk7jnqg.pcp91wgn.iuny7tx3.p8fzw8mz.ipjc6fyt.rq0escxv.pqc7ok08').style.opacity = '0';
-        document.querySelector('.k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s').style['height'] = currentvol + '%';
+        document.querySelector('.k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s').style.height = currentvol + '%';
 
         
         
-    }
+    };
 
-    let onScroll = function (event) {
-        let elements = document.elementsFromPoint(event.clientX, event.clientY);
-        for (const element of elements) {
+    var onScroll = function (event) {
+        var elements = document.elementsFromPoint(event.clientX, event.clientY);
+        for (var element of elements) {
             if (element.tagName === "VIDEO") {
                 event.preventDefault();
                 handleScroll(element, element);
                 document.documentElement.style.setProperty('--currentvolon', "1");
                 document.documentElement.style.setProperty('--currentvolonb', "block");
-                setTimeout(function(){
+                setTimeout((function(){
                     document.documentElement.style.setProperty('--currentvolon', "0");
                     document.documentElement.style.setProperty('--currentvolonb', "none");
-                }, 3000);
+                }), 3000);
             }
         }
 
 
-    }
-
-    let handleDefaultVolume = function (video) {
-        video.volume = settings.volume / 100;
-        video.dataset.volume = settings.volume / 100;
-
-        let change = function () {
-            if (!(video.volume == video.dataset.volume - settings.volumeIncrement || video.volume == video.dataset.volume + settings.volumeIncrement || video.volume == video.dataset.volume)) { //Checks to see if the registered change in volume is equal to the increment. If it is not then it is denied.
-                video.volume = video.dataset.volume;
-            }
-        };
-
-        video.addEventListener("volumechange", change);
     };
 
-    let setAudio = function (mutations) {
-        for (const mutation of mutations) {
-            for (const node of mutation.addedNodes) {
-                if (node.tagName !== "VIDEO")
-                    continue;
+    function insertEmote(emoteCode) {
+        var textbox = document.querySelector('.oo9gr5id.lzcic4wl.jm1wdb64.l9j0dhe7.gsox5hk5.mdldhsdk.ii04i59q.notranslate');
+        var textbox2 = textbox.childNodes[0];
+        var textbox3 = textbox2.childNodes[0];
+        var textbox4 = textbox3.childNodes;
+        if (textbox4[0] !== undefined) {
+            textbox4[0].textContent +=  " " + emoteCode;  
+        }
+             
+    }
 
-                let video = node;
+    function clickEmotes() {
+        var table, elements;
+        table = document.getElementById("emotetable");
+        elements = table.getElementsByTagName("a");
+        Array.prototype.forEach.call(table.children, child => {
+            child.addEventListener('click', event => {
+                    insertEmote(child.id);
+            });
+        });
+                
+    }
 
-                handleDefaultVolume(video);
+    function autocc() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("emoteInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("emotetable");
+        li = ul.getElementsByTagName("a");
+        //console.log(li)
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("img")[0];
+            txtValue = a.alt;
+            //console.log(li[i]);
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
             }
         }
     }
+    ///* emote menu
+    function showemotes() { //show table with all emotes         
+        chrome.storage.local.get(['SET'], (function(result) {
+            var emotes = result.SET;
+            var table = document.getElementById("emotetable");
+            var tableInput = document.getElementById('emoteInput');
+            if (table.style.display !== "block") {
+                table.style.display = "block";
+                tableInput.style.display = 'block';
+            } else{
+                table.style.display = "none";
+                tableInput.style.display = 'none';
+                }
+                while (table.firstChild) {
+                    table.removeChild(table.firstChild); //clears emotes
+                }
+                for (var i = 0; i < emotes.length; i++) {
+                var imga = document.createElement('a');
+                imga.id = emotes[i].code;
+                imga.className = emotes[i].code;
+                var img = document.createElement("img");
+                img.src = emotes[i].src;
+                img.alt = emotes[i].code;
+                imga.appendChild(img);
+                table.appendChild(imga);
 
+            }
+            clickEmotes();
+
+        }));
+        
+                    
+    }
     
-
     function enableStyles(){
         var a = browser.runtime.getURL("content_new.css");
         var head = document.head;
         var link = document.createElement("link");
-
         link.type = "text/css";
         link.rel = "stylesheet";
         link.href = a;
-
         head.appendChild(link);
-
-
         
         var yourUsername = "Dopexz Ed";
-       	var storage = chrome.storage.local;
+        var storage = chrome.storage.local;
         
-        storage.get('volumeScrollCheck', (function(result) {
-                if (result['volumeScrollCheck'] === 'on') {
+        function volumeScrollEnable() {
+            storage.get('volumeScrollCheck', (function(result) {
+                if (result.volumeScrollCheck === 'on') {
                     document.addEventListener("wheel", onScroll, {passive: false});
                     }
             }));
+        }
+
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
-        	storage.get(resultValue, (function(result) {
-		        if (result[resultValue]) {
-		            document.documentElement.style.setProperty(styleRootValue, result[resultValue]); 
-		            } else {
-		                document.documentElement.style.setProperty(styleRootValue, defaultValue);  
-		                } 
-	        }));
+            storage.get(resultValue, (function(result) {
+                if (result[resultValue]) {
+                    document.documentElement.style.setProperty(styleRootValue, result[resultValue]); 
+                    } else {
+                        document.documentElement.style.setProperty(styleRootValue, defaultValue);  
+                        } 
+            }));
         }
 
         function storageSetValueSettingsConditional(resultValue, styleRootValue, defaultValue, firstValue, firstCond, secondCond) {
-        	storage.get(resultValue, (function(result) {
-		        if (result[resultValue] === firstCond) {
-		            document.documentElement.style.setProperty(styleRootValue, firstValue); 
+            storage.get(resultValue, (function(result) {
+                if (result[resultValue] === firstCond) {
+                    document.documentElement.style.setProperty(styleRootValue, firstValue); 
 
-		            } else if (result[resultValue] === secondCond) {
-		                document.documentElement.style.setProperty(styleRootValue, defaultValue);  
-		                } 
-	        }));
+                    } else if (result[resultValue] === secondCond) {
+                        document.documentElement.style.setProperty(styleRootValue, defaultValue);  
+                        } 
+            }));
         }
         function storageSetValueInterval() {
-        	storageSetValueSettings('chatBackground', '--chatbg', '#18181b');
-		    storageSetValueSettings('chatTextSize', '--textsize', '13px');
-		    storageSetValueSettings('chatTextColor', '--textcolor', '#FFF');
-		    storageSetValueSettings('topbarColor', '--topbarcolor', '#18181b');
-		    storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
-		    storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
-		   	storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
+            storageSetValueSettings('chatBackground', '--chatbg', '#18181b');
+            storageSetValueSettings('chatTextSize', '--textsize', '13px');
+            storageSetValueSettings('chatTextColor', '--textcolor', '#FFF');
+            storageSetValueSettings('topbarColor', '--topbarcolor', '#18181b');
+            storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
+            storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
+            storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
 
 
 
-		    storageSetValueSettingsConditional('hideChatProfilePictures', '--pfpdisplay', 'block', 'none', 'hide', 'show');
+            storageSetValueSettingsConditional('hideChatProfilePictures', '--pfpdisplay', 'block', 'none', 'hide', 'show');
 
-        	storage.get('hideChatProfilePictures', (function(result) {
-		        if (result['hideChatProfilePictures'] === 'hide') {
-		            document.documentElement.style.setProperty('--pfppadleft', '5px');
-				    document.documentElement.style.setProperty('--pfpmargleft', '0px'); 
-				    document.documentElement.style.setProperty('--pfpwidth', ''); 
-		        } else if (result['hideChatProfilePictures'] === 'show') {
-		                document.documentElement.style.setProperty('--pfppadleft', '0');
-					    document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
-					    document.documentElement.style.setProperty('--pfpwidth', '82%'); 
-		        } 
-	        }));
-
-		    storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', 'none', '2', '1');
-
-
-		    storage.get('messageStyle', (function(result) {
-		        if (result['messageStyle'] === '1') {
-		            document.documentElement.style.setProperty('--messagestyle', 'left');
-		        } else if (result['messageStyle'] === '2') {
-		                document.documentElement.style.setProperty('--messagestyle', 'none');
-		        } 
-	        }));
-
-            storage.get('volumeScrollCheck', (function(result) {
-                if (result['volumeScrollCheck'] === 'on') {
-                    scrollwheelvolume = true;
-                } else if (result['messageStyle'] === 'off') {
-                        scrollwheelvolume = false;
+            storage.get('hideChatProfilePictures', (function(result) {
+                if (result.hideChatProfilePictures === 'hide') {
+                    document.documentElement.style.setProperty('--pfppadleft', '5px');
+                    document.documentElement.style.setProperty('--pfpmargleft', '0px'); 
+                    document.documentElement.style.setProperty('--pfpwidth', ''); 
+                } else if (result.hideChatProfilePictures === 'show') {
+                        document.documentElement.style.setProperty('--pfppadleft', '0');
+                        document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
+                        document.documentElement.style.setProperty('--pfpwidth', '82%'); 
                 } 
             }));
 
+            storageSetValueSettingsConditional('messageStyle', '--messagestyle', 'left', 'none', '2', '1');
 
+            storage.get('messageStyle', (function(result) {
+                if (result.messageStyle === '1') {
+                    document.documentElement.style.setProperty('--messagestyle', 'left');
+                } else if (result.messageStyle === '2') {
+                        document.documentElement.style.setProperty('--messagestyle', 'none');
+                } 
+            }));
+
+            
         }
 
         function setHighlightWords() {
             var newc = [];
-            storage.get(['highlightKeywords', 'highlightColor', 'highlightOpacity'],  function(result) {
-                if (result['highlightKeywords'] && result['highlightColor']) {
-                    newc = result['highlightKeywords'].split(",");
+            storage.get(['highlightKeywords', 'highlightColor', 'highlightOpacity'],  (function(result) {
+                if (result.highlightKeywords && result.highlightColor) {
+                    newc = result.highlightKeywords.split(",");
                     for (var x=0; x<messageElement.length; x++) {
                         messageElement[x].style.backgroundColor = 'transparent';
                         messageElement[x].style.opacity = '1';
@@ -208,61 +243,129 @@
                             for (var j=0; j<newc.length; j++) {
                                 if (textassplit[l].includes(newc[j])) {
                                     messageElement[x].style.transform = "scale(1.02)";
-                                    messageElement[x].style.opacity = result['highlightOpacity'];
-                                    messageElement[x].style.backgroundColor = result['highlightColor'];
+                                    messageElement[x].style.opacity = result.highlightOpacity;
+                                    messageElement[x].style.backgroundColor = result.highlightColor;
 
                                 }
                             }  
                         }      
                     }          
                 }          
-            })
+            }));
         }
 
-
-
-
         function usernameElementInterval() {
-            storage.get(['yourUsername', 'yourUsernameColor'], function(result) {
-                    if (result['yourUsername'] && result['yourUsernameColor']) {
-                        yourUsername = result['yourUsername'];
-                        yourUsernameColor = result['yourUsernameColor'];
-                        userNameColors[yourUsername] = yourUsernameColor;
-                    } else{
-                        yourUsername = 'Dopexz Ed';
-                        yourUsernameColor = 'blue';
-                        userNameColors[yourUsername] = yourUsernameColor;
-                    }
+            storage.get(['yourUsername', 'yourUsernameColor'], (function(result) {
+                if (result.yourUsername && result.yourUsernameColor) {
+                    yourUsername = result.yourUsername;
+                    yourUsernameColor = result.yourUsernameColor;
+                    userNameColors[yourUsername] = yourUsernameColor;
+                } else{
+                    yourUsername = 'Dopexz Ed';
+                    yourUsernameColor = 'blue';
+                    userNameColors[yourUsername] = yourUsernameColor;
+                }
 
-                })
-                   for(var i = 0; i < usernameElement.length; i++) {
-                    if(userNameColor != undefined && userNameColor != "random") {
-                            usernameElement[i].style.color = userNameColor;
-                    }else{
-                        if (usernameElement[i].textContent in userNameColors) {
-                            usernameElement[i].style.color = userNameColors[usernameElement[i].textContent];
-                        } else{
-                        
+            }));
+                for(var i = 0; i < usernameElement.length; i++) {
+                    if (usernameElement[i].textContent in userNameColors) {
+                        usernameElement[i].style.color = userNameColors[usernameElement[i].textContent];
+                    } else{
                         var randomGeneratedColor = getRandomColor();
                         usernameElement[i].style.color = randomGeneratedColor;
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
                         }
-                        }
-                    }  
+                }            
         }
         
-        var fireOnHashChangesToo = true;
-        var pageURLCheckTimer = setInterval (
-        	function () {
-        		try {
-		        storageSetValueInterval();
-                
-                  } catch(e){
-        			console.log(e);
-   					 }  
+        var tabBlock = document.createElement("div");
+        tabBlock.className = "lmao";          
+        var emoteButton = document.createElement("div");
+        emoteButton.className = "lmaot";
+        emoteButton.id = "lmaox";
+        //emoteButton.innerHTML = "<i class='fas fa-bars'></i>"
+        emoteButton.addEventListener('click', (function() {
+            showemotes();             
+        }));
+
+        tabBlock.appendChild(emoteButton);
+        var alltable1 = document.createElement('div');
+        alltable1.innerHTML = '<div id="emotetable"></div>';         
+        tabBlock.appendChild(alltable1);
+
+        function dragElement(elmnt) {
+            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+            elmnt.onmousedown = dragMouseDown;
+            function dragMouseDown(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // cursor position at startup
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = closeDragElement;
+                 // call a function whenever the cursor moves:
+                document.onmousemove = elementDrag;
             }
-                , 1000
-            );
+            function elementDrag(e) {
+                e = e || window.event;
+                e.preventDefault();
+                // calculate the new cursor position:
+                pos1 = pos3 - e.clientX;
+                pos2 = pos4 - e.clientY;
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                // set the element's new position:
+                var kek = document.getElementById('emotetable');
+                var kekinput = document.getElementById('emoteInput');
+                if ((elmnt.offsetTop - pos2) <= -90) {
+                    kek.style.top = (elmnt.offsetTop - pos2) + "px";
+                    kek.style.left = (elmnt.offsetLeft - pos1 - 252) + "px";
+                    kekinput.style.top = (elmnt.offsetTop - pos2 + 197) + "px";
+                    kekinput.style.left = (elmnt.offsetLeft - pos1 - 252) + "px";
+                } else {
+                    kek.style.top = (elmnt.offsetTop - pos2 - 170) + "px";
+                    kek.style.left = (elmnt.offsetLeft - pos1 - 252) + "px";
+                    kekinput.style.top = (elmnt.offsetTop - pos2 + 27) + "px";
+                    kekinput.style.left = (elmnt.offsetLeft - pos1 - 252) + "px";
+                }
+                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+                }
+            function closeDragElement() {
+                document.onmouseup = null;
+                document.onmousemove = null;
+            }
+        }
+                
+    
+        function appendTabBlock(){
+            document.body.appendChild(tabBlock);
+            dragElement(document.getElementById("lmaox"));
+            var emoteAutoComplete = document.createElement('input');
+            emoteAutoComplete.type = 'text';
+            emoteAutoComplete.placeholder = 'Filter emotes...';
+            emoteAutoComplete.id = "emoteInput";
+            document.getElementById('emotetable').parentNode.appendChild(emoteAutoComplete); 
+            document.getElementById('emoteInput').addEventListener("keyup", autocc);
+        }
+        function emoteMenuEnable() {
+            storage.get('emoteMenuCheck', (function(result) {
+                if (result.emoteMenuCheck === 'on') {
+                    setTimeout(appendTabBlock, 3000);
+                }
+            }))
+        }
+        emoteMenuEnable();
+    
+        setInterval (
+            (function () {     
+                try {    
+                    storageSetValueInterval();
+                    volumeScrollEnable();
+                    } catch(e) {
+                     console.log(e);
+                    }  
+            }), 1000);
                 // Random Colors func
                 function getRandomColor(){
                     return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
@@ -270,29 +373,26 @@
 
                 var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id");
                 var messageElement = document.getElementsByClassName("l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl");
-                var textonlyElement = document.getElementsByClassName("kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql");
+                //var textonlyElement = document.getElementsByClassName("kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql");
                 
 
                 
                 var userNameColors = {};
 
-                var fireOnHashChangesToo = true;
-                var pageURLCheckTimer = setInterval (function () {
-                	try { usernameElementInterval();
+                setInterval ((function () {
+                    try { usernameElementInterval();
                         setHighlightWords();
-                	} catch(e){
-        			console.log(e);
-        			}                   
-                }
-                , 1000
-            );
+                    } catch(e){
+                    console.log(e);
+                    }                   
+                }), 1000);
     }
 
 
     var emotes = []; //array for emote objects
-    chrome.storage.local.get(['SET'], function(result) { //get custom emotes at page load
+    chrome.storage.local.get(['SET'], (function(result) { //get custom emotes at page load
         emotes = result.SET; //used saved emote set
-    });
+    }));
 
     var hostnames = ["www.facebook.com"]; //array for hostname objects
 
@@ -308,7 +408,7 @@
                         for (var k = 0; k < text.length; k++) {
                             var found = false;
                             for (var l = 0; l < emotes.length; l++) {
-                                if (text[k] == emotes[l].code) { //if emote match is found
+                                if (text[k] === emotes[l].code) { //if emote match is found
                                     found = true;
                                     var wrapper = document.createElement("span");
                                     wrapper.className = "emote_wrapper";
@@ -325,7 +425,7 @@
                                     break; //break loop when a match is found (only one emote can match)
                                 }
                             }
-                            if (found == false) { //if no emote match has been found
+                            if (found === false) { //if no emote match has been found
                                 new_node.appendChild(document.createTextNode(text[k])); //re-insert word
                             }
                             if (k < text.length - 1) { //miss last word
@@ -336,7 +436,7 @@
                         elements[i].replaceChild(new_node, node); //replace text node with fragment including inserted emotes
                     }
                     else {
-                        break
+                        break;
                     }
                 }
             }
@@ -344,19 +444,19 @@
     }
 
     var observer = new MutationObserver(function(mutations) { //checks nodes that are subjected to change after initial page load
-        mutations.forEach(function(mutation) {
+        mutations.forEach((function(mutation) {
             for (var i = 0; i < mutation.addedNodes.length; i++) {
-	                if (mutation.addedNodes[i].childNodes.length) {
-	                	substitute(mutation.addedNodes[i]); //subsequent substitutions
-	                	} 
+                    if (mutation.addedNodes[i].childNodes.length) {
+                        substitute(mutation.addedNodes[i]); //subsequent substitutions
+                        } 
             }
-        });
+        }));
     });
 
     function initiate() {
         var hn = window.location.hostname; //get hostname of frame
         for (var i = 0; i < hostnames.length; i++) {
-            if (hn == hostnames[i]) { //if hostname included
+            if (hn === hostnames[i]) { //if hostname included
                 substitute(document.body); //activated substitution
                 observer.observe(document.body, { //start checking
                     childList: true, subtree: true
@@ -366,43 +466,43 @@
         }
     }
 
-    chrome.storage.sync.get(['ON'], function(result) { //check if the extension is on at page load
-        if (result.ON == 1) {
+    chrome.storage.sync.get(['ON'], (function(result) { //check if the extension is on at page load
+        if (result.ON === 1) {
             enableStyles();
-           	initiate();
+            initiate();
 
         }
-    });
+    }));
 
     var target = null;
 
-    chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) { //menu actions
-        if (request.order == "stop") { //switch extension off
+    chrome.runtime.onMessage.addListener((function(request, sender, sendResponse) { //menu actions
+        if (request.order === "stop") { //switch extension off
             observer.disconnect(); //stop checking
         }
-        else if (request.order == "start") { //switch extension on
+        else if (request.order === "start") { //switch extension on
             initiate();
         }
-        if (request.newemotes == "change") { //use new custom emotes set
-            chrome.storage.local.get(['SET'], function(result) {
+        if (request.newemotes === "change") { //use new custom emotes set
+            chrome.storage.local.get(['SET'], (function(result) {
                 emotes = result.SET;
-                chrome.storage.sync.get(['ON'], function(result) {
-                    if (result.ON == 1) {
+                chrome.storage.sync.get(['ON'], (function(result) {
+                    if (result.ON === 1) {
                         var hn = window.location.hostname; //get hostname of frame
                         for (var i = 0; i < hostnames.length; i++) {
-                            if (hn == hostnames[i]) { //if hostname included
+                            if (hn === hostnames[i]) { //if hostname included
                                 substitute(document.body); //activated substitution
                                 break;
                             }
                         }
                     }
-                });
-            });
+                }));
+            }));
         }
-        if (request.context == "add") {
+        if (request.context === "add") {
             if (typeof target.alt !== "undefined") {
                 sendResponse({ alt: target.alt, src: target.src });
             }
         }
-    });
+    }));
 }());

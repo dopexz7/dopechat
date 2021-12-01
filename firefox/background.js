@@ -141,10 +141,6 @@
         "src":"https://cdn.betterttv.net/emote/60aefc83f8b3f62601c33c4d/3x"
     },
     {
-        "code":"randyGuitar",
-        "src":"https://cdn.betterttv.net/emote/60af0394f8b3f62601c33c6d/3x"
-    },
-    {
         "code":"rtdPeriodt",
         "src":"https://cdn.betterttv.net/emote/60b1bddef8b3f62601c34f28/3x"
     },
@@ -225,10 +221,6 @@
         "src":"https://cdn.betterttv.net/emote/60ee0de38ed8b373e422210a/3x"
     },
     {
-        "code":"BIGWALK",
-        "src":"https://cdn.betterttv.net/emote/60ee40ef8ed8b373e422225e/3x"
-    },
-    {
         "code":"DODOBED",
         "src":"https://cdn.betterttv.net/emote/60f25eb38ed8b373e4223a2f/3x"
     },
@@ -249,40 +241,8 @@
         "src":"https://cdn.betterttv.net/emote/60fb2db92d1eba5400d1319a/3x"
     },
     {
-        "code":"DODOSTEER",
-        "src":"https://cdn.betterttv.net/emote/61034d4b2d1eba5400d25c83/3x"
-    },
-    {
-        "code":"dodoDance",
-        "src":"https://cdn.betterttv.net/emote/6105d5552d1eba5400d2b440/3x"
-    },
-    {
-        "code":"dodoPat",
-        "src":"https://cdn.betterttv.net/emote/6105eba72d1eba5400d2b7bf/3x"
-    },
-    {
-        "code":"dodoJAM",
-        "src":"https://cdn.betterttv.net/emote/610637bf2d1eba5400d2bf42/3x"
-    },
-    {
-        "code":"dodoRain",
-        "src":"https://cdn.betterttv.net/emote/610724062d1eba5400d2e088/3x"
-    },
-    {
-        "code":"dodoW",
-        "src":"https://cdn.betterttv.net/emote/61076cc02d1eba5400d2e899/3x"
-    },
-    {
         "code":"BASICALLY",
         "src":"https://cdn.betterttv.net/emote/61085b8b2d1eba5400d3074d/3x"
-    },
-    {
-        "code":"dodoArrive",
-        "src":"https://cdn.betterttv.net/emote/6109a5642d1eba5400d33232/3x"
-    },
-    {
-        "code":"dodoLeave",
-        "src":"https://cdn.betterttv.net/emote/6109a5a32d1eba5400d3323b/3x"
     },
     {
         "code":"SUSSYSLIDE",
@@ -1133,10 +1093,6 @@
         "src":"https://media.discordapp.net/attachments/809490573949403158/896909697242767360/image0.gif"
     },
     {
-        "code":"eyes",
-        "src":"https://discord.com/assets/4c5a77a89716352686f590a6f014770c.svg"
-    },
-    {
         "code":"Hide",
         "src":"https://cdn.discordapp.com/emojis/876492614982062091.gif?size=128"
     },
@@ -1607,10 +1563,6 @@
     {
         "code":"peepoJAM",
         "src":"https://cdn.betterttv.net/emote/5fb5196d68e2d56f0f396567/3x"
-    },
-    {
-        "code":"ajWiggle",
-        "src":"https://cdn.betterttv.net/emote/617f324b1f8ff7628e6bd6c5/3x"
     },
     {
         "code":"vampajWiggle",
