@@ -7,7 +7,7 @@
    },
    "web_accessible_resources": [
     {
-      "resources": [ "content_new.css"],
+      "resources": ["content_new.css", "images/kekw.png"],
       "matches": [ "https://*.facebook.com/*" ]
     }
  ],
@@ -25,5 +25,5 @@
    "manifest_version": 3,
    "name": "FB Gaming Better",
    "permissions": [ "storage"],
-   "version": "0.2.3"
+   "version": "0.2.4"
 }
