@@ -170,11 +170,57 @@
             }));
         }
 
+        function chatTopBarEnable() {
+            storage.get('chatTopBarCheck', (function(result) {
+                if (result.chatTopBarCheck === 'on') {
+                    document.documentElement.style.setProperty('--chattopbardisplay', 'none');
+                    } else {
+                        document.documentElement.style.setProperty('--chattopbardisplay', 'block');
+                    }
+            }));
+        }
+        function chatLikeReplyEnable() {
+            storage.get('chatLikeReplyCheck', (function(result) {
+                if (result.chatLikeReplyCheck === 'on') {
+                    document.documentElement.style.setProperty('--likereply', 'none');
+                    } else {
+                       document.documentElement.style.setProperty('--likereply', 'list-item');
+                    }
+            }));
+        }
+        function chatCommentReactsE() {
+            storage.get('chatCommentReacts', (function(result) {
+                if (result.chatCommentReacts === 'on') {
+                    document.documentElement.style.setProperty('--chatreacts', 'none');
+                    } else {
+                       document.documentElement.style.setProperty('--chatreacts', 'block');
+                    }
+            }));
+        }
+        function chatThreeDotsE() {
+            storage.get('chatThreeDots', (function(result) {
+                if (result.chatThreeDots === 'on') {
+                    document.documentElement.style.setProperty('--chatthreedots', 'none');
+                    } else {
+                       document.documentElement.style.setProperty('--chatthreedots', 'block');
+                    }
+            }));
+        }
+
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
             storage.get(resultValue, (function(result) {
                 if (result[resultValue]) {
                     document.documentElement.style.setProperty(styleRootValue, result[resultValue]); 
+                    } else {
+                        document.documentElement.style.setProperty(styleRootValue, defaultValue);  
+                        } 
+            }));
+        }
+        function storageSetValueChatWidth(resultValue, styleRootValue, defaultValue) {
+            storage.get(resultValue, (function(result) {
+                if (result[resultValue]) {
+                    document.documentElement.style.setProperty(styleRootValue, result[resultValue] + 'px'); 
                     } else {
                         document.documentElement.style.setProperty(styleRootValue, defaultValue);  
                         } 
@@ -198,7 +244,7 @@
             storageSetValueSettings('topbarColor', '--topbarcolor', '#18181b');
             storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
             storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
-            storageSetValueSettings('changeChatWidth', '--chatwidth', '310px');
+            storageSetValueChatWidth('changeChatWidth', '--chatwidth', '310px');
 
 
 
@@ -255,7 +301,7 @@
         }
 
         function usernameElementInterval() {
-            storage.get(['yourUsername', 'yourUsernameColor'], (function(result) {
+            storage.get(['yourUsername', 'yourUsernameColor', 'othersUsernameColor'], (function(result) {
                 if (result.yourUsername && result.yourUsernameColor) {
                     yourUsername = result.yourUsername;
                     yourUsernameColor = result.yourUsernameColor;
@@ -265,17 +311,19 @@
                     yourUsernameColor = 'blue';
                     userNameColors[yourUsername] = yourUsernameColor;
                 }
-
-            }));
                 for(var i = 0; i < usernameElement.length; i++) {
-                    if (usernameElement[i].textContent in userNameColors) {
+                    if (result.othersUsernameColor !== "random" && result.othersUsernameColor !== null && result.othersUsernameColor !== undefined) {
+                        usernameElement[i].style.color = result.othersUsernameColor;
+                    } else if (usernameElement[i].textContent in userNameColors) {
                         usernameElement[i].style.color = userNameColors[usernameElement[i].textContent];
-                    } else{
+                    } else {
                         var randomGeneratedColor = getRandomColor();
                         usernameElement[i].style.color = randomGeneratedColor;
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
-                        }
+                    }
                 }            
+            }));
+                
         }
         
         var tabBlock = document.createElement("div");
@@ -360,8 +408,13 @@
         setInterval (
             (function () {     
                 try {    
+                    chatTopBarEnable();
+                    chatLikeReplyEnable();
+                    chatCommentReactsE();
+                    chatThreeDotsE();
                     storageSetValueInterval();
                     volumeScrollEnable();
+                    
                     } catch(e) {
                      console.log(e);
                     }  
@@ -371,7 +424,8 @@
                     return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
                 }
 
-                var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x e9vueds3 j5wam9gi lrazzd5p oo9gr5id");
+                var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x j5wam9gi lrazzd5p oo9gr5id");
+                //var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x sq6gx45u j5wam9gi lrazzd5p oo9gr5id");
                 var messageElement = document.getElementsByClassName("l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl");
                 //var textonlyElement = document.getElementsByClassName("kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql");
                 

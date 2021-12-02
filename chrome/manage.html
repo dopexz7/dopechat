@@ -58,7 +58,7 @@ To set an image as a background, you have to post that image to your Facebook (c
 
         <input type="button" id="addchatwidth" class="hide">
         <div class="textformx">
-          <input type="textx" id="chatwidth" placeholder="e.g. 310px (default) - don't forget to type px after the number">
+          <input type="textx" id="chatwidth" placeholder="type a number, default is 310, twitch's is 354">
           <label for="addchatwidth" class="button people">Set chat width</label>
         </div>
         
@@ -73,7 +73,7 @@ To set an image as a background, you have to post that image to your Facebook (c
 
       <div class="textformx" style="left:0">
         <div class="in-buttons" id="yourusernameinner">
-          Your username settings
+          Username settings
         </div>
       </div>
 
@@ -88,6 +88,12 @@ To set an image as a background, you have to post that image to your Facebook (c
           <input type="color" id="colorInputIdYourNameColor" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
           <input type="textx" id="usernmc" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addyourucolor" class="button people">Set your name color</label>
+        </div>
+        <input type="button" id="addotheruolor" class="hide">
+        <div class="textformx">
+          <input type="color" id="colorInputIdOtherNameColor" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="userothermc" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
+          <label for="addotheruolor" class="button people">Set other usernames color</label>
         </div>
       </div>
 
@@ -182,14 +188,42 @@ To set an image as a background, you have to post that image to your Facebook (c
           <div class="slider"></div>
           </label>
         </div>
-        <div class="togglechatx" style="margin-left: 10px;">draggable emote menu (BETA!)
+        <div class="togglechatx" style="margin-left: 10px;">draggable emote menu
           <label class="switch">
           <input name="checkboxEmoteMenu" type="checkbox" value="scrolltoemote">
           <div class="slider"></div>
           </label>
+          
         </div>
+
       </div>
 
+    <div class="textformx">
+        <div class="togglechatx">hide chat top bar
+          <label class="switch">
+          <input name="checkboxChatTopBar" type="checkbox" value="hideChatTopBar">
+          <div class="slider"></div>
+          </label>
+        </div>
+        <div class="togglechatx" style="margin-left: 10px">hide reply/like buttons
+          <label class="switch">
+          <input name="checkboxLikeReply" type="checkbox" value="hideReplyLike">
+          <div class="slider"></div>
+          </label>
+        </div>
+        <div class="togglechatx" style="margin-left: 10px;">hide comment reactions
+          <label class="switch">
+          <input name="checkboxCommentReacts" type="checkbox" value="commentreacts">
+          <div class="slider"></div>
+          </label>
+        </div>
+        <div class="togglechatx" style="margin-left: 10px;">hide three dots
+          <label class="switch">
+          <input name="checkboxThreeDots" type="checkbox" value="threedots">
+          <div class="slider"></div>
+          </label>
+        </div>
+      </div>
 
       
 

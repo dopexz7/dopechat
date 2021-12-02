@@ -14,34 +14,21 @@ span.emote_wrapper img.inserted_emote {
     display: inline-block;
 }
 span.emote_wrapper span.tooltiptext {
-    font-family: Roboto;
-    line-height: 1;
-    font-weight: 400;
-    font-size: 12px;
-    color: rgb(255, 255, 255);
-    padding: 6px;
-    border-radius: 2px;
-    text-align: center;
+    background: rgb(60, 60, 60);
+    color: #FFF;
+    border-radius: 6px;
     position: absolute;
-    display: table;
-    z-index: 1000;
-    bottom: 160%;
-    left: 50%;
-    transform: translateX(-50%);
+    display: inline;
+    z-index: 10000;
+    top: -30%;
+    left: 120%;
+    font-size: 11px !important;
+    padding: 6px;
     pointer-events: none;
     visibility: hidden;
     word-break: normal;
-    overflow-wrap: normal;
+    
 }
 span.emote_wrapper:hover span.tooltiptext {
     visibility: visible;
-}
-span.emote_wrapper span.tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border: 0;
 }
