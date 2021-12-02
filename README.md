@@ -6,6 +6,17 @@ Fully customizable chat appearance, pre-installed 400+ custom emotes and other m
 
 ## Changelog
 
+### 0.2.5
+- emote menu
+- like/reply buttons toggle
+- custom color for usernames in chat
+- hide chat top bar toggle
+- added back the tooltips of emotes 
+- chat width doesn't require px
+- hide comment reactions toggle
+- hide three dots toggle
+- other improvements
+
 ### 0.2.2
 - Highlight certain (key)words in chat
 
