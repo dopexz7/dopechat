@@ -133,7 +133,7 @@ body {
   padding: 6px;
   border-radius: 16px;
   
-  top: -47px;
+  top: -55px;
   position: absolute;
   left: 0;
   z-index: 1;
@@ -583,7 +583,7 @@ custom-slider {
   padding: 6px;
   border-radius: 16px;
   box-shadow: 0 2px 9px 2px #000;
-  top: -30px;
+  top: -55px;
   position: absolute;
   z-index: 1;
   

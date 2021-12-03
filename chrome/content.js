@@ -1,12 +1,3 @@
-chrome.runtime.onInstalled.addListener(function(details){
-    if(details.reason == "update"){
-        document.documentElement.style.setProperty('--chatwidth', '354px'); 
-    }
-});
-
-
-
-
 (function() { 
     var yourUsernameColor = "#000";
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
@@ -454,7 +445,7 @@ chrome.runtime.onInstalled.addListener(function(details){
                     chatLikeReplyEnable();
                     chatCommentReactsE();
                     chatThreeDotsE();
-                    chatOnLeftSide();
+                    //chatOnLeftSide();
                     storageSetValueInterval();
                     volumeScrollEnable();
                     
@@ -467,12 +458,10 @@ chrome.runtime.onInstalled.addListener(function(details){
                     return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
                 }
 
-                var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x j5wam9gi lrazzd5p oo9gr5id");
+                var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql");
                 //var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x sq6gx45u j5wam9gi lrazzd5p oo9gr5id");
                 var messageElement = document.getElementsByClassName("l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl");
                 //var textonlyElement = document.getElementsByClassName("kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql");
-                
-
                 
                 var userNameColors = {};
 

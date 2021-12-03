@@ -7,6 +7,12 @@
 span.emote_wrapper {
     position: relative;
 }
+span.emote_wrapper img {
+    vertical-align: middle;
+    max-height: 25px !important;
+    width: auto;
+    display: inline-block;
+}
 span.emote_wrapper img.inserted_emote {
     vertical-align: middle;
     max-height: 25px !important;
