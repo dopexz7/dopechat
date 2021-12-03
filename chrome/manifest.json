@@ -15,7 +15,7 @@
       "all_frames": true,
       "css": ["content.css"],
       "js": ["content.js", "jquery-3.6.0.min.js"],
-      "matches": [ "https://*.facebook.com/*" ],
+      "matches": [ "https://*.facebook.com/*/videos/*" ],
       "run_at": "document_end"
    } ],
    "description": "FB Gaming Better. Emotes + Chat Extension with Settings",
@@ -25,5 +25,5 @@
    "manifest_version": 3,
    "name": "FB Gaming Better",
    "permissions": [ "storage"],
-   "version": "0.2.5"
+   "version": "0.2.6"
 }

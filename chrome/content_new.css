@@ -1,3 +1,16 @@
+.bkyfam09.cbu4d94t.j83agx80 {
+	background: var(--chatbg);
+}
+
+.o36gj0jk {
+width:var(--chatwidth)!important;
+}
+
+
+.d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.keod5gw0.nxhoafnm.aigsh9s9.qg6bub1s.fe6kdd0r.mau55g9w.c8b282yb.iv3no6db.o0t2es00.f530mmz5.hnhda86s.oo9gr5id {
+	position: fixed;
+	left: 18%;
+}
 .n1l5q3vz.d1544ag0.tw6a2znq {
 background:rgba(0,0,0,0.2);
 border-radius:6px;
@@ -12,7 +25,7 @@ span[data-outline-text="true"] {
 color:  var(--textcolor)!important;
 }
 div[role="article"]>.nqmvxvec.s45kfl79.emlxlaya.bkmhp75w.spb7xbtv.a8c37x1j.fv0vnmcu.rs0gx3tq.l9j0dhe7 {
-display:var(--pfpdisplay)!important;
+display: var(--pfpdisplay)!important;
 }
 
 .o6r2urh6.l9j0dhe7.b3i9ofy5.e72ty7fz.qlfml3jp.inkptoze.qmr60zad.rt8b4zig.n8ej3o3l.agehan2d.sk4xxmp2.j83agx80.bkfpd7mw {
@@ -68,9 +81,7 @@ display:var(--chatthreedots)!important;
 float:right;
 }
 
-.o36gj0jk {
-width:var(--chatwidth)!important;
-}
+
 
 .l6v480f0 {
 border:0;
@@ -133,10 +144,6 @@ padding-top:4px!important;
 padding-bottom:30px!important;
 }
 
-.oajrlxb2.gs1a9yip.g5ia77u1.est2fu8x.i2z0utgf.nalm63nx.rbyq7rg5.goun2846.ccm00jje.s44p3ltw.mk2mc5f4.frvqaej8.ed0hlay0.afxsp9o4.jcgfde61.rq0escxv.nhd2j8a9.pq6dq46d.mg4g778l.btwxx1t3.pfnyh3mw.p7hjln8o.kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.tgvbjcpo.hpfvmrgz.jb3vyjys.rz4wbd8a.qt6c0cv9.a8nywdso.l9j0dhe7.i1ao9s8h.esuyzwwr.f1sip0of.du4w35lb.lzcic4wl.abiwlrkh.p8dawk7l.s45kfl79.emlxlaya.bkmhp75w.spb7xbtv.kn9t4qvh.ni8dbmo4.stjgntxs.bxs1uw09 {
-display:none!important;
-}
-
 ._6cuq {
 top:-2px!important;
 right:0!important;
@@ -176,6 +183,7 @@ overflow:hidden!important;
 
 .kvgmc6g5.cxmmr5t8.oygrvhab.hcukyx3x.c1et5uql {
 padding-top:9px!important;
+padding-bottom: 9px!important;
 }
 
 ::-webkit-scrollbar {
@@ -187,7 +195,6 @@ background:rgba(255,255,255,0.03);
 ::-webkit-scrollbar-thumb {
 height:50px;
 background-color:rgba(255,255,255,0.06);
-border-radius:3px;
 }
 
 .lrazzd5p {
@@ -526,10 +533,9 @@ margin-bottom:0!important;
 .bp9cbjyn.jeutjz8y.j83agx80.btwxx1t3 {
 height:60px!important;
 }
-
+/* emotes bottom of live stream */
 .f10w8fjw.f9o22wc5.oygrvhab.ad2k81qe.kvgmc6g5.taijpn5t.j83agx80 {
-height:10px!important;
-margin-bottom:10px;
+display: none !important;
 }
 
 .q676j6op {
@@ -666,11 +672,11 @@ z-index:1000;
 .lmaot {
 color:#FFF;
 z-index:100000;
-background: url('chrome-extension://aflheebbcchbhephcfamiiciepiibpak/images/kekw.png') no-repeat center;
+background: url('images/kekw.png') no-repeat center; /* chrome-extension://aflheebbcchbhephcfamiiciepiibpak/ */
 background-size:cover;
 border-radius:24px;
 display:block;
-cursor: pointer;
+cursor: grab;
 position:absolute;
 height:32px;
 width:32px;
@@ -680,8 +686,9 @@ transition: .2s transform;
 
 #emotetable img {
 vertical-align:bottom;
-max-height:2em;
-max-width:100px;
+max-height:25px;
+width:auto;
+padding: 1px;
 }
 .lmaot:hover {
 transform: rotate3d(2, 2, 2, 15deg);
@@ -689,6 +696,7 @@ transition: .2s;
 }
 #emotetable {
 display:none;
+padding: 3px;
 width:250px;
 height:200px;
 position:absolute;
@@ -698,6 +706,9 @@ left:-250px;
 overflow-y:scroll;
 background:rgba(0,0,0,0.6);
 backdrop-filter: blur(3px);
+}
+#emotetable a {
+	padding: 6px 0;
 }
 
 .autocomplete {

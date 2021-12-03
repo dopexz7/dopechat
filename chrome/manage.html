@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-
+<div id="resetdefaults" class="resettodefaults">Reset all settings to defaults
+<span class="tooltiptext">Resets all chat settings to default and resets emotes</span>
+</div>
 <div id="modal" class="modal2">  
     <div class="inner2">
       <div class="row">
@@ -58,12 +60,24 @@ To set an image as a background, you have to post that image to your Facebook (c
 
         <input type="button" id="addchatwidth" class="hide">
         <div class="textformx">
-          <input type="textx" id="chatwidth" placeholder="type a number, default is 310, twitch's is 354">
+          <input type="textx" id="chatwidth" placeholder="type a number, default is 354(twitch's)">
           <label for="addchatwidth" class="button people">Set chat width</label>
         </div>
+      
+    <div class="textformx" style="left:0">
+        <div class="in-buttons" id="readabilitylul">
+          Readability settings
+        </div>
+      </div>
+      <div id="readabilitylulsettings">
+        <input type="button" id="addsepcolor" class="hide">
+        <div class="textformx">
+          <input type="color" id="colorInputIdSepColor" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
+          <input type="textx" id="sepcolor" placeholder="pick a color or type 'off' to disable, type 'default' for a default color " style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
+          <label for="addsepcolor" class="button people">Set message separator color</label>
+        </div>
         
-    </form>
-
+      </div>
       </div>
 
 
@@ -92,7 +106,7 @@ To set an image as a background, you have to post that image to your Facebook (c
         <input type="button" id="addotheruolor" class="hide">
         <div class="textformx">
           <input type="color" id="colorInputIdOtherNameColor" style="height: 50px; border-top-left-radius:6px; border-bottom-left-radius:6px">
-          <input type="textx" id="userothermc" placeholder="e.g. #FFFFF or pick a color" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
+          <input type="textx" id="userothermc" placeholder="pick a color or type 'random' for random colors" style="width: 69%;border-top-left-radius:0; border-bottom-left-radius:0">
           <label for="addotheruolor" class="button people">Set other usernames color</label>
         </div>
       </div>
@@ -171,24 +185,28 @@ To set an image as a background, you have to post that image to your Facebook (c
       
       <div class="textformx">
         <div class="togglechatx">hide profile pictures
+          <span class="tooltiptext">Hides in-chat profile pictures</span>
           <label class="switch">
           <input name="checkboxx" type="checkbox" value="hidePfp">
           <div class="slider"></div>
           </label>
         </div>
         <div class="togglechatx" style="margin-left: 10px">messages under usernames
+          <span class="tooltiptext">Places chat messages under usernames</span>
           <label class="switch">
           <input name="checkboxxd" type="checkbox" value="messagestyle">
           <div class="slider"></div>
           </label>
         </div>
-        <div class="togglechatx" style="margin-left: 10px;">mouse scroll volume
+        <div class="togglechatx" style="margin-left: 10px;">mouse wheel volume control
+          <span class="tooltiptext">Mouse scroll wheel to adjust volume</span>
           <label class="switch">
           <input name="checkboxxd2" type="checkbox" value="scrolltovolume">
           <div class="slider"></div>
           </label>
         </div>
         <div class="togglechatx" style="margin-left: 10px;">draggable emote menu
+          <span class="tooltiptext">Emote insertion only works when you have typed something in the chat box</span>
           <label class="switch">
           <input name="checkboxEmoteMenu" type="checkbox" value="scrolltoemote">
           <div class="slider"></div>
@@ -200,26 +218,40 @@ To set an image as a background, you have to post that image to your Facebook (c
 
     <div class="textformx">
         <div class="togglechatx">hide chat top bar
+          <span class="tooltiptext">Hides chat top bar, info about the streamer</span>
           <label class="switch">
           <input name="checkboxChatTopBar" type="checkbox" value="hideChatTopBar">
           <div class="slider"></div>
           </label>
         </div>
         <div class="togglechatx" style="margin-left: 10px">hide reply/like buttons
+          <span class="tooltiptext">Hides the like and reply buttons in chat</span>
           <label class="switch">
           <input name="checkboxLikeReply" type="checkbox" value="hideReplyLike">
           <div class="slider"></div>
           </label>
         </div>
         <div class="togglechatx" style="margin-left: 10px;">hide comment reactions
+          <span class="tooltiptext">Hides comment reactions in chat</span>
           <label class="switch">
           <input name="checkboxCommentReacts" type="checkbox" value="commentreacts">
           <div class="slider"></div>
           </label>
         </div>
         <div class="togglechatx" style="margin-left: 10px;">hide three dots
+          <span class="tooltiptext">Hides the report and hide message buttons</span>
           <label class="switch">
           <input name="checkboxThreeDots" type="checkbox" value="threedots">
+          <div class="slider"></div>
+          </label>
+        </div>
+      </div>
+
+      <div class="textformx">
+        <div class="togglechatx">chat on left side
+          <span class="tooltiptext">Places chat on the left side</span>
+          <label class="switch">
+          <input name="checkboxChatLeft" type="checkbox" value="chatleft">
           <div class="slider"></div>
           </label>
         </div>

@@ -1,8 +1,17 @@
+chrome.runtime.onInstalled.addListener(function(details){
+    if(details.reason == "update"){
+        document.documentElement.style.setProperty('--chatwidth', '354px'); 
+    }
+});
+
+
+
+
 (function() { 
     var yourUsernameColor = "#000";
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
-    document.documentElement.style.setProperty('--fontfamily', 'Roboto');
-    document.documentElement.style.setProperty('--chatwidth', '310px'); 
+    document.documentElement.style.setProperty('--fontfamily', 'Helvetica');
+    document.documentElement.style.setProperty('--chatwidth', '354px'); 
     document.documentElement.style.setProperty('--chattopbarcolor', '#18181b'); 
     document.documentElement.style.setProperty('--pfppadleft', '0');
     document.documentElement.style.setProperty('--pfpmargleft', '18%'); 
@@ -206,6 +215,28 @@
                     }
             }));
         }
+        function chatOnLeftSide() {
+            storage.get('chatOnLeft', (function(result) {
+                if (result.chatOnLeft === 'on') {
+                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.position = 'fixed';
+                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.left = '0';
+                    document.querySelector('.hybvsw6c.j83agx80.pfnyh3mw.dp1hu0rb.l9j0dhe7.o36gj0jk').style.maxWidth = '0';
+                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.left = '';
+                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.maxWidth = '82%';
+                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.position = 'fixed';
+                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.right = '0';
+
+                     //document.querySelector('.pphwfc2g ').style.minHeight = '0';
+                    } else {
+                    //document.querySelector('.hybvsw6c.j83agx80.pfnyh3mw.dp1hu0rb.l9j0dhe7.o36gj0jk').style.maxWidth = '0';
+                    //document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.position = 'relative';
+                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.left = '';
+                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.right = '0';
+                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.right = '';
+                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.left = '0';
+                    }
+            }));
+        }
 
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
@@ -243,8 +274,8 @@
             storageSetValueSettings('chatTextColor', '--textcolor', '#FFF');
             storageSetValueSettings('topbarColor', '--topbarcolor', '#18181b');
             storageSetValueSettings('chattopbarColor', '--chattopbarcolor', '#18181b');
-            storageSetValueSettings('changefont', '--fontfamily', 'Roboto');
-            storageSetValueChatWidth('changeChatWidth', '--chatwidth', '310px');
+            storageSetValueSettings('changefont', '--fontfamily', 'Helvetica');
+            storageSetValueChatWidth('changeChatWidth', '--chatwidth', '354px');
 
 
 
@@ -324,6 +355,17 @@
                 }            
             }));
                 
+        }
+        function seperateChatMessages() {
+            storage.get(['messageSeperate'], (function(result) {
+                    for (var x=0; x<messageElement.length; x+=2) {
+                        if (result.messageSeperate !== 'off' && result.messageSeperate !== undefined && result.messageSeperate !== 'default') {
+                            messageElement[x].style.backgroundColor = result.messageSeperate;  
+                    }  else if (result.messageSeperate === 'default') {
+                        messageElement[x].style.backgroundColor = 'rgba(0,0,0,0.3)';  
+                    }
+                } 
+            }));       
         }
         
         var tabBlock = document.createElement("div");
@@ -412,6 +454,7 @@
                     chatLikeReplyEnable();
                     chatCommentReactsE();
                     chatThreeDotsE();
+                    chatOnLeftSide();
                     storageSetValueInterval();
                     volumeScrollEnable();
                     
@@ -436,10 +479,11 @@
                 setInterval ((function () {
                     try { usernameElementInterval();
                         setHighlightWords();
+                        seperateChatMessages();
                     } catch(e){
                     console.log(e);
                     }                   
-                }), 1000);
+                }), 1);
     }
 
 

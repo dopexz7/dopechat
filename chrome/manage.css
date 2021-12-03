@@ -8,15 +8,25 @@
 }
 
 
+::-webkit-scrollbar {
+width:9px;
+height:3px;
+background:rgba(255,255,255,0.03);
+}
 
+::-webkit-scrollbar-thumb {
+height:50px;
+background-color:rgba(255,255,255,0.06);
+
+}
 
 #chatset {display: none; transition: .5s}
 #textset {display: none; transition: .5s}
 #otherset {display: none;}
-#yourusernamesettings {display: none; -webkit-transition: opacity, transform .5s; transition: opacity, transform .5s;}
+#yourusernamesettings {display: none;}
 #yourtextsettings {display: none}
 #otherusersettings {display: none}
-
+#readabilitylulsettings {display: none}
 input[type=range] {
   -webkit-appearance: none;
   border-radius: 50%;
@@ -57,7 +67,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
     background: #18181b;
     padding:35px;
     font-size: 16px;
-    font-family: Roboto;
+    font-family: Helvetica;
     font-weight: bold;
     color: rgba(255,255,255,0.6);
     -ms-flex-preferred-size: 0;
@@ -80,7 +90,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 
 body {
     background: #18181b;
-    font-family: Roboto !important;
+    font-family: Helvetica !important;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -88,7 +98,53 @@ body {
 
 
 }
+.resettodefaults{
+    background: #eb3b5a;
+    padding:20px;
+    position: absolute;
+    font-size: 16px;
+    width: fit-content;
+    font-family: Helvetica;
+    margin-top: 3%;
+    font-weight: bold;
+    color: rgba(255,255,255,0.9);
+    height: 20px;
+    right: 4%;
+     
+    border-radius: 3px;
+    -webkit-transition: opacity, transform .5s;
+    transition: opacity, transform .5s;
+}
 
+
+.resettodefaults:hover {
+    transform: scale(0.97);
+    cursor: pointer;
+    color: rgba(255,255,255,1);
+}
+
+.resettodefaults .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  background-color: rgba(255,255,255,0.05);
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  padding: 6px;
+  border-radius: 16px;
+  
+  top: -47px;
+  position: absolute;
+  left: 0;
+  z-index: 1;
+  
+}
+
+
+.resettodefaults:hover .tooltiptext {
+  visibility: visible;
+  
+}
 
 
 .button-help {
@@ -147,7 +203,7 @@ body {
     background: #ffbe76;
     padding:35px;
     font-size: 16px;
-    font-family: Roboto;
+    font-family: Helvetica;
     font-weight: bold;
     color: rgba(0,0,0,0.7);
     height: 2ch;
@@ -450,6 +506,7 @@ td {
     left: 0;
     right: 0;
     width: 30px;
+    cursor: pointer;
     bottom: 0;
     background-color: #2f3640;
     border-radius: 24px;
@@ -493,7 +550,7 @@ input:checked + .slider:before {
     align-items: center ;
     justify-content: center ;
     flex-direction: column ;
-    font-family: Roboto;
+    font-family: Helvetica;
 }
 
 .msg {
@@ -511,4 +568,29 @@ input:checked + .slider:before {
 }
 custom-slider {
     transform: scale(1);
+}
+
+
+
+.togglechatx .tooltiptext {
+  visibility: hidden;
+  width: fit-content;
+  background-color: #ffbe76;
+  color: rgba(0,0,0,0.7);
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  padding: 6px;
+  border-radius: 16px;
+  box-shadow: 0 2px 9px 2px #000;
+  top: -30px;
+  position: absolute;
+  z-index: 1;
+  
+}
+
+
+.togglechatx:hover .tooltiptext {
+  visibility: visible;
+  
 }

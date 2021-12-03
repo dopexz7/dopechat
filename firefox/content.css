@@ -9,8 +9,8 @@ span.emote_wrapper {
 }
 span.emote_wrapper img.inserted_emote {
     vertical-align: middle;
-    height: 25px !important;
-    width: 25px;
+    max-height: 25px !important;
+    width: auto;
     display: inline-block;
 }
 span.emote_wrapper span.tooltiptext {
