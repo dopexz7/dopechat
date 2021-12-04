@@ -8,12 +8,13 @@
 }
 
 body {
-font-family:Roboto;
+font-family:Helvetica;
 width:250px;
 text-align:center;
 margin:0;
 padding:0;
 font-size:12px;
+background-color: #18181b !important;
 }
 
 h1 {
@@ -196,7 +197,7 @@ overflow-y:scroll;
 }
 
 body {
-background-color:var(--offblack);
+background-color:#18181b !important;
 color:var(--greytext);
 }
 

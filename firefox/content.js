@@ -1,4 +1,11 @@
 (function() { 
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    switch (request.name) {
+        case "showPopupOnUpdated":
+            alert("Extension got updated to latest version: " + request.version);
+            break;
+    }
+    });
     var yourUsernameColor = "#000";
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
     document.documentElement.style.setProperty('--fontfamily', 'Helvetica');
@@ -206,6 +213,15 @@
                     }
             }));
         }
+        function hideChatReplies() {
+            storage.get('chatRepliesHide', (function(result) {
+                if (result.chatRepliesHide === 'on') {
+                    document.documentElement.style.setProperty('--hidereplies', 'none');
+                    } else {
+                       document.documentElement.style.setProperty('--hidereplies', 'block');
+                    }
+            }));
+        }
         function chatOnLeftSide() {
             storage.get('chatOnLeft', (function(result) {
                 if (result.chatOnLeft === 'on') {
@@ -333,6 +349,7 @@
                     yourUsernameColor = 'blue';
                     userNameColors[yourUsername] = yourUsernameColor;
                 }
+                
                 for(var i = 0; i < usernameElement.length; i++) {
                     if (result.othersUsernameColor !== "random" && result.othersUsernameColor !== null && result.othersUsernameColor !== undefined) {
                         usernameElement[i].style.color = result.othersUsernameColor;
@@ -343,26 +360,20 @@
                         usernameElement[i].style.color = randomGeneratedColor;
                         userNameColors[usernameElement[i].textContent] = randomGeneratedColor;
                     }
-                }            
+                }        
+                
+                    
             }));
                 
         }
         function seperateChatMessages() {
             storage.get(['messageSeperate'], (function(result) {
-                    for (var x=0; x<messageElement.length; x++) {
-                        if (result.messageSeperate !== 'off' && result.messageSeperate !== undefined && result.messageSeperate !== 'default') {
-                            if (x%2===0) {
-                                messageElement[x].style.backgroundColor = result.messageSeperate;  
-                            }
-                            
-                        }  else if (result.messageSeperate === 'default') {
-                            if (x%2===0) {
-                                messageElement[x].style.backgroundColor = 'rgba(0,0,0,0.3)';  
-                            }
-                        } 
+                if (result.messageSeperate && result.messageSeperate !== 'off' && result.messageSeperate !== undefined) {
+                    document.documentElement.style.setProperty('--messageSeparateBorder', "2px solid" + result.messageSeperate);
+                } else if (result.messageSeperate === 'off' || result.messageSeperate === undefined) {
+                    document.documentElement.style.setProperty('--messageSeparateBorder', "0");
                 }
-                    
-                 
+                
             }));       
         }
         
@@ -454,6 +465,7 @@
                     chatLikeReplyEnable();
                     chatCommentReactsE();
                     chatThreeDotsE();
+                    hideChatReplies()
                     //chatOnLeftSide();
                     storageSetValueInterval();
                     volumeScrollEnable();
