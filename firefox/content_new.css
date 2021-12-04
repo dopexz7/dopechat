@@ -717,7 +717,7 @@ z-index:1000;
 .lmaot {
 color:#FFF;
 z-index:100000;
-background: url('moz-extension://d77a2be7-880f-4dff-9ff7-4ea713a6aa68/images/kekw.png') no-repeat center; /* chrome-extension://aflheebbcchbhephcfamiiciepiibpak/ */
+background: var(--emotebg) no-repeat center;
 background-size:cover;
 border-radius:24px;
 display:block;

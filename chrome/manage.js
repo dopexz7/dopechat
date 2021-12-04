@@ -2,6 +2,11 @@ var storage = chrome.storage.local;
 var obj = {};
 var otherobj = {};
 
+
+
+
+
+
 //new, simple slider
 var sliderInputId = document.getElementById('sliderInputId');
 var sliderOutputId = document.getElementById('sliderOutputId');
@@ -175,6 +180,34 @@ showReadbility();
     checkboxCheck('chatCommentReacts', 'on', 'off', 'checkboxCommentReacts');
     checkboxCheck('chatThreeDots', 'on', 'off', 'checkboxThreeDots');
     //checkboxCheck('chatOnLeft', 'on', 'off', 'checkboxChatLeft');
+
+   
+    storage.get('emoteMenuCheckModal', function(result) {  
+        function emoteModal() {
+                modal.style.display = "flex";
+        }
+        var modal = document.getElementById("myModal");
+        var btn = document.getElementById("modalBtn");
+        var understandd = document.getElementById('understand');
+        if(result.emoteMenuCheckModal === undefined) {
+            btn.addEventListener('click', emoteModal);
+            understand.addEventListener('click', (function() {
+                obj['emoteMenuCheckModal'] = 'off';
+                storage.set(obj);
+                modal.style.display = "none";
+                location.reload();
+                return false;
+            }));
+        } else {
+            btn.removeEventListener('click', emoteModal);
+        }
+    });
+
+    
+    
+    
+        
+
 
     var timeout = document.getElementById("feedback6");
 

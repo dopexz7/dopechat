@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
+<!-- The Modal -->
+<div id="myModal" class="termmodal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p>Emote insertion only works when you have typed something in the chat input box.</p>
+    <div id="understand" class="modal-understand">I understand, don't show this again.</div>
+  </div>
+
+</div>
 <div id="resetdefaults" class="resettodefaults">Reset all settings to defaults
 <span class="tooltiptext">Resets all chat settings to default and resets emotes</span>
 </div>
@@ -207,7 +217,7 @@ To set an image as a background, you have to post that image to your Facebook (c
         </div>
         <div class="togglechatx" style="margin-left: 10px;">draggable emote menu
           <span class="tooltiptext">Emote insertion only works when you have typed something in the chat box</span>
-          <label class="switch">
+          <label class="switch" id="modalBtn">
           <input name="checkboxEmoteMenu" type="checkbox" value="scrolltoemote">
           <div class="slider"></div>
           </label>
