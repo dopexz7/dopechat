@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "FB Gaming Better ",
-    "version": "0.2.7",
+    "version": "0.3",
     "description": "Emotes + Chat Extension with Settings",
     "icons": {
         "128": "icons/ico.png"
@@ -14,12 +14,12 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.facebook.com/*"
+                "*://*.facebook.com/gaming/*",  "*://*.facebook.com/*/videos/*"
             ],
             "all_frames": true,
             "run_at": "document_end",
             "js": [
-                "content.js"
+                "content.js", "jquery-3.6.0.min.js"
             ],
             "css": [
                 "content.css"

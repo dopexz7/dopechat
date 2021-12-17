@@ -7,15 +7,15 @@
    },
    "web_accessible_resources": [
     {
-      "resources": ["content_new.css", "images/kekw.png"],
+      "resources": ["content_new.css", "images/kekw.png", "images/popout.png"],
       "matches": [ "https://*.facebook.com/*" ]
     }
  ],
    "content_scripts": [ {
       "all_frames": true,
       "css": ["content.css"],
-      "js": ["content.js"],
-      "matches": [ "https://*.facebook.com/*/videos/*" ],
+      "js": ["content.js", "jquery-3.6.0.min.js"],
+      "matches": [ "*://*.facebook.com/gaming/*",  "*://*.facebook.com/*/videos/*"],
       "run_at": "document_end"
    } ],
    "description": "FB Gaming Better. Emotes + Chat Extension with Settings",
@@ -25,5 +25,5 @@
    "manifest_version": 3,
    "name": "FB Gaming Better",
    "permissions": [ "storage"],
-   "version": "0.2.7"
+   "version": "0.3"
 }

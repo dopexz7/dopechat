@@ -98,6 +98,13 @@ setInterval ((function () {
 
 
 (function() { 
+    chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    switch (request.name) {
+        case "showPopupOnUpdated":
+            alert("Extension got updated to latest version: " + request.version);
+            break;
+    }
+    });
     var yourUsernameColor = "#000";
     document.documentElement.style.setProperty('--usernamecolor', yourUsernameColor);
     document.documentElement.style.setProperty('--fontfamily', 'Helvetica');
@@ -250,7 +257,7 @@ setInterval ((function () {
     
     function enableStyles(){
 
-    var a = browser.runtime.getURL("content_new.css");
+    var a = chrome.runtime.getURL("content_new.css");
 	var head = document.head;
 	var link = document.createElement("link");
 	link.type = "text/css";
@@ -478,7 +485,7 @@ setInterval ((function () {
         tabBlock.className = "lmao";          
         var emoteButton = document.createElement("div");
         emoteButton.className = "lmaot";
-        var imgUrl = browser.runtime.getURL("images/kekw.png");
+        var imgUrl = chrome.runtime.getURL("images/kekw.png");
         document.documentElement.style.setProperty('--emotebg', "url(" + imgUrl + ")");
         emoteButton.id = "lmaox";
         emoteButton.addEventListener('click', (function() {
