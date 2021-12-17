@@ -2,7 +2,7 @@
 
 ### Enhance your Facebook Gaming live stream viewing experience.
 
-Fully customizable chat appearance, pre-installed 400+ custom emotes and other modifications.
+Fully customizable chat appearance, pre-installed auto-updating 3 custom emotes sets and other cool features for Facebook Gaming Livestreams.
 
 ## Changelog
 
