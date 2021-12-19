@@ -1,3 +1,7 @@
+chrome.storage.local.get('SET', function(result){
+    document.getElementById('emoteCount').innerText = result.SET.length;
+});
+
 function listremove(s, i, el) { //add functionality to the emote delete buttons
         el.addEventListener('click', (function rmv() {
             s.splice(i, 1); //remove the element at the given index from the given set
@@ -65,18 +69,20 @@ function listremove(s, i, el) { //add functionality to the emote delete buttons
     }
 
     function autocc() {
-	var input, filter, ul, i, txtValue;
-	input = document.getElementById("emoteInput");
-	filter = input.value.toUpperCase();
-	ul = document.getElementsByClassName("emotetable-div");
-	for (i=0; i<ul.length; i++) {
-		txtValue = ul[i].id;
-		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+    var input, filter, ul, i, txtValue, count=0;
+    input = document.getElementById("emoteInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementsByClassName("emotetable-div");
+    for (i=0; i<ul.length; i++) {
+        txtValue = ul[i].id;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
             ul[i].style.display = "";
+            count += 1;
         } else {
             ul[i].style.display = "none";
         }
-	}
+        document.getElementById('emoteCount').innerText = count;
+    }
 }
 showemotes();
 

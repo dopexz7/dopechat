@@ -33,24 +33,24 @@
     }));
 
 }());
-chrome.storage.local.get('using', function(result) {
-    var element = document.getElementById('emote-h');
-        if (result['using'] === 'useratedemotes') {
-            document.getElementById('using-rateds').style.display = "block";
-            element.innerText = "Using RatedEpicz's emote set";
-        } else if (result['using'] === 'userameemotes') {
-            document.getElementById('using-ramees').style.display = "block";
-            element.innerText = "Using Ramee's emote set";
+// chrome.storage.local.get('using', function(result) {
+//     var element = document.getElementById('emote-h');
+//         if (result['using'] === 'useratedemotes') {
+//             document.getElementById('using-rateds').style.display = "block";
+//             element.innerText = "Using RatedEpicz's emote set";
+//         } else if (result['using'] === 'userameemotes') {
+//             document.getElementById('using-ramees').style.display = "block";
+//             element.innerText = "Using Ramee's emote set";
 
-        } else if (result['using'] === 'usevaderemotes') {
-            document.getElementById('using-vaders').style.display = "block";
-            element.innerText = "Using Vader's emote set";
+//         } else if (result['using'] === 'usevaderemotes') {
+//             document.getElementById('using-vaders').style.display = "block";
+//             element.innerText = "Using Vader's emote set";
 
-        } else {
-            document.getElementById('using-none').style.display = "block";
-            element.innerText = "No emote set installed";
-        }
-    });
+//         } else {
+//             document.getElementById('using-none').style.display = "block";
+//             element.innerText = "No emote set installed";
+//         }
+//     });
 document.getElementById('manage').addEventListener("mouseover", function() {
     document.getElementById('settings-h').style.opacity = "1";
     document.getElementById('settings-h').style.fontSize = "13px";
@@ -61,13 +61,13 @@ document.getElementById('manage').addEventListener("mouseout", function() {
     document.getElementById('settings-h').style.fontSize = "6px";
 });
 
-document.getElementById('active-set').addEventListener("mouseover", function() {
-    document.getElementById('emote-h').style.opacity = "1";
-    document.getElementById('emote-h').style.fontSize = "13px";
-});
+// document.getElementById('active-set').addEventListener("mouseover", function() {
+//     document.getElementById('emote-h').style.opacity = "1";
+//     document.getElementById('emote-h').style.fontSize = "13px";
+// });
 
-document.getElementById('active-set').addEventListener("mouseout", function() {
-    document.getElementById('emote-h').style.opacity = "0";
-    document.getElementById('emote-h').style.fontSize = "6px";
-});
+// document.getElementById('active-set').addEventListener("mouseout", function() {
+//     document.getElementById('emote-h').style.opacity = "0";
+//     document.getElementById('emote-h').style.fontSize = "6px";
+// });
 

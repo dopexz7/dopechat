@@ -429,7 +429,7 @@ body.light-mode:before, body.light-mode .video-bg:before {
   max-width: 350px;
 }
 .content-button {
-  background-color: #3a6df0;
+  background-color: #23a6d5;
   border: none;
   padding: 8px 26px;
   color: #fff;
@@ -539,11 +539,23 @@ body.light-mode:before, body.light-mode .video-bg:before {
 .status-button {
   font-size: 15px;
   margin-top: 0;
-  padding: 3px 20px;
+  padding: 6px 20px;
   
 }
 .installed-btn {
-  background: #3bf083;
+  background: #eb3b5a !important; 
+  transition: .5s;
+}
+.installed-btn:hover {
+  background: #ff3a8b !important;
+  transition: .5s;
+
+  
+}
+.emote-count {
+  background: var(--theme-bg-color);
+  padding: 1px 10px;
+  border-radius: 24px;
 }
 @media screen and (max-width: 390px) {
   .status-button {
@@ -560,8 +572,8 @@ body.light-mode:before, body.light-mode .video-bg:before {
   border-color: #fff;
 }
 .content-button:not(.open):hover {
-  background: #1e59f1;
-}
+  background: #23d5ab;
+} 
 .menu {
   width: 5px;
   height: 5px;

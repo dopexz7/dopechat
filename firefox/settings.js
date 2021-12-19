@@ -1,6 +1,91 @@
 var obj = {};
 var storage = chrome.storage.local;
 var otherobj = {};
+
+storage.get('SET', function(result){
+	document.getElementById('emoteCount').innerText = result.SET.length;
+});
+
+function setswap() { //use changed emote set in current tabs
+    chrome.tabs.query({}, (function(tabs) {
+        for (var i = 0; i < tabs.length; i++) {
+            chrome.tabs.sendMessage(tabs[i].id, { newemotes: "change" });
+        }
+    }));
+}
+
+function setEmoteButtonState(buttonid, y) {
+	storage.get('SETS', function(result) {
+		if (result.SETS !== undefined) {
+			if (result.SETS.includes(y)) {
+				var element = document.getElementById(buttonid);
+				element.classList.add('installed-btn');
+				element.innerText = 'Uninstall';
+			}
+		}
+		
+	});
+}
+
+
+const rameeEmotes = fetch("https://dopexz7.github.io/emotes/ramee.json?r=")
+		  .then((response) => response.json())
+		  .then((user) => {
+		    return user;
+		});
+
+const ratedEmotes = fetch("https://dopexz7.github.io/emotes/rated.json?r=")
+		  .then((response) => response.json())
+		  .then((user) => {
+		    return user;
+});
+
+const vaderEmotes = fetch("https://dopexz7.github.io/emotes/vader.json?r=")
+		  .then((response) => response.json())
+		  .then((user) => {
+		    return user;
+});
+
+async function dopeFunction() {
+			// ramee - 1 rated - 2 vader - 3
+			let resultx = await rameeEmotes;
+			obj['currentRameeSet'] = resultx;
+			let result2 = await ratedEmotes;
+			obj['currentRatedSet'] = result2;
+			let result3 = await vaderEmotes;
+			obj['currentVaderSet'] = result3;
+			storage.set(obj);
+			storage.get(['SETS', 'SET'], function(result) {
+				var x = result.SETS;
+				
+				if (x !== undefined) {
+					if (x.includes(1) && x.includes(2) && x.includes(3)) { // if 1,2 and 3
+						var newArr = [...new Set([...resultx ,...result2, ...result3])];
+					} else if(x.includes(1) && x.includes(2) && x.includes(3) !== true) { // if 1 and 2, but not 3
+						var newArr = [...new Set([...resultx ,...result2])];
+					} else if(x.includes(1) && x.includes(3) && x.includes(2) !== true) { // if 1 and 3, but not 2
+						var newArr = [...new Set([...resultx ,...result3])];
+					} else if(x.includes(2) && x.includes(3) && x.includes(2) !== true) { // if 2 and 3, but not 1
+						var newArr = [...new Set([...result2 ,...result3])];
+					} else if(x.includes(1) || x.includes(2) || x.includes(3)) {
+						if(x.includes(1) && x.includes(2) !== true && x.includes(3) !== true) {
+							var newArr = resultx;
+						} else if(x.includes(2) && x.includes(1) !== true && x.includes(3) !== true) {
+							var newArr = result2;
+						} else if(x.includes(3) && x.includes(2) !== true && x.includes(1) !== true) {
+							var newArr = result3;
+						} 
+					} else if (x.includes(1) !== true && x.includes(2) !== true && x.includes(3) !== true) {
+						var newArr = [];
+					}
+					obj.SET = newArr;
+					obj.setDate = new Date().toLocaleString('en-US');
+					storage.set(obj);
+					setswap(); //refreshes emotes
+				}
+			});
+		};
+
 //tabs start
 function hideShowTabs(btnid, tabid, name) {
 	function showhide(id){
@@ -37,70 +122,120 @@ hideShowTabs('show-faq', 'faq', 'FAQ');
 
 //install x set
 
-function setswap() { //use changed emote set in current tabs
-        chrome.tabs.query({}, (function(tabs) {
-            for (var i = 0; i < tabs.length; i++) {
-                chrome.tabs.sendMessage(tabs[i].id, { newemotes: "change" });
-            }
-        }));
-    }
+
 
 
 
 function setEmoteSets(btnid, x) {
+
 	document.getElementById(btnid).addEventListener("click", function() {
 		var element = document.getElementById(btnid);
 		var otherelement;
 		if (btnid === "userameemotes") {
-			jQuery.getJSON("https://dopexz7.github.io/emotes/ramee.json?r=" + Math.random(), function(response) {
-			    obj.SET = response;
-			    obj.setDate = new Date().toLocaleString('en-US');
-			    storage.set(obj);
-				setswap(); //refreshes emotes
-		
-					
-			});
-			element.innerText = "Installed";
-			element.classList.add('installed-btn');
-			otherelement = document.getElementById('useratedemotes');
-			otherelementx = document.getElementById('usevaderemotes');
-			otherelement.innerText = "Install";
-			otherelement.classList.remove('installed-btn');
-			otherelementx.innerText = "Install";
-			otherelementx.classList.remove('installed-btn');
+		storage.get('SETS', function(result) {
+			var x = result.SETS;
+			if (x === undefined) {
+				obj.SETS = [];
+				obj.SETS.push(1);
+				storage.set(obj);
+				element.innerText = "Uninstall";
+				element.classList.add('installed-btn');
+				dopeFunction();
+
+			} else if (x !== undefined) {
+				if (x.includes(1)) {
+					const index = x.indexOf(1);
+					if (index > -1) {
+					  x.splice(index, 1);
+					}
+					obj.SETS = x;
+					storage.set(obj);
+					element.innerText = "Install";
+					element.classList.remove('installed-btn');
+					dopeFunction();
+				} else {
+					obj.SETS = x;
+					obj.SETS.push(1);
+					storage.set(obj);
+					element.innerText = "Uninstall";
+					element.classList.add('installed-btn');
+					dopeFunction();
+				}
+				
+				
+			}
+			
+		});
 		} else if (btnid === "useratedemotes") {
-			jQuery.getJSON("https://dopexz7.github.io/emotes/rated.json?r=" + Math.random(), function(response) {
-			    obj.SET = response;
-			    obj.setDate = new Date().toLocaleString('en-US');
-			    storage.set(obj);
-				setswap(); //refreshes emotes
-			});
+			storage.get('SETS', function(result) {
+			var x = result.SETS;
+			if (x === undefined) {
+				obj.SETS = [];
+				obj.SETS.push(2);
+				storage.set(obj);
+				element.innerText = "Uninstall";
+				element.classList.add('installed-btn');
+				dopeFunction();
 
-			element.innerText = "installed";
-			element.classList.add('installed-btn');
-			otherelement = document.getElementById('userameemotes');
-			otherelementx = document.getElementById('usevaderemotes');
-			otherelement.innerText = "Install";
-			otherelement.classList.remove('installed-btn');
-			otherelementx.innerText = "Install";
-			otherelementx.classList.remove('installed-btn');
+			} else if (x !== undefined) {
+				if (x.includes(2)) {
+					const index = x.indexOf(2);
+					if (index > -1) {
+					  x.splice(index, 1);
+					}
+					obj.SETS = x;
+					storage.set(obj);
+					element.innerText = "Install";
+					element.classList.remove('installed-btn');
+					dopeFunction();
+				} else {
+					obj.SETS = x;
+					obj.SETS.push(2);
+					storage.set(obj);
+					element.innerText = "Uninstall";
+					element.classList.add('installed-btn');
+					dopeFunction();
+				}
+				
+				
+			}
+			
+		});
 		} else if (btnid === "usevaderemotes") {
-			jQuery.getJSON("https://dopexz7.github.io/emotes/vader.json?r=" + Math.random(), function(response) {
-			    obj.SET = response;
-			    obj.setDate = new Date().toLocaleString('en-US');
-			    storage.set(obj);
-				setswap(); //refreshes emotes
+			storage.get('SETS', function(result) {
+				var x = result.SETS;
+				if (x === undefined) {
+					obj.SETS = [];
+					obj.SETS.push(3);
+					storage.set(obj);
+					element.innerText = "Uninstall";
+					element.classList.add('installed-btn');
+					dopeFunction();
+
+				} else if (x !== undefined) {
+					if (x.includes(3)) {
+						const index = x.indexOf(3);
+						if (index > -1) {
+						  x.splice(index, 1);
+						}
+						obj.SETS = x;
+						storage.set(obj);
+						element.innerText = "Install";
+						element.classList.remove('installed-btn');
+						dopeFunction();
+					} else {
+						obj.SETS = x;
+						obj.SETS.push(3);
+						storage.set(obj);
+						element.innerText = "Uninstall";
+						element.classList.add('installed-btn');
+						dopeFunction();
+					}
+					
+					
+				}
+			
 			});
-
-			element.innerText = "installed";
-			element.classList.add('installed-btn');
-			otherelement = document.getElementById('userameemotes');
-			otherelementx = document.getElementById('useratedemotes');
-
-			otherelement.innerText = "Install";
-			otherelement.classList.remove('installed-btn');
-			otherelementx.innerText = "Install";
-			otherelementx.classList.remove('installed-btn');
 		}
 
 		
@@ -114,15 +249,7 @@ setEmoteSets('useratedemotes', 'using');
 setEmoteSets('usevaderemotes', 'using');
 
 
-function setEmoteButtonState(buttonid, y) {
-	storage.get(y, function(result) {
-		var element = document.getElementById(buttonid);
-		if (result[y] === buttonid) {
-			element.classList.add('installed-btn');
-			element.innerText = 'Installed';	
-		}
-	});
-}
+
 
 
 
@@ -228,9 +355,10 @@ window.onload = function() {
 	interactiveChatTogglesC('interactive-chat-reply', 'chatRepliesHide', 'on', 'off');
 	interactiveChatTogglesC('interactive-chat-message-text', 'messageStyle', '2', '1');
 
-	setEmoteButtonState('userameemotes', 'using');
-	setEmoteButtonState('useratedemotes', 'using');
-	setEmoteButtonState('usevaderemotes', 'using');
+	setEmoteButtonState('userameemotes', 1);
+	setEmoteButtonState('useratedemotes', 2);
+	setEmoteButtonState('usevaderemotes', 3);
+
 };
 
 // interactive chat toggles end
@@ -522,7 +650,7 @@ function listremove(s, i, el) { //add functionality to the emote delete buttons
     }
 
 function autocc() {
-	var input, filter, ul, i, txtValue;
+	var input, filter, ul, i, txtValue, count=0;
 	input = document.getElementById("emoteInput");
 	filter = input.value.toUpperCase();
 	ul = document.getElementsByClassName("emotetable-div");
@@ -530,9 +658,11 @@ function autocc() {
 		txtValue = ul[i].id;
 		if (txtValue.toUpperCase().indexOf(filter) > -1) {
             ul[i].style.display = "";
+            count += 1;
         } else {
             ul[i].style.display = "none";
         }
+        document.getElementById('emoteCount').innerText = count;
 	}
 }
 function showingEmotes() {

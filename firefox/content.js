@@ -50,44 +50,111 @@ var popoutInterval = setInterval ((function () {
                    
     }), 1);
 
-
-
 // auto update emotes from link in real time
 setInterval ((function () {
     
     try { 
-        storage.get(['SET', 'using'], function(result) {
-            if (result['using'] === 'userameemotes') {
-                jQuery.getJSON("https://dopexz7.github.io/emotes/ramee.json?r=" + Math.random(), function(response) {
-                    emotes = response;
-                    if(result['SET'] !== emotes) {
-                        obj['SET'] = emotes;
-                        storage.set(obj);
-                        //setswap(); //use changed emote set
+
+        const rameeEmotes = fetch("https://dopexz7.github.io/emotes/ramee.json?r=")
+          .then((response) => response.json())
+          .then((user) => {
+            return user;
+        });
+
+        const ratedEmotes = fetch("https://dopexz7.github.io/emotes/rated.json?r=")
+          .then((response) => response.json())
+          .then((user) => {
+            return user;
+        });
+
+        const vaderEmotes = fetch("https://dopexz7.github.io/emotes/vader.json?r=")
+          .then((response) => response.json())
+          .then((user) => {
+            return user;
+        });
+
+        async function dopeFunction() {
+            // ramee - 1 rated - 2 vader - 3
+
+            let resultx = await rameeEmotes;
+            obj['currentRameeSet'] = resultx;
+            let result2 = await ratedEmotes;
+            obj['currentRatedSet'] = result2;
+            let result3 = await vaderEmotes;
+            obj['currentVaderSet'] = result3;
+            storage.set(obj);
+            storage.get(['SETS', 'SET'], function(result) {
+                var x = result.SETS;
+                //var array = result.SET;
+                if (x !== undefined) {
+                    if (x.includes(1) && x.includes(2) && x.includes(3)) { // if 1,2 and 3
+                    var newArr = resultx.concat(result2, result3);
+                    newArr = newArr.filter((item,index)=>{
+                        return (newArr.indexOf(item) == index)
+                    })  
+                } else if(x.includes(1) && x.includes(2) && x.includes(3) !== true) { // if 1 and 2, but not 3
+                    var newArr = resultx.concat(result2);
+                    newArr = newArr.filter((item,index)=>{
+                        return (newArr.indexOf(item) == index)
+                    })  
+                } else if(x.includes(1) && x.includes(3) && x.includes(2) !== true) { // if 1 and 3, but not 2
+                    var newArr = resultx.concat(result3);
+                    newArr = newArr.filter((item,index)=>{
+                        return (newArr.indexOf(item) == index)
+                    })  
+                } else if(x.includes(2) && x.includes(3) && x.includes(2) !== true) { // if 2 and 3, but not 1
+                    var newArr = result2.concat(result3);
+                    newArr = newArr.filter((item,index)=>{
+                        return (newArr.indexOf(item) == index)
+                    })  
+                } else if(x.includes(1) || x.includes(2) || x.includes(3)) {
+                    if(x.includes(1) && x.includes(2) !== true && x.includes(3) !== true) {
+                        var newArr = resultx;
+                    } else if(x.includes(2) && x.includes(1) !== true && x.includes(3) !== true) {
+                        var newArr = result2;
+                    } else if(x.includes(3) && x.includes(2) !== true && x.includes(1) !== true) {
+                        var newArr = result3;
                     }
+                }
+                obj.SET = newArr;
+                obj.setDate = new Date().toLocaleString('en-US');
+                storage.set(obj);
+                //setswap(); //refreshes emotes
+                }
+            });
+        };
+
+
+
+
+
+
+
+        storage.get(['currentRameeSet', 'currentRatedSet', 'currentVaderSet'], function(result) {
+           jQuery.getJSON("https://dopexz7.github.io/emotes/ramee.json?r=" + Math.random(), function(response) {
+                emotes = response;
+                if(result['currentRameeSet'] !== emotes) {
+                    dopeFunction();
+                    //setswap(); //use changed emote set
+                }
     
-                });
-            } else if (result['using'] === 'useratedemotes') {
-                jQuery.getJSON("https://dopexz7.github.io/emotes/rated.json?r=" + Math.random(), function(response) {
-                    emotes = response;
-                    if(result['SET'] !== emotes) {
-                        obj['SET'] = emotes;
-                        storage.set(obj);
-                        //setswap(); //use changed emote set
-                    }
-    
-                });
-            } else if (result['using'] === 'usevaderemotes') {
-                jQuery.getJSON("https://dopexz7.github.io/emotes/vader.json?r=" + Math.random(), function(response) {
-                    emotes = response;
-                    if(result['SET'] !== emotes) {
-                        obj['SET'] = emotes;
-                        storage.set(obj);
-                        //setswap(); //use changed emote set
-                    }
-    
-                });
-            } 
+            });
+           jQuery.getJSON("https://dopexz7.github.io/emotes/rated.json?r=" + Math.random(), function(response) {
+                emotes = response;
+                if(result['currentRatedSet'] !== emotes) {
+                    dopeFunction();
+                    //setswap(); //use changed emote set
+                }
+
+            });
+           jQuery.getJSON("https://dopexz7.github.io/emotes/vader.json?r=" + Math.random(), function(response) {
+                emotes = response;
+                if(result['currentVaderSet'] !== emotes) {
+                    dopeFunction();
+                    //setswap(); //use changed emote set
+                }
+
+            });
         });
         
     } catch(e){
@@ -200,16 +267,15 @@ setInterval ((function () {
         filter = input.value.toUpperCase();
         ul = document.getElementById("emotetable");
         li = ul.getElementsByTagName("a");
-        //console.log(li)
         for (i = 0; i < li.length; i++) {
             a = li[i].getElementsByTagName("img")[0];
             txtValue = a.alt;
-            //console.log(li[i]);
             if (txtValue.toUpperCase().indexOf(filter) > -1) {
                 li[i].style.display = "";
             } else {
                 li[i].style.display = "none";
             }
+
         }
     }
     ///* emote menu
@@ -549,6 +615,7 @@ setInterval ((function () {
             emoteAutoComplete.type = 'text';
             emoteAutoComplete.placeholder = 'Filter emotes...';
             emoteAutoComplete.id = "emoteInput";
+            emoteAutoComplete.autocomplete = "off";
             document.getElementById('emotetable').parentNode.appendChild(emoteAutoComplete); 
             document.getElementById('emoteInput').addEventListener("keyup", autocc);
         }
