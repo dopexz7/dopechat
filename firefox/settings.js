@@ -2,9 +2,6 @@ var obj = {};
 var storage = chrome.storage.local;
 var otherobj = {};
 
-storage.get('SET', function(result){
-	document.getElementById('emoteCount').innerText = result.SET.length;
-});
 
 function setswap() { //use changed emote set in current tabs
     chrome.tabs.query({}, (function(tabs) {
@@ -593,7 +590,9 @@ storage.get('emoteMenuCheckModal', function(result) {
         }
     });
 
-
+storage.get('SET', function(result){
+	document.getElementById('emoteCount').innerText = result.SET.length;
+});
 function listremove(s, i, el) { //add functionality to the emote delete buttons
         el.addEventListener('click', (function rmv() {
             s.splice(i, 1); //remove the element at the given index from the given set

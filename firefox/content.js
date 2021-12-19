@@ -547,7 +547,7 @@ setInterval ((function () {
         var imgUrl = browser.runtime.getURL("images/kekw.png");
         document.documentElement.style.setProperty('--emotebg', "url(" + imgUrl + ")");
         emoteButton.id = "lmaox";
-        emoteButton.addEventListener('click', (function() {
+        emoteButton.addEventListener('dblclick', (function() {
             showemotes();             
         }));
 
