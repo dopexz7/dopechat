@@ -1,19 +1,19 @@
 var obj = {};
 var storage = chrome.storage.local;
 
-//popout chat
-var popoutInterval = setInterval ((function () {   
+function addPopoutChat() {
+    var popoutInterval = setInterval ((function () {   
     var elements = document.querySelectorAll('.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.jifvfom9.bp9cbjyn.owycx6da.btwxx1t3.jb3vyjys.nkwizq5d.scwd0bx6.hop8lmos.ggphbty4')[0];        
-    if (elements) {
+    var popbtn = document.getElementById('popbtn');
+    if (elements && popbtn === null) {
         var popoutButton = document.createElement("div");
         popoutButton.classList.add('popoutbutton');
         popoutButton.setAttribute('title', 'Popout chat');
+        popoutButton.id = 'popbtn';
         popoutButton.addEventListener('click', (function() {
             window.open(window.location.href);  
             var setChatPopout = setInterval ((function () {
-
                 try { 
-                
                     document.title = "Popout chat";
                     document.querySelectorAll('[role="banner"]')[0].style.display = "none";
                     document.querySelectorAll('[role="main"]')[0].style.display = "none"; 
@@ -23,32 +23,28 @@ var popoutInterval = setInterval ((function () {
                     document.querySelectorAll('.be9z9djy')[0].style.top = '0';  
                     document.getElementsByClassName('popoutbutton')[0].style.display = "none";
                     document.querySelectorAll('.tw6a2znq.f10w8fjw.d1544ag0.pybr56ya.j83agx80.bp9cbjyn')[0].style.paddingBottom = '0';
-
                     clearInterval(setChatPopout);
-                
-            
                 } catch(e){
                 console.log(e);
                 }                  
             }), 1);
-            
-                
-                
-
-            //myWindow.window.close();
-                
-                
-            
-        
         }));
         elements.appendChild(popoutButton);
         clearInterval(popoutInterval);
-    }
-
-        
-
-                   
+    }         
     }), 1);
+}
+
+var popbutn = document.getElementById('popbtn');
+if (popbutn === null || popbutn === undefined) {
+    var observeForPop = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation){
+            addPopoutChat();
+        });        
+    });
+    observeForPop.observe(document.body, {childList: true, subtree: true});
+}
+
 
 // auto update emotes from link in real time
 setInterval ((function () {
@@ -237,7 +233,7 @@ setInterval ((function () {
 
 
     };
-
+    
     function insertEmote(emoteCode) {
         var textbox = document.querySelector('.oo9gr5id.lzcic4wl.jm1wdb64.l9j0dhe7.gsox5hk5.mdldhsdk.ii04i59q.notranslate');
         var textbox2 = textbox.childNodes[0];
@@ -246,7 +242,7 @@ setInterval ((function () {
         if (textbox4[0] !== undefined) {
             textbox4[0].textContent +=  " " + emoteCode;  
         }
-             
+     
     }
 
     function clickEmotes() {
@@ -297,7 +293,8 @@ setInterval ((function () {
                 for (var i = 0; i < emotes.length; i++) {
                 var imga = document.createElement('a');
                 imga.id = emotes[i].code;
-                imga.className = emotes[i].code;
+                imga.className = "_5zfs";
+                imga.setAttribute('role','button');
                 imga.setAttribute('data-title', emotes[i].code);
                 var img = document.createElement("img");
                 img.src = emotes[i].src;
@@ -313,21 +310,19 @@ setInterval ((function () {
         
                     
     }
+
     
+    
+
+
     function enableStyles(){
-
-    var a = browser.runtime.getURL("content_new.css");
-	var head = document.head;
-	var link = document.createElement("link");
-	link.type = "text/css";
-	link.rel = "stylesheet";
-	link.href = a;
-	head.appendChild(link);
-    			
-    	
-
-        
-        
+        var a = browser.runtime.getURL("content_new.css");
+        var head = document.head;
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = a;
+        head.appendChild(link);
         var yourUsername = "Dopexz Ed";
         var storage = chrome.storage.local;
         
@@ -748,12 +743,13 @@ setInterval ((function () {
             }
         }
     }
-
+    
+    
     chrome.storage.sync.get(['ON'], (function(result) { //check if the extension is on at page load
         if (result.ON === 1) {
             enableStyles();
             initiate();
-
+            
         }
     }));
 

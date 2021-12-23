@@ -2,6 +2,18 @@ var obj = {};
 var storage = chrome.storage.local;
 var otherobj = {};
 
+document.getElementById('change-to-left').addEventListener('click', function() {
+	var element = document.getElementsByClassName('wrapper')[0];
+	
+	if (element.style.flexFlow !== 'row-reverse nowrap') {
+		element.style.flexFlow = 'row-reverse nowrap';
+		
+	} else {
+		element.style.flexFlow = 'row';
+
+	}
+});
+
 
 function setswap() { //use changed emote set in current tabs
     chrome.tabs.query({}, (function(tabs) {
@@ -46,11 +58,11 @@ const vaderEmotes = fetch("https://dopexz7.github.io/emotes/vader.json?r=")
 async function dopeFunction() {
 			// ramee - 1 rated - 2 vader - 3
 			let resultx = await rameeEmotes;
-			obj['currentRameeSet'] = resultx;
+			obj.currentRameeSet = resultx;
 			let result2 = await ratedEmotes;
-			obj['currentRatedSet'] = result2;
+			obj.currentRatedSet = result2;
 			let result3 = await vaderEmotes;
-			obj['currentVaderSet'] = result3;
+			obj.currentVaderSet = result3;
 			storage.set(obj);
 			storage.get(['SETS', 'SET'], function(result) {
 				var x = result.SETS;
@@ -81,7 +93,7 @@ async function dopeFunction() {
 					setswap(); //refreshes emotes
 				}
 			});
-		};
+		}
 
 //tabs start
 function hideShowTabs(btnid, tabid, name) {
@@ -127,7 +139,6 @@ function setEmoteSets(btnid, x) {
 
 	document.getElementById(btnid).addEventListener("click", function() {
 		var element = document.getElementById(btnid);
-		var otherelement;
 		if (btnid === "userameemotes") {
 		storage.get('SETS', function(result) {
 			var x = result.SETS;
@@ -604,49 +615,49 @@ function listremove(s, i, el) { //add functionality to the emote delete buttons
         }), false);
     }
 
-    function showemotes() { //show table with all emotes
-        chrome.storage.local.get(['SET'], (function(result) {
-            var emotes = result.SET;
-            var table = document.getElementById("emotetable");   
-            while (table.firstChild) {
-                table.removeChild(table.firstChild); //clears emotes
-            }
-            
-            var list = document.createDocumentFragment();
-            for (var i = 0; i < emotes.length; i++) {
+function showemotes() { //show table with all emotes
+	chrome.storage.local.get(['SET'], (function(result) {
+	    var emotes = result.SET;
+	    var table = document.getElementById("emotetable");   
+	    while (table.firstChild) {
+	        table.removeChild(table.firstChild); //clears emotes
+	    }
+	    
+	    var list = document.createDocumentFragment();
+	    for (var i = 0; i < emotes.length; i++) {
 
-	        	var item = document.createElement("div"); //table row
-	            box = document.createElement("div"); //table node
-	            box.className = "emotetable-img";
-	            var img = document.createElement("img"); //table node
-	            img.src = emotes[i].src;
-	            box.appendChild(img);
-	            item.appendChild(box);
-	            box = document.createElement("div"); //table node
-	            box.className = "emotetable-img";
-	            var box = document.createElement("div"); //table node
-	            box.textContent = emotes[i].code;
-	            box.className = "emotetable-code";
-	            item.className = "emotetable-div";
-	            item.id = emotes[i].code;
-	            item.appendChild(box);
-	            var lbl = document.createElement("label"); //emote remove button label
-	            lbl.className = "emotetable-remove";
-	            lbl.title = "remove";
-	            lbl.textContent = "Remove";
-	            var btn = document.createElement("input"); //emote remove button
-	            btn.type = "button";
-	            btn.className = "hide";
-	            listremove(emotes, i, btn); //make button remove adjacent emote
-	            lbl.appendChild(btn);
-	            box.appendChild(lbl);
-	            item.appendChild(box);
-	            list.appendChild(item);   
-                }
-                table.appendChild(list);
-            
-        }));
-    }
+	    	var item = document.createElement("div"); //table row
+	        box = document.createElement("div"); //table node
+	        box.className = "emotetable-img";
+	        var img = document.createElement("img"); //table node
+	        img.src = emotes[i].src;
+	        box.appendChild(img);
+	        item.appendChild(box);
+	        box = document.createElement("div"); //table node
+	        box.className = "emotetable-img";
+	        var box = document.createElement("div"); //table node
+	        box.textContent = emotes[i].code;
+	        box.className = "emotetable-code";
+	        item.className = "emotetable-div";
+	        item.id = emotes[i].code;
+	        item.appendChild(box);
+	        var lbl = document.createElement("label"); //emote remove button label
+	        lbl.className = "emotetable-remove";
+	        lbl.title = "remove";
+	        lbl.textContent = "Remove";
+	        var btn = document.createElement("input"); //emote remove button
+	        btn.type = "button";
+	        btn.className = "hide";
+	        listremove(emotes, i, btn); //make button remove adjacent emote
+	        lbl.appendChild(btn);
+	        box.appendChild(lbl);
+	        item.appendChild(box);
+	        list.appendChild(item);   
+	        }
+	        table.appendChild(list);
+	    
+	}));
+}
 
 function autocc() {
 	var input, filter, ul, i, txtValue, count=0;
@@ -687,6 +698,59 @@ showingEmotes();
 document.getElementById('emoteInput').addEventListener("keyup", autocc);
 
 
-document.getElementById("show-advanced-emote").addEventListener('click', (function() { 
-        window.open(chrome.runtime.getURL('advanced.html'));
-    }));
+document.getElementById("show-advanced-emote").addEventListener('click', () => { 
+    window.open(chrome.runtime.getURL('advanced.html'));
+});
+
+const setPreset = (btnid) => {
+	document.getElementById(btnid).addEventListener('click', () => {
+		if (btnid === 'preset-twitch') {
+			obj.chatLikeReplyCheck= 'on';
+			obj.chatCommentReacts = 'on';
+			obj.hideChatProfilePictures = 'hide';
+			obj.chatThreeDots = 'on';
+			obj.chatTopBarCheck = 'on';
+			obj.chatRepliesHide = 'on';
+			storage.set(obj);
+		} else if (btnid === 'preset-second') {
+			obj.chatLikeReplyCheck= 'on';
+			obj.chatCommentReacts = 'on';
+			obj.hideChatProfilePictures = 'hide';
+			obj.chatThreeDots = 'on';
+			obj.chatTopBarCheck = 'off';
+			obj.chatRepliesHide = 'on';
+			storage.set(obj);
+		} else if (btnid === 'preset-third') {
+			obj.chatLikeReplyCheck= 'on';
+			obj.chatCommentReacts = 'on';
+			obj.hideChatProfilePictures = 'show';
+			obj.chatThreeDots = 'on';
+			obj.chatTopBarCheck = 'off';
+			obj.chatRepliesHide = 'on';
+			storage.set(obj);
+		} else if (btnid === 'preset-four') {
+			obj.chatLikeReplyCheck= 'off';
+			obj.chatCommentReacts = 'on';
+			obj.hideChatProfilePictures = 'show';
+			obj.chatThreeDots = 'off';
+			obj.chatTopBarCheck = 'off';
+			obj.chatRepliesHide = 'on';
+			storage.set(obj);
+		}
+		var modal = document.getElementById("myModal3");
+	    var modalcontent = document.getElementById('presetsetx');
+	    modal.style.display = "flex";
+	    modalcontent.style.display = "block";
+	    function dopexz() {
+	    	modal.style.display = "none";
+	        location.reload();
+	        return false;
+	    }
+	    setTimeout(dopexz, 1000);
+	});
+}
+
+setPreset('preset-twitch');
+setPreset('preset-second');
+setPreset('preset-third');
+setPreset('preset-four');

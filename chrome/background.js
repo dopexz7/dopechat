@@ -7,9 +7,6 @@
                     chrome.storage.local.set({ SET: emotes }); //save default set
                 }
             });  
-        chrome.tabs.create({url: chrome.runtime.getURL('install.html')}, function (tab) {});
-        } else if(details.reason == "update") {
-            chrome.tabs.create({url: chrome.runtime.getURL('update.html')}, function (tab) {});
         }
         
         

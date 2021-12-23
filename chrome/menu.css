@@ -65,7 +65,6 @@
   color: rgba(255, 255, 255, 0.5);
   top: 35vh;
   letter-spacing: 6px;
-  border-radius: 24px;
   transition: .3s;
   padding: 6px;  
 }
@@ -73,6 +72,18 @@
   transition: .5s;
   transform: scale(1.02);
 }
+
+.main-version {
+  display: inline-block;
+  position: absolute;
+  font-size: 11px;
+  left: 3%;
+  color: rgba(255, 255, 255, 0.5);
+  bottom: 0;
+  transition: .3s;
+  padding: 6px;  
+}
+
 .menu-icons {
   display: inline-block;
   margin: auto;

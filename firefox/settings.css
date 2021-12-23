@@ -783,18 +783,22 @@ body.light-mode:before, body.light-mode .video-bg:before {
   background: var(--scrollbar-bg);
 
 }
+.inter-descrp {
+  font-size: 11px;
+  color: #fff;
+}
 #interactive-chat {
-  width: 354px;
   font-family: Helvetica;
-
+  display: flex;
 
 }
 .interactive-chat-wrapper {
   background: #18181b;
-  max-width: 354px;
+  
   height: 50vh;
   border-radius: 6px;
   overflow-y: scroll;
+  max-width: 354px;
   width: 100%;
 }
 .interactive-chat-topbar {
@@ -1043,6 +1047,93 @@ input[type="interactive-chat-input"] {
   width: 30px;
   height: 30px;
 }
+.inter-presets {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 0 20px;
+  width: 100%;
+}
+.inter-presets-title {
+  width: 100%;
+  padding: 6px 15px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+  font-weight: 400;
+  font-size: 24px;
+  justify-content: space-around;
+  background-color: var(--content-bg);
+  border-radius: 14px;
+  border: 1px solid var(--theme-bg-color);
+  
+}
+.preset-grid {
+  width: 100%;
+  height: auto;
+  background: var(--theme-bg-color);
+  border: 1px solid var(--theme-bg-color);
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: 50% 50%;
+  border-radius: 14px;
+}
+.border-top-left {border-top-left-radius: 14px;}
+.border-top-right {border-top-right-radius: 14px;}
+.border-bottom-right {border-bottom-right-radius: 14px;}
+.border-bottom-left {border-bottom-left-radius: 14px;}
+.preset-box {
+  background: url(images/preset1.png) no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 200px;
+  padding: 0;
+  margin: 0;
+  border: 1px solid var(--theme-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: .5;
+
+}
+.preset-text {
+  color: rgba(255,255,255,0.6);
+  position: relative;
+  background: var(--content-bg);
+  font-size: 11px;
+  border-radius: 14px;
+  padding: 5px;
+}
+.preset-box-set {
+  background: var(--content-bg);
+  padding: 3px 10px;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: .5s;
+
+}
+
+.preset-box-set:hover {
+  background: var(--theme-bg-color);
+  transition: .5s;
+}
+.preset-box-first {
+  background: rgba(0,0,0,0.1);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 14px;
+  transition: .5s;
+  opacity: .3;
+
+}
+.preset-box:hover {
+  transition: .5s;
+  opacity: 1;
+}
 
 #emoteModalUnderstand  {display: none;}
 #resetToDefaultUnderstand {display: none;}
@@ -1055,8 +1146,8 @@ input[type="interactive-chat-input"] {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.05); /* Black w/ opacity */
-  backdrop-filter: blur(6px);
+  background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
+  backdrop-filter: blur(12px);
 
   justify-content: center;
   align-items: center;
@@ -1064,15 +1155,19 @@ input[type="interactive-chat-input"] {
 
 /* Modal Content/Box */
 .modal-content {
-  background: linear-gradient(340deg, #e73c7e, #23a6d5, #23d5ab);
+  background: url("https://www.transparenttextures.com/patterns/60-lines.png"), linear-gradient(-45deg, #23d5ab, #ee7752, #e73c7e, #23a6d5);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  border-radius: 24px;
+  
    /* margin: 15% auto; 15% from the top and centered ; */ 
   padding: 20px;
-  border-radius: 14px;
-  box-shadow: 0px 0px 24px 4px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 14px 2px rgb(0 0 0 / 25%);
   color: #FFF;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 24px;
+  font-weight: 400;
   width: 80%; /* Could be more or less, depending on screen size */
+  text-align: center;
 }
 .modal-understand {
     font-size: 16px;
@@ -1374,4 +1469,19 @@ input[type="interactive-chat-input"] {
     transform: scale(0.95);
     transition: .5s;
     cursor: pointer;
+}
+
+.changetoleft {
+  background: url(images/swap.png) no-repeat center;
+  background-size: 16px 16px;
+  width: 16px; height: 16px;
+  display: inline-block;
+  float: right;
+  opacity: .5;
+  transition: .3s;
+}
+.changetoleft:hover {
+  transition: .3s;
+  transform: scale(1.1);
+  opacity: 1;
 }

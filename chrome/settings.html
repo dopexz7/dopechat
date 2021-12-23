@@ -8,8 +8,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
 <body>
-
-
+<div id="myModal" class="termmodal">
+      <!-- Modal content -->
+      <div class="modal-content" id="resetToDefaultUnderstand">
+        <p>Reset all settings and emotes to default?</p>
+        <div id="resetyes" class="modal-understand">Yes</div>
+        <div id="resetno" class="modal-understand">No</div>
+      </div>
+    </div>
+<div id="myModal2" class="termmodal">
+  <div class="modal-content" id="emoteModalUnderstand">
+    <p>Emote insertion only works when you have typed something in the chat input box.</p>
+    <div id="understand" class="modal-understand">I understand, don't show this again.</div>
+  </div>
+</div>
+<div id="myModal3" class="termmodal">
+  <div class="modal-content" id="presetsetx">
+    <p>Preset loaded.</p>
+  </div>
+</div>
 <div class="app">
  
  <div class="wrapper">
@@ -17,7 +34,9 @@
   <div class="left-side">
 
    <div class="side-wrapper">
-
+    <a id="change-to-left" class="changetoleft">
+      
+     </a>
     <div class="side-title">Main</div>
     <div class="side-menu">
      <a id="show-main-page">
@@ -75,14 +94,7 @@
      <a id="show-about">
       About
      </a>
-     <div id="myModal" class="termmodal">
-      <!-- Modal content -->
-      <div class="modal-content" id="resetToDefaultUnderstand">
-        <p>Reset all settings and emotes to default?</p>
-        <div id="resetyes" class="modal-understand">Yes</div>
-        <div id="resetno" class="modal-understand">No</div>
-      </div>
-    </div>
+     
      <a class="reset-defaults" id="resetdefaults">
       Reset to defaults
      </a>
@@ -104,7 +116,7 @@
      <div class="content-wrapper-context">
       <h3 class="img-content">
        
-       FB Gaming Better 0.3.1
+       FB Gaming Better 0.3.2
       </h3>
        <div class="content-text">Big overhaul, new features like popout chat, auto updating emote sets, multiple installable sets, minor improvements and more!</div>
       <button class="content-button" id="show-changelogx">Read changelog</button>
@@ -113,12 +125,7 @@
 
 <div id="emote-settings" class="hide">
 <div class="content-section">
-   <div id="myModal2" class="termmodal">
-       <div class="modal-content" id="emoteModalUnderstand">
-        <p>Emote insertion only works when you have typed something in the chat input box.</p>
-        <div id="understand" class="modal-understand">I understand, don't show this again.</div>
-      </div>
-    </div>
+   
         <div class="content-section-title">Enable emote menu</div>
      <ul>
           <div class="settings-inputs">
@@ -221,7 +228,8 @@
 
      </ul>
      
-     <div class="content-section-title">Chat appearance - click on an element - your chat looks like this</div>
+     <div class="content-section-title">Chat appearance</div>
+     <span class="inter-descrp">Click elements to change their appearance or choose a preset.</span>
         <div id="interactive-chat">
           <div class="interactive-chat-wrapper"> 
             <div class="interactive-chat-topbar interactive-chat-toggled-show"> 
@@ -401,7 +409,37 @@
               </div>
             </div>
           </div>
+          <div class="inter-presets">
+            <div class="inter-presets-title">PRESETS</div>
+              <div class="preset-grid"> 
+                <div class="preset-box border-top-left">
+                  <div class="preset-box-first">
+                    <span class="preset-text">twitch style</span>
+                    <div class="preset-box-set" id="preset-twitch">set</div>
+                  </div>
+                </div>
+                <div class="preset-box border-top-right" style="background: url(images/preset2.png) no-repeat; background-size:100% 100%;">
+                  <div class="preset-box-first">
+                    <span class="preset-text">topbar only</span>
+                    <div class="preset-box-set" id="preset-second">set</div>
+                  </div>
+                </div>
+                <div class="preset-box border-bottom-left" style="background: url(images/preset3.png) no-repeat; background-size:100% 100%;">
+                  <div class="preset-box-first">
+                    <span class="preset-text">third preset</span>
+                    <div class="preset-box-set" id="preset-third">set</div>
+                  </div>
+                </div>
+                <div class="preset-box border-bottom-right" style="background: url(images/preset4.png) no-repeat; background-size:100% 100%;">
+                  <div class="preset-box-first">
+                    <span class="preset-text">fourth preset</span>
+                    <div class="preset-box-set" id="preset-four">set</div>
+                  </div>
+                </div>
+              </div>
+          </div>
         </div>
+
     </div>
 </div>
 <div id="text-settings" class="hide">
@@ -662,6 +700,18 @@
       <li class="adobe-product">
         double click to open emote menu, so that it doesn't open while dragging
       </li>
+      <li class="adobe-product">
+        chat appearance presets
+      </li>
+      <li class="adobe-product">
+        fixed chat popout button not showing up when switching pages
+      </li>
+      <li class="adobe-product">
+        added version in popup menu instead of "welcome to fb gaming" update pages so you could follow updates
+      </li>
+      <li class="adobe-product">
+        minor improvements, fixes
+      </li>
       
 
 </div>
@@ -713,11 +763,7 @@
       <li class="adobe-product">
         minor improvements
       </li>
-      <li class="adobe-product">
-        it's recommended to reset your settings to defaults on update 0.3
-      </li>
       
-
 </div>
      </ul>
      
@@ -858,7 +904,7 @@
       </li>
       <li class="adobe-product">
         Version
-         <span style="display: flex;width:187px;margin-left:auto; justify-content:flex-end;align-items:center;">0.3.1</span>
+         <span style="display: flex;width:187px;margin-left:auto; justify-content:flex-end;align-items:center;">0.3.2</span>
       </li>
       
 
@@ -1130,11 +1176,7 @@ l8 -48 22 65 c34 98 72 167 123 222 47 50 106 88 138 88 16 0 16 -1 1 -18 -9
         
        </div>
       </li>
-      <li class="adobe-product">
-       <div class="products" style="font-size:12px;color:rgba(255, 255, 255, 0.6);">
-        These emote sets are automatically updated therefore you do not need to import any sets or update the extension to get an updated set.
-       </div>
-      </li>
+      
      
      </ul>
     </div>
@@ -1152,7 +1194,7 @@ l8 -48 22 65 c34 98 72 167 123 222 47 50 106 88 138 88 16 0 16 -1 1 -18 -9
        <span class="app-card__span">
         Emote sets
        </span>
-       <div class="app-card__subtext">If an emote set is updated, it will update 10minutes after watching a stream or when you refresh the page.</div>
+       <div class="app-card__subtext">If an emote set is updated, it will update 10 minutes after watching a stream or when you refresh the page.</div>
        
       </div>
       <div class="app-card">
