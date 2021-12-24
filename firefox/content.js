@@ -5,15 +5,18 @@ function addPopoutChat() {
     var popoutInterval = setInterval ((function () {   
     var elements = document.querySelectorAll('.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.jifvfom9.bp9cbjyn.owycx6da.btwxx1t3.jb3vyjys.nkwizq5d.scwd0bx6.hop8lmos.ggphbty4')[0];        
     var popbtn = document.getElementById('popbtn');
+
     if (elements && popbtn === null) {
         var popoutButton = document.createElement("div");
         popoutButton.classList.add('popoutbutton');
-        popoutButton.setAttribute('title', 'Popout chat');
         popoutButton.id = 'popbtn';
+        popoutButton.setAttribute('title', 'Popout chat');
         popoutButton.addEventListener('click', (function() {
             window.open(window.location.href);  
             var setChatPopout = setInterval ((function () {
+
                 try { 
+                
                     document.title = "Popout chat";
                     document.querySelectorAll('[role="banner"]')[0].style.display = "none";
                     document.querySelectorAll('[role="main"]')[0].style.display = "none"; 
@@ -23,7 +26,10 @@ function addPopoutChat() {
                     document.querySelectorAll('.be9z9djy')[0].style.top = '0';  
                     document.getElementsByClassName('popoutbutton')[0].style.display = "none";
                     document.querySelectorAll('.tw6a2znq.f10w8fjw.d1544ag0.pybr56ya.j83agx80.bp9cbjyn')[0].style.paddingBottom = '0';
+
                     clearInterval(setChatPopout);
+                
+            
                 } catch(e){
                 console.log(e);
                 }                  
@@ -31,7 +37,7 @@ function addPopoutChat() {
         }));
         elements.appendChild(popoutButton);
         clearInterval(popoutInterval);
-    }         
+    }           
     }), 1);
 }
 
@@ -73,43 +79,44 @@ setInterval ((function () {
             // ramee - 1 rated - 2 vader - 3
 
             let resultx = await rameeEmotes;
-            obj['currentRameeSet'] = resultx;
+            obj.currentRameeSet = resultx;
             let result2 = await ratedEmotes;
-            obj['currentRatedSet'] = result2;
+            obj.currentRatedSet = result2;
             let result3 = await vaderEmotes;
-            obj['currentVaderSet'] = result3;
+            obj.currentVaderSet = result3;
             storage.set(obj);
             storage.get(['SETS', 'SET'], function(result) {
                 var x = result.SETS;
                 //var array = result.SET;
+                var newArr;
                 if (x !== undefined) {
                     if (x.includes(1) && x.includes(2) && x.includes(3)) { // if 1,2 and 3
-                    var newArr = resultx.concat(result2, result3);
+                    newArr = resultx.concat(result2, result3);
                     newArr = newArr.filter((item,index)=>{
-                        return (newArr.indexOf(item) == index)
-                    })  
+                        return (newArr.indexOf(item) == index);
+                    });  
                 } else if(x.includes(1) && x.includes(2) && x.includes(3) !== true) { // if 1 and 2, but not 3
-                    var newArr = resultx.concat(result2);
+                    newArr = resultx.concat(result2);
                     newArr = newArr.filter((item,index)=>{
-                        return (newArr.indexOf(item) == index)
-                    })  
+                        return (newArr.indexOf(item) == index);
+                    });  
                 } else if(x.includes(1) && x.includes(3) && x.includes(2) !== true) { // if 1 and 3, but not 2
-                    var newArr = resultx.concat(result3);
+                    newArr = resultx.concat(result3);
                     newArr = newArr.filter((item,index)=>{
-                        return (newArr.indexOf(item) == index)
-                    })  
+                        return (newArr.indexOf(item) == index);
+                    });  
                 } else if(x.includes(2) && x.includes(3) && x.includes(2) !== true) { // if 2 and 3, but not 1
-                    var newArr = result2.concat(result3);
+                    newArr = result2.concat(result3);
                     newArr = newArr.filter((item,index)=>{
-                        return (newArr.indexOf(item) == index)
-                    })  
+                        return (newArr.indexOf(item) == index);
+                    });  
                 } else if(x.includes(1) || x.includes(2) || x.includes(3)) {
                     if(x.includes(1) && x.includes(2) !== true && x.includes(3) !== true) {
-                        var newArr = resultx;
+                        newArr = resultx;
                     } else if(x.includes(2) && x.includes(1) !== true && x.includes(3) !== true) {
-                        var newArr = result2;
+                        newArr = result2;
                     } else if(x.includes(3) && x.includes(2) !== true && x.includes(1) !== true) {
-                        var newArr = result3;
+                        newArr = result3;
                     }
                 }
                 obj.SET = newArr;
@@ -118,18 +125,18 @@ setInterval ((function () {
                 //setswap(); //refreshes emotes
                 }
             });
-        };
+        }
 
 
 
 
 
-
+        var emotes;
 
         storage.get(['currentRameeSet', 'currentRatedSet', 'currentVaderSet'], function(result) {
            jQuery.getJSON("https://dopexz7.github.io/emotes/ramee.json?r=" + Math.random(), function(response) {
                 emotes = response;
-                if(result['currentRameeSet'] !== emotes) {
+                if(result.currentRameeSet !== emotes) {
                     dopeFunction();
                     //setswap(); //use changed emote set
                 }
@@ -137,7 +144,7 @@ setInterval ((function () {
             });
            jQuery.getJSON("https://dopexz7.github.io/emotes/rated.json?r=" + Math.random(), function(response) {
                 emotes = response;
-                if(result['currentRatedSet'] !== emotes) {
+                if(result.currentRatedSet !== emotes) {
                     dopeFunction();
                     //setswap(); //use changed emote set
                 }
@@ -145,7 +152,7 @@ setInterval ((function () {
             });
            jQuery.getJSON("https://dopexz7.github.io/emotes/vader.json?r=" + Math.random(), function(response) {
                 emotes = response;
-                if(result['currentVaderSet'] !== emotes) {
+                if(result.currentVaderSet !== emotes) {
                     dopeFunction();
                     //setswap(); //use changed emote set
                 }
@@ -210,7 +217,11 @@ setInterval ((function () {
 
         var currentvol = Math.round(video.volume * 100); 
         //document.querySelector('.k4urcfbm.j9ispegn.pmk7jnqg.pcp91wgn.iuny7tx3.p8fzw8mz.ipjc6fyt.rq0escxv.pqc7ok08').style.opacity = '0';
-        document.querySelector('.k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s').style.height = currentvol + '%';
+        var volSlider = document.querySelector('.k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s');
+        if(volSlider !== null && volSlider !== undefined) {
+            volSlider.style.height = currentvol + '%';
+        }
+        
 
         
         
@@ -379,29 +390,28 @@ setInterval ((function () {
                     }
             }));
         }
-        function chatOnLeftSide() {
-            storage.get('chatOnLeft', (function(result) {
-                if (result.chatOnLeft === 'on') {
-                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.position = 'fixed';
-                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.left = '0';
-                    document.querySelector('.hybvsw6c.j83agx80.pfnyh3mw.dp1hu0rb.l9j0dhe7.o36gj0jk').style.maxWidth = '0';
-                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.left = '';
-                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.maxWidth = '82%';
-                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.position = 'fixed';
-                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.right = '0';
+        // function chatOnLeftSide() {
+        //     storage.get('chatOnLeft', (function(result) {
+        //         if (result.chatOnLeft === 'on') {
+        //             document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.position = 'fixed';
+        //             document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.left = '0';
+        //             document.querySelector('.hybvsw6c.j83agx80.pfnyh3mw.dp1hu0rb.l9j0dhe7.o36gj0jk').style.maxWidth = '0';
+        //             document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.left = '';
+        //             document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.maxWidth = '82%';
+        //             document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.position = 'fixed';
+        //             document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.right = '0';
 
-                     //document.querySelector('.pphwfc2g ').style.minHeight = '0';
-                    } else {
-                    //document.querySelector('.hybvsw6c.j83agx80.pfnyh3mw.dp1hu0rb.l9j0dhe7.o36gj0jk').style.maxWidth = '0';
-                    //document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.position = 'relative';
-                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.left = '';
-                    document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.right = '0';
-                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.right = '';
-                    document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.left = '0';
-                    }
-            }));
-        }
-
+        //              //document.querySelector('.pphwfc2g ').style.minHeight = '0';
+        //             } else {
+        //             //document.querySelector('.hybvsw6c.j83agx80.pfnyh3mw.dp1hu0rb.l9j0dhe7.o36gj0jk').style.maxWidth = '0';
+        //             //document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.position = 'relative';
+        //             document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.left = '';
+        //             document.querySelector('.hybvsw6c.j83agx80.n7fi1qx3.cbu4d94t.pad24vr5.poy2od1o.iyyx5f41.ap132fyt.pphwfc2g.be9z9djy').style.right = '0';
+        //             document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.right = '';
+        //             document.querySelector('.j83agx80.cbu4d94t.d2edcug0').style.left = '0';
+        //             }
+        //     }));
+        // }
 
         function storageSetValueSettings(resultValue, styleRootValue, defaultValue) {
             storage.get(resultValue, (function(result) {
@@ -454,42 +464,36 @@ setInterval ((function () {
                         document.documentElement.style.setProperty('--messagestyle', 'none');
                 } 
             }));
-
-            
         }
         storageSetValueChatWidth('changeChatWidth', '--chatwidth', '354px');
         function setHighlightWords() {
             var newc = [];
             storage.get(['highlightEnable', 'highlightKeywords', 'highlightColor', 'highlightOpacity'],  (function(result) {
-            	if (result.highlightEnable !== undefined && result.highlightEnable !== 'off') {
-            		if (result.highlightKeywords && result.highlightColor) {
-	                    newc = result.highlightKeywords.split(",");
-	                    for (var x=0; x<messageElement.length; x++) {
-	                        messageElement[x].style.backgroundColor = 'transparent';
-	                        messageElement[x].style.opacity = '1';
-	                        messageElement[x].style.transform = "none";
-	                        var textassplit = messageElement[x].textContent.split(" ");
-	                        for (var l=0; l<textassplit.length; l++) {
-	                            for (var j=0; j<newc.length; j++) {
-	                                if (textassplit[l].includes(newc[j])) {
-	                                    messageElement[x].style.transform = "scale(1.02)";
-	                                    messageElement[x].style.opacity = result.highlightOpacity;
-	                                    messageElement[x].style.backgroundColor = result.highlightColor;
+                if (result.highlightEnable !== undefined && result.highlightEnable !== 'off') {
+                    if (result.highlightKeywords && result.highlightColor) {
+                        newc = result.highlightKeywords.split(",");
+                        for (var x=0; x<messageElement.length; x++) {
+                            messageElement[x].style.backgroundColor = 'transparent';
+                            messageElement[x].style.opacity = '1';
+                            messageElement[x].style.transform = "none";
+                            var textassplit = messageElement[x].textContent.split(" ");
+                            for (var l=0; l<textassplit.length; l++) {
+                                for (var j=0; j<newc.length; j++) {
+                                    if (textassplit[l].includes(newc[j])) {
+                                        messageElement[x].style.transform = "scale(1.02)";
+                                        messageElement[x].style.opacity = result.highlightOpacity;
+                                        messageElement[x].style.backgroundColor = result.highlightColor;
 
-	                                }
-	                            }  
-	                        }      
-	                    }          
-                	}  
-            	} else {
-            		for (var x=0; x<messageElement.length; x++) {
-            		messageElement[x].style.backgroundColor = 'transparent';
-            	}
-            	}
-             
-
-
-
+                                    }
+                                }  
+                            }      
+                        }          
+                    }  
+                } else {
+                    for (var p=0; p<messageElement.length; p++) {
+                      messageElement[p].style.backgroundColor = 'transparent';
+                    }
+                }
             }));
             
         }
@@ -529,7 +533,7 @@ setInterval ((function () {
                 } else if (result.chatSplittingEnable === 'off' || result.messageSeperate === undefined) {
                     document.documentElement.style.setProperty('--messageSeparateBorder', "0");
                 } else {
-                	document.documentElement.style.setProperty('--messageSeparateBorder', "0");
+                    document.documentElement.style.setProperty('--messageSeparateBorder', "0");
                 }
                 
             }));       
@@ -545,13 +549,6 @@ setInterval ((function () {
         emoteButton.addEventListener('dblclick', (function() {
             showemotes();             
         }));
-
-
-        
-
-
-
-
 
         tabBlock.appendChild(emoteButton);
         var alltable1 = document.createElement('div');
@@ -619,54 +616,52 @@ setInterval ((function () {
                 if (result.emoteMenuCheck === 'on') {
                     setTimeout(appendTabBlock, 3000);
                 }
-            }))
+            }));
         }
         emoteMenuEnable();
         
-        setInterval (
-            (function () {     
-                try {    
-                    chatTopBarEnable();
-                    chatLikeReplyEnable();
-                    chatCommentReactsE();
-                    chatThreeDotsE();
-                    hideChatReplies()
-                    //chatOnLeftSide();
-                    storageSetValueInterval();
-                    volumeScrollEnable();
-                    
-                    
-                    } catch(e) {
-                     console.log(e);
-                    }  
-            }), 2000);
-                // Random Colors func
-                function getRandomColor(){
-                    return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
+        setInterval ((function () {     
+            try {    
+                chatTopBarEnable();
+                chatLikeReplyEnable();
+                chatCommentReactsE();
+                chatThreeDotsE();
+                hideChatReplies();
+                //chatOnLeftSide();
+                storageSetValueInterval();
+                volumeScrollEnable();
+                
+                
+            } catch(e) {
+                console.log(e);
+            }  
+        }), 1000);
+        
+        function getRandomColor(){
+            return "hsl(" + 360 * Math.random() + ',' + (50 + 50 * Math.random()) + '%,' + (40 + 40 * Math.random()) + '%)';
+        }
+
+        var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql");
+        var messageElement = document.getElementsByClassName("l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl");
+        var userNameColors = {};
+
+
+
+        var obvchat = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation){
+                if(mutation.addedNodes.length){
+                    usernameElementInterval();
+                    setHighlightWords(); 
+                    seperateChatMessages();
                 }
-
-                var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql");
-                //var usernameElement = document.getElementsByClassName("d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j keod5gw0 nxhoafnm aigsh9s9 d9wwppkn fe6kdd0r mau55g9w c8b282yb mdeji52x sq6gx45u j5wam9gi lrazzd5p oo9gr5id");
-                var messageElement = document.getElementsByClassName("l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl");
                 
-
-                //var textonlyElement = document.getElementsByClassName("kvgmc6g5 cxmmr5t8 oygrvhab hcukyx3x c1et5uql");
-                
-                var userNameColors = {};
-
-                setInterval ((function () {
-
-                    try { 
-	                   usernameElementInterval();
-	                   setHighlightWords(); 
-                        seperateChatMessages();
-                    } catch(e){
-                    console.log(e);
-                    }                   
-                }), 1);
+            });        
+        });
+        obvchat.observe(document.body, {childList: true, subtree: true});
+        
     }
 
-
+    
     var emotes = []; //array for emote objects
     chrome.storage.local.get(['SET'], (function(result) { //get custom emotes at page load
         emotes = result.SET; //used saved emote set
