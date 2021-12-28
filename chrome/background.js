@@ -7,9 +7,7 @@
                     chrome.storage.local.set({ SET: emotes }); //save default set
                 }
             });  
-        }
-        
-        
+        }        
     });
 
 }());

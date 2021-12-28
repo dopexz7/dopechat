@@ -124,6 +124,21 @@ span.emote_wrapper:hover span.tooltiptext {
 .popoutbutton:hover {
 	background-color: rgba(255,255,255,0.1) ;
 }
+.theatrebutton {
+	background: url(images/theatre.png) no-repeat center;
+	background-size: 20px 20px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 50%;
+}
+.theatrebutton:hover {
+	background-color: rgba(255,255,255,0.1) ;
+}
+
+
+
 .bkyfam09.cbu4d94t.j83agx80 {
 	background: var(--chatbg);
 }
@@ -911,16 +926,57 @@ display:none;
 border-radius:6px;
 left:-250px;
 background: rgba(0,0,0,0.4);
+background-size: 400% 400%;
 backdrop-filter: blur(6px);
 top:200px;
 position:absolute;
 font-size:11px;
 width:200px;
+
 padding:3px;
 border:0;
+color: #FFF;
 }
+
+#emoteInput::placeholder {
+	color: #FFF !important;
+}
+
+.emoteModal {
+	position: fixed;
+
+	z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.1); /* Black w/ opacity */
+  backdrop-filter: blur(12px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+
+}
+.emoteModal-content {
+	background: url("https://www.transparenttextures.com/patterns/60-lines.png"), linear-gradient(-45deg, #23d5ab, #ee7752, #e73c7e, #23a6d5);
+  	background-size: 400% 400%;
+  	border-radius: 24px;
+  
+   /* margin: 15% auto; 15% from the top and centered ; */ 
+  padding: 20px;
+  box-shadow: 0px 0px 14px 2px rgb(0 0 0 / 25%);
+  color: #FFF;
+  font-size: 24px;
+  font-weight: 400;
+  width: 80%; /* Could be more or less, depending on screen size */
+  text-align: center;
+}
+
+
 
 
 .d2edcug0.hpfvmrgz.qv66sw1b.c1et5uql.lr9zc1uh.a8c37x1j.keod5gw0.nxhoafnm.aigsh9s9.d9wwppkn.fe6kdd0r.mau55g9w.c8b282yb.mdeji52x.sq6gx45u.j5wam9gi.lrazzd5p.q66pz984 {
 	display: none;
 }
+

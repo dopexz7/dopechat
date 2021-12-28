@@ -114,9 +114,8 @@
    <div class="content-wrapper">
     <div class="content-wrapper-header">
      <div class="content-wrapper-context">
-      <h3 class="img-content">
-       
-       FB Gaming Better 0.3.2
+      <h3 class="img-content" id="header-title-version">
+       FB Gaming Better
       </h3>
        <div class="content-text">Big overhaul, new features like popout chat, auto updating emote sets, multiple installable sets, minor improvements and more!</div>
       <button class="content-button" id="show-changelogx">Read changelog</button>
@@ -693,6 +692,28 @@
 
 <div id="changelog" class="hide">
 <div class="content-section">
+  <div class="content-section-title">0.3.3</div>
+     <ul>
+          <div class="settings-inputs">
+
+      <li class="adobe-product">
+        theatre mode (next to popout chat button or ALT+T keyboard shortcut)
+      </li>
+      <li class="adobe-product">
+        performance improvements:
+      </li>
+      <li class="adobe-product" style="white-space: normal">
+        -chat appearance doesn't check for new values every second anymore, so it won't update live, but either after something has changed in the page like a new message typed in chat,
+        or you refresh the page
+      </li>
+      <li class="adobe-product" style="white-space: normal">
+        -random username coloring doesn't check every half a second anymore, it now detects if there's a new message in chat and updates instantly
+      </li>
+      <li class="adobe-product" style="white-space: normal">
+        -popout chat should work a bit faster now
+      </li>
+</div>
+     </ul>
   <div class="content-section-title">0.3.2</div>
      <ul>
           <div class="settings-inputs">
@@ -904,7 +925,7 @@
       </li>
       <li class="adobe-product">
         Version
-         <span style="display: flex;width:187px;margin-left:auto; justify-content:flex-end;align-items:center;">0.3.2</span>
+         <span style="display: flex;width:187px;margin-left:auto; justify-content:flex-end;align-items:center;" id="about-version"></span>
       </li>
       
 

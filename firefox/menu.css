@@ -200,7 +200,7 @@ border-radius:50%;
 transition:.3s;
 }
 input[type="checkbox"] {
-  display: none;
+	display: none;
 }
 #onswitch:checked ~ .slider {
 background-color:rgba(16, 18, 27, 0.4);

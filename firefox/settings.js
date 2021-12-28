@@ -2,6 +2,9 @@ var obj = {};
 var storage = chrome.storage.local;
 var otherobj = {};
 
+document.getElementById('header-title-version').textContent += chrome.runtime.getManifest().version;
+document.getElementById('about-version').textContent = chrome.runtime.getManifest().version;
+
 document.getElementById('change-to-left').addEventListener('click', function() {
 	var element = document.getElementsByClassName('wrapper')[0];
 	
@@ -13,6 +16,7 @@ document.getElementById('change-to-left').addEventListener('click', function() {
 
 	}
 });
+
 
 function setswap() { //use changed emote set in current tabs
     chrome.tabs.query({}, (function(tabs) {

@@ -60,7 +60,7 @@ document.getElementById('manage').addEventListener("mouseout", function() {
     document.getElementById('settings-h').style.opacity = "0";
     document.getElementById('settings-h').style.fontSize = "6px";
 });
-
+document.getElementById('extension-version').textContent = chrome.runtime.getManifest().version;
 // document.getElementById('active-set').addEventListener("mouseover", function() {
 //     document.getElementById('emote-h').style.opacity = "1";
 //     document.getElementById('emote-h').style.fontSize = "13px";
