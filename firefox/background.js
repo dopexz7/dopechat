@@ -7,7 +7,16 @@
                     chrome.storage.local.set({ SET: emotes }); //save default set
                 }
             });  
-        }
+        } else if(details.reason == 'update') {
+            chrome.storage.local.get('vers033', function(result){
+                if(!result.vers033) {
+                    chrome.tabs.create({url: "update.html"});
+                    chrome.storage.local.set({ vers033: 'dontdisplaythisshit' });
+                }
+                
+            });
+            
+        }       
     });
 
 }());

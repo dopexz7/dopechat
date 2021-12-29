@@ -378,7 +378,6 @@ setInterval ((function () {
                 for (var i = 0; i < emotes.length; i++) {
                 var imga = document.createElement('a');
                 imga.id = emotes[i].code;
-                imga.className = "_5zfs";
                 imga.setAttribute('role','button');
                 imga.setAttribute('data-title', emotes[i].code);
                 var img = document.createElement("img");

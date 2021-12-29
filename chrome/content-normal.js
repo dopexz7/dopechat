@@ -64,7 +64,6 @@ window.addEventListener('keydown', function(e) {
     
 });
 
-
 function addTheatherMode() {
 
     var elements = document.querySelectorAll('.rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.jifvfom9.bp9cbjyn.owycx6da.btwxx1t3.jb3vyjys.nkwizq5d.scwd0bx6.hop8lmos.ggphbty4')[0];        
@@ -385,7 +384,6 @@ setInterval ((function () {
                 for (var i = 0; i < emotes.length; i++) {
                 var imga = document.createElement('a');
                 imga.id = emotes[i].code;
-                imga.className = "_5zfs";
                 imga.setAttribute('role','button');
                 imga.setAttribute('data-title', emotes[i].code);
                 var img = document.createElement("img");
