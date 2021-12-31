@@ -8,10 +8,10 @@
                 }
             });  
         } else if(details.reason == 'update') {
-            chrome.storage.local.get('vers033', function(result){
-                if(!result.vers033) {
+            chrome.storage.local.get('vers034', function(result){
+                if(!result.vers034) {
                     chrome.tabs.create({url: "update.html"});
-                    chrome.storage.local.set({ vers033: 'dontdisplaythisshit' });
+                    chrome.storage.local.set({ vers034: 'dontdisplaythisshit' });
                 }
                 
             });

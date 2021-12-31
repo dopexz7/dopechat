@@ -1,9 +1,81 @@
 var obj = {};
 var storage = chrome.storage.local;
 var otherobj = {};
-
-document.getElementById('header-title-version').textContent += chrome.runtime.getManifest().version;
+document.getElementById('updateCurrentVersion').textContent = chrome.runtime.getManifest().version;
 document.getElementById('about-version').textContent = chrome.runtime.getManifest().version;
+  
+function importExport(btnid, text) {
+		var modal = document.getElementById("myModal4");
+	    var modalcontent = document.getElementById('exportimport');
+	    document.getElementById('exportimporttext').textContent = text;
+	    modal.style.display = "flex";
+	    modalcontent.style.display = "block";
+	    function dopexz() {
+	    	modal.style.display = "none";
+	        location.reload();
+	        return false;
+	    }
+	    setTimeout(dopexz, 1000);
+}
+
+document.getElementById("exportsettings").addEventListener('click', function() { //export settings
+	var savelink = null;  
+	chrome.storage.local.get(null, function(items) {
+	    var allKeys = Object.keys(items);
+	    var val = Object.values(items);
+	    var result = {};
+		allKeys.forEach((key, i) => result[key] = val[i]);
+		if (savelink) {
+    	URL.revokeObjectURL(savelink);
+	    }
+	    var blob = new Blob([JSON.stringify(result)], { type: "text/plain;charset=utf-8" });
+	    savelink = URL.createObjectURL(blob);
+	    var a = document.createElement("a");
+	    a.setAttribute("href", savelink);
+	    a.setAttribute("download",  "v" + chrome.runtime.getManifest().version + "FBGamingBetter.settings");
+	    document.body.appendChild(a); 
+	    a.click(); 
+	    a.remove();
+	});
+	var modal = document.getElementById("myModal4");
+    var modalcontent = document.getElementById('exportimport');
+    document.getElementById('exportimporttext').textContent = 'Exported settings';
+    modal.style.display = "flex";
+    modalcontent.style.display = "block";
+    function dopexz() {
+    	modal.style.display = "none";
+    }
+    setTimeout(dopexz, 1000);
+});
+
+function importSettings(file) {
+	for (const [key, value] of Object.entries(file)) {
+		if(key !== 'SET' && key !== 'SETS' && key !== 'currentRameeSet' && key !== 'currentRatedSet' && key !== 'currentVaderSet' && key !== 'using' && key !== 'setDate') {
+			obj[key] = value;
+			storage.set(obj)
+		}
+	}
+	importExport("importsettings", "Imported settings");
+}
+document.getElementById("importsettings").addEventListener('change', function(event) {
+        var reader = new FileReader();
+        reader.onload = function() {
+            try {
+                var loaded = JSON.parse(reader.result);
+                if (loaded && typeof loaded === "object") {
+                    chrome.storage.local.set({ SET: loaded }, function() {
+                        importSettings(loaded);
+                    });
+                }
+                
+            }
+            catch (e) {
+                console.log(e)
+            }
+        };
+        reader.readAsText(event.target.files[0]);
+        document.getElementById("importsettings").value = "";
+    });
 
 document.getElementById('change-to-left').addEventListener('click', function() {
 	var element = document.getElementsByClassName('wrapper')[0];
@@ -605,7 +677,12 @@ storage.get('emoteMenuCheckModal', function(result) {
     });
 
 storage.get('SET', function(result){
-	document.getElementById('emoteCount').innerText = result.SET.length;
+	if (result.SET) {
+		document.getElementById('emoteCount').innerText = result.SET.length;
+	} else {
+		document.getElementById('emoteCount').innerText = "0"
+	}
+	
 });
 function listremove(s, i, el) { //add functionality to the emote delete buttons
         el.addEventListener('click', (function rmv() {

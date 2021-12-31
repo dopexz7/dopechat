@@ -304,9 +304,48 @@ body.light-mode:before, body.light-mode .video-bg:before {
   color: var(--inactive-color);
   margin-bottom: 14px;
 }
-.reset-defaults {
-  
-  color: #eb3b5a !important;
+
+.about-buttons-div {
+  display: flex;
+  width: 100%;
+  flex-flow: row;
+  background: var(--content-bg);
+  padding: 15px;
+  border-radius: 14px;
+  margin-top: 5px;
+  border: 1px solid var(--theme-bg-color);
+}
+.about-buttons {
+  background: #23a6d5;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  padding: 13px;
+  justify-content: center;
+  border-radius: 24px;
+  margin:5px;
+  transition: .5s;
+}
+.about-buttons-res {
+  background-color: #eb3b5a;
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  padding: 13px;
+  justify-content: center;
+  border-radius: 24px;
+  margin:5px;
+  transition: .5s;
+}
+.about-buttons-res:hover {
+  transform: scale(0.97);
+  transition: .5s;
+  background: var(--theme-bg-color);
+  }
+.about-buttons:hover {
+  transform: scale(0.97);
+  transition: .5s;
+  background: var(--theme-bg-color);
 }
 .side-menu {
   display: flex;
@@ -334,9 +373,10 @@ body.light-mode:before, body.light-mode .video-bg:before {
 .main-header {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
   height: 58px;
   flex-shrink: 0;
+  background: var(--theme-bg-color);
 }
 .main-header-logo {
   color: #FFF;
@@ -353,11 +393,7 @@ body.light-mode:before, body.light-mode .video-bg:before {
   padding: 0 30px;
   cursor: initial;
 }
-@media screen and (max-width: 1055px) {
-  .menu-link-main {
-    display: none;
-  }
-}
+
 .content-wrapper {
   display: flex;
   flex-direction: column;
@@ -1299,8 +1335,7 @@ input[type="interactive-chat-input"] {
   margin: 0 auto;
   width: 100%;
   height: auto;
-  max-height: 450px;
-  
+  max-height: 550px;
   border-radius: 6px;
   padding: 20px 40px;
   flex-flow: column;
@@ -1311,6 +1346,7 @@ input[type="interactive-chat-input"] {
   font-size: 42px;
   display: block;
   margin: 0;
+  color: var(--theme-color);
   text-align: center;
   padding: 10px;
 }

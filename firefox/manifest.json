@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "FB Gaming Better ",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "description": "Emotes + Chat Extension with Settings",
     "icons": {
         "128": "icons/ico.png"

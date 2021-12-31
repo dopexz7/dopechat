@@ -27,6 +27,14 @@
     <p>Preset loaded.</p>
   </div>
 </div>
+<div id="myModal4" class="termmodal">
+  <div class="modal-content" id="exportimport">
+    <p id="exportimporttext"></p>
+  </div>
+</div>
+<div class="img-content-update">
+       FB Gaming Better <span class="update-version" id="updateCurrentVersion"></span>
+      </div>
 <div class="app">
  
  <div class="wrapper">
@@ -90,14 +98,10 @@
    <div class="side-wrapper">
     <div class="side-title">Other</div>
     <div class="side-menu">
-     
      <a id="show-about">
       About
      </a>
      
-     <a class="reset-defaults" id="resetdefaults">
-      Reset to defaults
-     </a>
     </div>
 
    </div>
@@ -105,17 +109,12 @@
   </div>
 
   <div class="main-container">
-   <div class="main-header">
-
-    <a class="menu-link-main" id="breadcrumb">Main page</a>
-    <span class="main-header-logo" style="margin-right: 45px;display: flex;width:187px;margin-left:auto; justify-content:flex-end; align-items:center;">FB Gaming Better</span>
-    
-   </div>
+   
    <div class="content-wrapper">
     <div class="content-wrapper-header">
      <div class="content-wrapper-context">
-      <h3 class="img-content" id="header-title-version">
-       FB Gaming Better
+      <h3 class="img-content">
+       Latest updates
       </h3>
        <div class="content-text">Big overhaul, new features like popout chat, auto updating emote sets, multiple installable sets, minor improvements and more!</div>
       <button class="content-button" id="show-changelogx">Read changelog</button>
@@ -692,6 +691,29 @@
 
 <div id="changelog" class="hide">
 <div class="content-section">
+  <div class="content-section-title">0.3.4</div>
+     <ul>
+          <div class="settings-inputs">
+      <li class="adobe-product">
+        improved settings page with a better logo and top bar
+      </li>
+      <li class="adobe-product">
+        about page:
+      </li>
+      <li class="adobe-product">
+        -export chat appearance settings
+      </li>
+      <li class="adobe-product">
+        -import chat appearance settings
+      </li>
+      <li class="adobe-product">
+        -moved reset to default settings to about page
+      </li>
+      <li class="adobe-product">
+        minor improvements
+      </li>
+</div>
+     </ul>
   <div class="content-section-title">0.3.3</div>
      <ul>
           <div class="settings-inputs">
@@ -917,12 +939,6 @@
         <a class="content-button status-button" href="https://discord.com/channels/115255804298395651/916014345941573683" target="_blank">here</a>
        </div>
       </li>
-
-
-      <li class="adobe-product">
-        Created by
-         <span style="display: flex;width:187px;margin-left:auto; justify-content:flex-end; align-items:center;">dope, with the help of BeMyFriend</span>
-      </li>
       <li class="adobe-product">
         Version
          <span style="display: flex;width:187px;margin-left:auto; justify-content:flex-end;align-items:center;" id="about-version"></span>
@@ -931,7 +947,19 @@
 
 </div>
      </ul>
-     
+     <div class="about-buttons-div">
+     <div class="about-buttons" id="exportsettings">
+      Export settings
+     </div>
+
+
+     <label for="importsettings" class="about-buttons">Import settings</label>
+      <input type="file" id="importsettings" accept=".settings" style="display:none">
+
+     <div class="about-buttons-res" id="resetdefaults">
+      Reset to defaults
+     </div>
+   </div>
 
     </div>
 
@@ -1228,7 +1256,13 @@ l8 -48 22 65 c34 98 72 167 123 222 47 50 106 88 138 88 16 0 16 -1 1 -18 -9
 </div>
     </div>
    </div>
+<div class="main-header">
+
+    <a class="menu-link-main" id="breadcrumb">Main page</a>
+    <span class="main-header-logo" style="margin-right: 45px;display: flex;width:187px;margin-left:auto; justify-content:flex-end; align-items:center;">© dope, 2021</span>
+   </div>
   </div>
+
  </div>
  <div class="overlay-app"></div>
 </div>
