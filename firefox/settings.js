@@ -50,7 +50,7 @@ document.getElementById("exportsettings").addEventListener('click', function() {
 
 function importSettings(file) {
 	for (const [key, value] of Object.entries(file)) {
-		if(key !== 'SET' && key !== 'SETS' && key !== 'currentRameeSet' && key !== 'currentRatedSet' && key !== 'currentVaderSet' && key !== 'using' && key !== 'setDate') {
+		if(key !== 'currentRameeSet' && key !== 'currentRatedSet' && key !== 'currentVaderSet' && key !== 'using') {
 			obj[key] = value;
 			storage.set(obj)
 		}
