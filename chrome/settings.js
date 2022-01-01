@@ -52,7 +52,7 @@ function importSettings(file) {
 	for (const [key, value] of Object.entries(file)) {
 		if(key !== 'currentRameeSet' && key !== 'currentRatedSet' && key !== 'currentVaderSet' && key !== 'using') {
 			obj[key] = value;
-			storage.set(obj)
+			storage.set(obj);
 		}
 	}
 	importExport("importsettings", "Imported settings");
@@ -70,7 +70,7 @@ document.getElementById("importsettings").addEventListener('change', function(ev
                 
             }
             catch (e) {
-                console.log(e)
+                console.log(e);
             }
         };
         reader.readAsText(event.target.files[0]);
@@ -680,7 +680,7 @@ storage.get('SET', function(result){
 	if (result.SET) {
 		document.getElementById('emoteCount').innerText = result.SET.length;
 	} else {
-		document.getElementById('emoteCount').innerText = "0"
+		document.getElementById('emoteCount').innerText = "0";
 	}
 	
 });
@@ -828,7 +828,7 @@ const setPreset = (btnid) => {
 	    }
 	    setTimeout(dopexz, 1000);
 	});
-}
+};
 
 setPreset('preset-twitch');
 setPreset('preset-second');
