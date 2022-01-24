@@ -1,20 +1,19 @@
 {
    "action": {
-      "default_popup": "menu.html"
+      "default_popup": "pages/menu.html"
    },
    "background": {
       "service_worker": "background.js"
    },
    "web_accessible_resources": [
     {
-      "resources": ["content_new.css", "images/kekw.png", "images/popout.png", "images/theatre.png"],
+      "resources": ["content_new.css", "images/*", "modules/*", "pages/images/*", "pages/*"],
       "matches": [ "https://*.facebook.com/*" ]
     }
  ],
    "content_scripts": [ {
       "all_frames": true,
-      "css": ["content.css"],
-      "js": ["content.js", "jquery-3.6.0.min.js"],
+      "js": ["content.js", "pages/jquery-3.6.0.min.js"],
       "matches": [ "*://*.facebook.com/*videos/*"],
       "run_at": "document_end"
    } ],

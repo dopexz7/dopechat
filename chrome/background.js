@@ -10,7 +10,7 @@
         } else if(details.reason == 'update') {
             chrome.storage.local.get('vers034', function(result){
                 if(!result.vers034) {
-                    chrome.tabs.create({url: "update.html"});
+                    chrome.tabs.create({url: "pages/update.html"});
                     chrome.storage.local.set({ vers034: 'dontdisplaythisshit' });
                 }
                 

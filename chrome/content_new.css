@@ -980,3 +980,175 @@ color: #FFF;
 	display: none;
 }
 
+
+/*.j83agx80.bvz0fpym.c1et5uql {display: none} hides notify messages but also hides the channel's stickers */
+
+.sidebar-togglebtn {
+	background: url(images/sidebar.png) no-repeat center;
+	width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+    position: absolute;
+    right: 0;
+    bottom: 50%;
+    transition: .3s;
+    opacity: .5;
+    border-radius: 6px;
+    padding: 9px;
+    z-index: 1000;
+
+}
+.sidebar-togglebtn:hover {
+	background: rgba(255,255,255,0.1) url(images/sidebar.png) no-repeat center;
+	width: 24px;
+    height: 24px;
+    background-size: 24px 24px;
+	transition: .3s;
+}
+
+.streamer-live-sidebar {
+	display: flex;
+	flex-flow: column;
+	color: #FFF;
+	height: 100%;
+	width: 16rem;
+	position: absolute;
+	left: 0;
+	overflow-y: auto;
+	background: transparent;
+    transition: .3s;
+    transform: translateX(-90%);
+}
+.streamer-live-name {
+	width: 100%;
+}
+
+.sidebar-content {
+	padding: 5px;
+    display: flex;
+    flex-flow: column;
+    gap: 25px;
+    font-weight: 400;
+    opacity: 0;
+
+}
+
+.sidebar-content ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+.sidebar-content ul li {
+  cursor: pointer;
+    padding: 9px;
+    list-style-type: none;
+    font-size: 5px;
+    transition: 0.3s;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    width: 70%;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+.sidebar-content ul li:nth-child(odd) {
+}
+
+/* Darker background-color on hover */
+.sidebar-content ul li:hover {
+  
+}
+
+/* Style the close button */
+.close {
+  padding: 4px 8px;
+  margin-left: auto;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background-color: #eb3b5a;
+}
+
+/* Style the header */
+.header {
+  color: white;
+  text-align: center;
+}
+
+/* Clear floats after the header */
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input[type=inputStreamer] {
+	margin: 0;
+	border: none;
+	padding: 10px;
+	font-size: 13px;  
+    color: #FFF;
+    float: left;
+    background: rgba(255,255,255,0.03);
+    border-radius: 14px;
+}
+input[type=inputStreamer]::placeholder {
+	color: #FFF;
+}
+input[type=inputStreamer]::focus {
+	background: rgba(255,255,255,0.03);
+}
+
+/* Style the "Add" button */
+.addBtn {
+    padding: 6px 15px;
+    margin: 3px;
+    background: rgba(255,255,255,0.1);
+    color: #FFF;
+    font-size: 13px !important;
+    float: left;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 14px;
+    font-weight: bold;
+}
+
+.addBtn:hover {
+  background-color: #18181b;
+}
+.slides {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: .3s;
+}
+.slide {
+        margin: 0;
+    color: #FFF;
+    display: flex;
+    display: inline-flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+.slide:hover {
+	background: rgba(255,255,255,0.03);
+	transform: scale(0.95);
+	transition: .3s;
+}
+.slide-placeholder {
+	
+	position: relative;
+}
+.slide-placeholder:after {
+	content: " ";
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 15px;
+	
+}

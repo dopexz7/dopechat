@@ -29,7 +29,7 @@
     }));
 
     document.getElementById("manage").addEventListener('click', (function() { 
-        window.open(chrome.runtime.getURL('settings.html'));
+        window.open(chrome.runtime.getURL('pages/settings.html'));
     }));
 
 }());
