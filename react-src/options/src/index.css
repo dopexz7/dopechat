@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.box-shadow-black {
+  box-shadow: 0 2px 9px 2px #000;
+}
+
+:root {
+  --body-font: 'Inter', sans-serif;
+  --main-purple: #4f46e5;
+  --accent-purple: #5b57e9;
+  --darker-purple: #1f1189;
+  --accent-white: #f9fafb;
+  --main-black: #111827;
+  --main-white: #c7d2fe;
+  --accent-gray: #6b7280;
+  --border-white: #e5e7eb;
+  --delay: 0s;
+  --header-bg: url(https://us.123rf.com/450wm/aerial3/aerial31803/aerial3180300007/98115531-ultra-violet-color-vector-background-with-vintage-halftone-texture-overlay-square-shape-trendy-purpl.jpg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-bg);
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  font-family: var(--body-font);
+  background: #4f46e5
+    url(https://us.123rf.com/450wm/aerial3/aerial31803/aerial3180300007/98115531-ultra-violet-color-vector-background-with-vintage-halftone-texture-overlay-square-shape-trendy-purpl.jpg);
+  background-blend-mode: multiply;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 2em;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,238 @@
+.emotetable-emotes-row {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  height: 100%;
+}
+.xgrd {
+  grid-template-columns: repeat(8, minmax(auto, 1fr));
+  width: 100%;
+  display: grid;
+  padding: 3px;
+}
+@keyframes fade1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.anim-fade {
+  animation: fade 0.6s 0s both;
+}
+.anim-fd {
+  animation: fd 0.6s 0s both;
+}
+.emotetable-emotes-item {
+  width: 30px;
+  height: 30px;
+  display: inline-flex;
+  flex-direction: row;
+}
+.emotetableimg {
+  vertical-align: bottom;
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+  padding: 3px;
+}
+.emotetable-emotes::-webkit-scrollbar {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.emotetable-emotes::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+.emotetabable-nav-img {
+  vertical-align: bottom;
+  height: 30px;
+  width: 30px;
+  object-fit: contain;
+  padding: 3px;
+}
+
+.emotetable-emotes {
+  height: 100%;
+  width: 370px;
+  padding: 6px;
+  overflow-y: scroll;
+}
+
+.emotetable-nav {
+  height: 100%;
+  padding: 6px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  width: 52px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.emotetable-content {
+  display: flex;
+  height: 360px;
+}
+.emotetable-nav-a {
+  display: block;
+  position: relative;
+  padding: 6px;
+  cursor: pointer;
+}
+.emotetable-nav-a img {
+  width: 30px;
+  height: 30px;
+  border-radius: 24px;
+  padding: 2px;
+  border: 1px solid #1f1189;
+  transition: 300ms;
+}
+.emotetable-nav-a img:hover {
+  background: #fff;
+}
+.emotetable-nav-bottom {
+  margin-top: auto;
+}
+.emotetable-nav-settings {
+  display: block;
+  position: relative;
+  padding: 6px;
+  font-size: 22px !important;
+  border: 1px solid #1f1189;
+  color: #fff;
+  border-radius: 24px;
+  transition: 300ms;
+  cursor: pointer;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.emotetable-nav-settings:hover {
+  background: #fff;
+  color: #1f1189;
+}
+.emotetable-global-emotes {
+  scroll-margin: 10px;
+}
+.emotetable-streamer-emotes {
+  scroll-margin: 10px;
+}
+#emotetable {
+  z-index: 1000;
+  transition: 300ms;
+  width: 390px;
+  height: 430px;
+  display: flex;
+  flex-flow: column;
+  position: absolute;
+  border-radius: 6px;
+  bottom: 90px;
+  right: 30px;
+  overflow-y: scroll;
+  background: #4f46e5 url(emotetable-bg.webp);
+  background-blend-mode: multiply;
+  backdrop-filter: blur(3px);
+  color: #c7d2fe;
+  font-family: "Inter", sans-serif !important;
+  font-size: 13px !important;
+  overflow: hidden;
+}
+.emotetable-span {
+  margin-bottom: 10px;
+  opacity: 0.8;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  line-height: 12px;
+  margin-top: 10px;
+  margin-left: 5px;
+  padding: 3px;
+  font-weight: bold !important;
+  text-transform: uppercase;
+}
+.emotetable-uppercontent {
+  display: flex;
+  backdrop-filter: blur(2px);
+  padding: 10px;
+  flex-flow: row;
+  color: #fff;
+  font-size: 13px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  align-items: center;
+}
+.emotetable-close {
+  margin-left: auto;
+  padding: 2px;
+  display: flex;
+  font-size: 19px !important;
+  border-radius: 6px;
+  transition: 300ms;
+  cursor: pointer;
+  border: 1px solid #1f1189;
+  border-radius: 24px;
+}
+
+.emotetable-close img {
+  padding: 1px;
+}
+.emotetable-close:hover {
+  background: #fff;
+  color: #1f1189;
+}
+.emotetable-input svg {
+  font-size: 16px !important;
+}
+.emotetable-input {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 14px;
+  width: 270px;
+  color: #fff;
+  padding: 10px 16px;
+  border: 1px solid #3c3f43;
+  transition: 600ms;
+  display: flex;
+  align-items: center;
+}
+.emotetable-input-tab {
+  opacity: 0;
+  transition: 300ms;
+  margin-left: auto;
+  font-size: 9px !important;
+  text-transform: uppercase;
+}
+.emotetable-input input {
+  background: transparent;
+  border: 0 !important;
+  outline: 0;
+  margin-left: 6px;
+  color: #fff;
+}
+.emotetable-input:hover {
+  border: 1px solid #fff;
+}
+
+.emotetable-input:focus-within {
+  border: 1px solid #fff !important;
+}
+.emotetable-input:active {
+}
+.emotetable-input input::placeholder {
+  font-weight: bold !important;
+  font-size: 13px !important;
+  text-transform: lowercase;
+  color: #fff;
+}
+
+.emotetable-div {
+  display: inline-block;
+}
