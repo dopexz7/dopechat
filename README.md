@@ -4,6 +4,21 @@
 
 The all-in-one extension is designed to add custom emotes, customize chat appearance and add more quality of life improvements, tweaks. All within the easy-to-use settings page.
 
+## Features
+
+- Custom emotes
+- Fully customizable chat appearance
+- Popout chat
+- Theatre mode
+- Mouse wheel scroll volume adjusting
+- Chat splitting
+- Highlighted keywords
+
+## Install
+
+[**Chrome** ](https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3)
+[**Firefox** ](https://addons.mozilla.org/en-US/firefox/addon/dopechat/)
+
 ## Changelog
 
 ### 1.0
