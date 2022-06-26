@@ -1,8 +1,8 @@
-# FB Gaming Better
+# dopeChat (https://dopechat.ddns.net/)
 
-### Enhance your Facebook Gaming live stream viewing experience.
+### The dopest chat extension for FB Gaming livestreams
 
-Fully customizable chat appearance, pre-installed auto-updating 3 custom emotes sets and other cool features for Facebook Gaming Livestreams.
+The all-in-one extension is designed to add custom emotes, customize chat appearance and add more quality of life improvements, tweaks. All within the easy-to-use settings page.
 
 ## Changelog
 
