@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "version": "1.0.3",
+  "name": "dopeChat",
+  "description": "The dopest chat extension for FB Gaming livestreams!",
+  "author": "dope",
+  "homepage_url": "https://dopechat.ddns.net/",
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "dopeChat",
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage"],
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": ["*://*.facebook.com/*videos/*"],
+      "js": ["contentScript.js", "contentReact.js"],
+      "css": ["content.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "matches": ["https://*.facebook.com/*"],
+      "resources": ["content_new.css", "images/*", "icon.png", "options/*"]
+    }
+  ]
+}

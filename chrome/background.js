@@ -1,1 +1,0 @@
-chrome.runtime.onInstalled.addListener(function(e){"install"==e.reason?chrome.storage.local.get(["SET"],function(e){null==e.SET&&chrome.storage.local.set({SET:[]})}):"update"==e.reason&&chrome.storage.local.get("vers034",function(e){e.vers034||(chrome.tabs.create({url:"pages/update.html"}),chrome.storage.local.set({vers034:"dontdisplaythisshit"}))})});
