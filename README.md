@@ -8,39 +8,39 @@ Fully customizable chat appearance, pre-installed auto-updating 3 custom emotes 
 
 ### 1.0
 - Official website! dopechat.ddns.net - Extension overview, a look at features, changelog, dashboard.
--- Dashboard
--- Current dashboard features:
---- Streamers now can create their own emote set (RatedEpicz, Ramee, Vader sets are already in)
---- Login with Twitch and upload your own emotes
---- View all current emotes in the extension
---- Emote set mods can view/edit emote sets easily, and it will automatically update on the extension
---- Support the extension
---- View streamer's full emote set by going dopechat.ddns.net/dashboard/set/[streamer name]
---- Contact form to report bugs/issues and submit ideas
---- View all current emotes in the extension
+- Dashboard
+- Current dashboard features:
+- Streamers now can create their own emote set (RatedEpicz, Ramee, Vader sets are already in)
+- Login with Twitch and upload your own emotes
+- View all current emotes in the extension
+- Emote set mods can view/edit emote sets easily, and it will automatically update on the extension
+- Support the extension
+- View streamer's full emote set by going dopechat.ddns.net/dashboard/set/[streamer name]
+- Contact form to report bugs/issues and submit ideas
+- View all current emotes in the extension
 - Rewrote like 80% of the extension's code
 - Reworked a big part of the extension:
--- No more installing emote sets:
---- Global emotes:
----- Global emotes available in every streamer's channel, handpicked by extension mods. Will be constantly updated with new emotes.
---- Channel emotes:
----- If the streamer has an emote set made in the new website, mods will approve it and it will automatically be enabled on the channel ready to use.
+- No more installing emote sets:
+- Global emotes:
+- Global emotes available in every streamer's channel, handpicked by extension mods. Will be constantly updated with new emotes.
+- Channel emotes:
+- If the streamer has an emote set made in the new website, mods will approve it and it will automatically be enabled on the channel ready to use.
 - Improved settings UI:
--- Font settings now show 50+ font options, with the ability to add your own fonts
--- Random username colors toggle (enabled by default)
--- Made it easier to add new highlighted keywords, with a "Remove all" button
+- Font settings now show 50+ font options, with the ability to add your own fonts
+- Random username colors toggle (enabled by default)
+- Made it easier to add new highlighted keywords, with a "Remove all" button
 - Updated emote menu:
--- Reworked emote menu completely
--- You can either click on the emote menu button or ALT+E to bring up the emote menu (it's no longer draggable)
--- Emote menu search:
---- TAB to autocomplete the emote name
---- TAB also inputs the first emote into the chatbox (if you have typed anything in it)
--- Left navigation:
---- Buttons for global/streamer emotes and extension settings
+- Reworked emote menu completely
+- You can either click on the emote menu button or ALT+E to bring up the emote menu (it's no longer draggable)
+- Emote menu search:
+- TAB to autocomplete the emote name
+- TAB also inputs the first emote into the chatbox (if you have typed anything in it)
+- Left navigation:
+- Buttons for global/streamer emotes and extension settings
 - TAB autocomplete emotes:
--- You can now press TAB while typing in the chat input box to autocomplete emotes.
--- Type exact start of emote codes, ex. Pepe finds all the emotes starting with "Pepe", "PepeL" or "Pepeg" narrows downthe search and so on.
--- Theatre mode no longer has a button, use the keyboard shortcut ALT+T (button clutter)
+- You can now press TAB while typing in the chat input box to autocomplete emotes.
+- Type exact start of emote codes, ex. Pepe finds all the emotes starting with "Pepe", "PepeL" or "Pepeg" narrows downthe search and so on.
+- Theatre mode no longer has a button, use the keyboard shortcut ALT+T (button clutter)
 - Moved "Enable emote set" to the Other settings tab
 - Fixed emote menu sometimes causing browsers to lag (now loads 'infinitely' emotes - scroll down to load more)
 - Other minor fixes and improvements
