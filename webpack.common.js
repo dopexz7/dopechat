@@ -1,6 +1,7 @@
 const path = require("path");
-
+const Dotenv = require("dotenv-webpack");
 module.exports = {
+    plugins: [new Dotenv()],
     entry: {
         backgroundPage: path.join(__dirname, "src/backgroundPage.ts"),
         contentScript: path.join(__dirname, "src/contentScript.ts"),
