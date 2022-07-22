@@ -1,0 +1,42 @@
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --body-font: "Poppins", Helvetica, sans-serif;
+    --main-purple: #4f46e5;
+    --accent-purple: #5b57e9;
+    --darker-purple: #1f1189;
+    --accent-white: #f9fafb;
+    --main-black: #111827;
+    --main-white: #c7d2fe;
+    --accent-gray: #6b7280;
+    --border-white: #e5e7eb;
+    --delay: 0s;
+    --header-bg: url(https://us.123rf.com/450wm/aerial3/aerial31803/aerial3180300007/98115531-ultra-violet-color-vector-background-with-vintage-halftone-texture-overlay-square-shape-trendy-purpl.jpg);
+}
+body {
+    font-family: var(--body-font);
+}
+*,
+::before,
+::after {
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgb(59 130 246 / 0.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    border-width: 0;
+    border-style: solid;
+    border-color: #e5e7eb;
+}

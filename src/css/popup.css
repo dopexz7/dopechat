@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --body-font: "Inter", sans-serif;
+    --main-purple: #4f46e5;
+    --accent-purple: #5b57e9;
+    --darker-purple: #1f1189;
+    --accent-white: #f9fafb;
+    --main-black: #111827;
+    --main-white: #c7d2fe;
+    --accent-gray: #6b7280;
+    --border-white: #e5e7eb;
+    --header-bg: url("https://i.imgur.com/tAyJlNf.jpg");
+}
+body {
+    font-family: var(--body-font);
+    width: 500px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    background: var(--main-purple);
+    color: var(--accent-white);
+}
