@@ -14,10 +14,6 @@ const App = () => {
     const [posts, setPosts] = useState<any[]>([]);
     const [currentEmotes, setCurrentEmotes] = useState<any[]>([]);
     const [globalSet, setGlobalSet] = useState<any[]>([]);
-    const [extensionEnabled, setExtensionEnabled] = useChromeStorageLocal(
-        "dopeChatEnabled",
-        false,
-    );
     const [emoteMenu, setEmoteMenu] = useChromeStorageLocal(
         "emoteMenuCheck",
         false,
@@ -33,24 +29,22 @@ const App = () => {
         }
     };
 
-    if (extensionEnabled) {
-        window.addEventListener("keydown", (e: KeyboardEvent) => {
-            if (e.altKey === true && e.keyCode === 69) {
+    window.addEventListener("keydown", (e: KeyboardEvent) => {
+        if (e.altKey === true && e.keyCode === 69) {
+            e.preventDefault();
+            setEmoteTable(!emoteTable);
+        }
+    });
+    let kekint: NodeJS.Timer = setInterval(() => {
+        let emotebtn = document.getElementById("dopechat-emotebutton");
+        if (emotebtn !== null) {
+            emotebtn.addEventListener("click", function (e) {
                 e.preventDefault();
                 setEmoteTable(!emoteTable);
-            }
-        });
-        let kekint: NodeJS.Timer = setInterval(() => {
-            let emotebtn = document.getElementById("dopechat-emotebutton");
-            if (emotebtn !== null) {
-                emotebtn.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    setEmoteTable(!emoteTable);
-                });
-                clearInterval(kekint);
-            }
-        }, 500);
-    }
+            });
+            clearInterval(kekint);
+        }
+    }, 500);
 
     useEffect(() => {
         const gettingEmotes: Function = async (): Promise<any> =>
@@ -124,9 +118,7 @@ const App = () => {
     };
 
     window.addEventListener("keydown", (e: any): void =>
-        e.keyCode === 9 && extensionEnabled
-            ? (e.preventDefault(), handlingTab())
-            : null,
+        e.keyCode === 9 ? (e.preventDefault(), handlingTab()) : null,
     );
     const fetchRequest = async () =>
         await supabase

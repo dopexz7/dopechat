@@ -190,9 +190,5 @@ const initiate: Function = (): void => {
     });
 };
 
-chrome.storage.local.get("dopeChatEnabled", (r: { [key: string]: any }) => {
-    if (r.dopeChatEnabled === true) {
-        enableStyles();
-        initiate();
-    }
-});
+enableStyles();
+initiate();

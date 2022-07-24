@@ -5,7 +5,6 @@ module.exports = {
     entry: {
         backgroundPage: path.join(__dirname, "src/backgroundPage.ts"),
         contentScript: path.join(__dirname, "src/contentScript.ts"),
-        popup: path.join(__dirname, "src/popup/index.tsx"),
         options: path.join(__dirname, "src/options/index.tsx"),
         emoteMenu: path.join(__dirname, "src/emoteMenu/index.tsx"),
     },
@@ -21,14 +20,9 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: "ts-loader",
             },
-            // Treat src/css/app/popup/options.css as a global stylesheet
+            // Treat src/css/app/options.css as a global stylesheet
             {
-                test: [
-                    /\app.css$/,
-                    /\popup.css$/,
-                    /\options.css$/,
-                    /\emoteMenu.css$/,
-                ],
+                test: [/\app.css$/, /\options.css$/, /\emoteMenu.css$/],
                 use: ["style-loader", "css-loader", "postcss-loader"],
             },
             // Load .module.css files as CSS modules
