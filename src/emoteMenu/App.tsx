@@ -1,5 +1,4 @@
-import { FC, useEffect, useRef } from "react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { useChromeStorageLocal } from "use-chrome-storage";
 import { supabase } from "../lib/supabaseClient";
 import EmoteComponent from "./EmoteComponent";
@@ -7,7 +6,7 @@ import LeftNav from "./LeftNav";
 import StreamerEmotes from "./StreamerEmotes";
 import TopMenu from "./TopMenu";
 
-const App: FC = () => {
+const App = () => {
     const emoteTableRef = useRef(null);
     const [emoteTable, setEmoteTable] = useState<boolean>(false);
     const [globalEmotes, setGlobalEmotes] = useState<boolean>(false);
@@ -23,8 +22,6 @@ const App: FC = () => {
         "emoteMenuCheck",
         false,
     );
-
-    const filterNShit: Function = (e: any): void => setQ(e);
 
     const insertEmote: Function = (x: any): void => {
         let textbox4: Element | any = document.querySelector(
@@ -145,7 +142,13 @@ const App: FC = () => {
         });
     };
 
-    const PostingEmotes: FC<any> = ({ set, name }) => (
+    const PostingEmotes = ({
+        set,
+        name,
+    }: {
+        set: any;
+        name: any;
+    }): JSX.Element => (
         <>
             {name ? (
                 <div className="mb-2.5 opacity-75 text-xs font-medium mt-2.5 ml-1.5 p-0.5">
@@ -191,7 +194,7 @@ const App: FC = () => {
                 >
                     <TopMenu
                         inputValue={q}
-                        onChange={(e: any) => filterNShit(e.target.value)}
+                        onChange={(e: any) => setQ(e.target.value)}
                         onKeyDown={(e: any) => onKeyDown(e)}
                         onClick={() => setEmoteTable(false)}
                     />
@@ -221,6 +224,7 @@ const App: FC = () => {
                                     {q.length >= 1 ? (
                                         <>
                                             <PostingEmotes
+                                                name=""
                                                 set={currentEmotes}
                                             />
                                         </>

@@ -1,6 +1,6 @@
-import { FC } from "react";
+import { FunctionComponent } from "preact";
 
-const ToggleComp: FC<any> = ({
+const ToggleComp: FunctionComponent<any> = ({
     checked,
     onChange,
     title,
@@ -10,8 +10,8 @@ const ToggleComp: FC<any> = ({
     title: string;
 }) => {
     return (
-        <div className="border-[1px] border-white border-opacity-5 p-3 rounded-3xl text-white text-base font-medium flex flex-row items-center tracking-wider mb-3 mt-3">
-            <div className="px-3">{title}</div>
+        <div className="border-[1px] border-white border-opacity-5 px-3 py-2 rounded-3xl backdrop-blur-sm shadow-2xl text-white text-base font-medium flex flex-row items-center tracking-wider mt-3">
+            <div className="px-1 text-main-white text-base w-full">{title}</div>
             {process.env.BROWSER === "firefox" && title === "Emote menu" ? (
                 <div
                     className={` text-white backdrop-blur-sm border-[1px] border-white border-opacity-5 w-max shadow-2xl px-4 py-1.5 rounded-2xl font-medium  text-base duration-300 ml-auto`}
@@ -25,7 +25,7 @@ const ToggleComp: FC<any> = ({
                         checked
                             ? "bg-white text-darker-purple "
                             : "hover:bg-white hover:text-darker-purple text-white"
-                    } backdrop-blur-sm border-[1px] border-white border-opacity-5 w-max shadow-2xl px-4 py-1.5 rounded-2xl font-medium  text-base cursor-pointer duration-300 ml-auto`}
+                    } backdrop-blur-sm border-[1px] border-white border-opacity-5 w-max shadow-2xl px-4 py-1 rounded-2xl font-medium text-base cursor-pointer duration-300 ml-auto`}
                 >
                     {checked ? "Disable" : "Enable"}
                 </div>

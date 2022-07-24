@@ -1,17 +1,15 @@
-import { FC } from "react";
-import { useLocation } from "react-router-dom";
+import { FunctionComponent } from "preact";
 
-const HeaderNav: FC = (): JSX.Element => {
-    const location = useLocation();
+const HeaderNav: FunctionComponent = (): JSX.Element => {
     return (
-        <div className="bg-darker-purple backdrop-blur-sm w-screen flex flex-row justify-center items-center p-5">
-            <div className="flex flex-row items-center w-screen max-w-6xl">
-                <div className="text-base text-main-white capitalize">
-                    {location.pathname
-                        .replace("/", "")
-                        .replace("-", " ")
-                        .replace(".html", "")}
-                </div>
+        <div className="w-screen flex flex-row justify-center items-center pb-6">
+            <div className="flex flex-row items-center w-screen max-w-5xl">
+                <a
+                    href="https://dopechat.ddns.net/"
+                    className="text-sm font-light text-main-white hover:text-main-purple duration-300"
+                >
+                    Official website
+                </a>
                 <div className="text-main-white ml-auto text-sm font-light">
                     <div>
                         Made by <span className="text-main-purple">dope</span>,

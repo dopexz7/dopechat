@@ -1,8 +1,15 @@
-import { FC } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import EmoteComponent from "./EmoteComponent";
 
-const StreamerEmotes: FC<any> = ({ posts, next, onChange }) => {
+const StreamerEmotes = ({
+    posts,
+    next,
+    onChange,
+}: {
+    posts: any[];
+    next: any;
+    onChange: any;
+}): JSX.Element => {
     return (
         <div className="flex flex-row flex-wrap">
             <InfiniteScroll

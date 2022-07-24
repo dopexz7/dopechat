@@ -1,13 +1,9 @@
-import { TextInput } from "@mantine/core";
-import React, { FC } from "react";
+import { FunctionComponent } from "preact";
 import { useChromeStorageLocal } from "use-chrome-storage";
 import ColorComp from "../comps/ColorComp";
 import ToggleComp from "../comps/ToggleComp";
 
-const randomColor: Function = (): string =>
-    `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-
-const UsernamesSettings: FC = () => {
+const UsernamesSettings: FunctionComponent = () => {
     const [yourUsername, setYourUsername]: any = useChromeStorageLocal(
         "yourUsername",
         "",
@@ -24,27 +20,23 @@ const UsernamesSettings: FC = () => {
     );
 
     return (
-        <div className="flex items-center flex-col w-full">
+        <div id="usernames" className="flex flex-col w-full">
+            <div className="text-white text-xl font-medium tracking-wider mt-3">
+                Usernames settings
+            </div>
             <div className="flex flex-col w-full px-6 py-2 rounded-3xl self-stretch relative transition-[300ms]">
-                <div className="text-white text-base font-medium tracking-wider mb-3 mt-3">
-                    Your username
-                </div>
-                <div className="border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-row justify-center items-center w-full px-3 p-2 rounded-3xl self-stretch relative transition-[300ms]">
-                    <TextInput
-                        // @ts-ignore
-                        classNames={{
-                            defaultVariant: "text-main-white ml-3",
-                            input: "text-main-white bg-transparent border-0",
-                        }}
-                        className="w-full"
-                        variant="default"
-                        value={yourUsername}
+                <div className="mt-3 border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-row justify-center items-center w-full px-3 p-2 rounded-3xl self-stretch relative transition-[300ms]">
+                    <div className="px-1 text-main-white text-base w-full">
+                        Your username
+                    </div>
+                    <input
+                        placeholder="Enter your username..."
+                        type="text"
+                        className="text-sm px-6 py-2 text-main-white ml-3 bg-transparent border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl rounded-3xl w-full"
                         onChange={(
                             event: React.ChangeEvent<HTMLInputElement>,
                         ) => setYourUsername(event.currentTarget.value)}
-                        placeholder={
-                            yourUsername ? yourUsername : "Enter your username"
-                        }
+                        value={yourUsername ? yourUsername : ""}
                     />
                 </div>
 

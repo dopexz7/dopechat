@@ -1,7 +1,16 @@
-import { FC } from "react";
 import { CloseIcon, SearchIcon } from "./Icons";
 
-const TopMenu: FC<any> = ({ inputValue, onChange, onKeyDown, onClick }) => {
+const TopMenu = ({
+    inputValue,
+    onChange,
+    onKeyDown,
+    onClick,
+}: {
+    inputValue: string;
+    onChange: any;
+    onKeyDown: any;
+    onClick: any;
+}): JSX.Element => {
     return (
         <div className="flex flex-row p-2.5 text-white text-sm border-b-[1px] border-white border-opacity-5 items-center">
             <div className="bg-black bg-opacity-5 rounded-2xl w-[270px] text-white border-[1px] border-white border-opacity-5 px-2.5 py-4 duration-300 flex items-center">

@@ -1,14 +1,10 @@
-import { FC } from "react";
+import { FunctionComponent } from "preact";
 
-const Main: FC = () => {
+const Main: FunctionComponent = (): JSX.Element => {
     return (
         <div className="flex items-center flex-col w-full">
             <div className="flex flex-col w-full px-6 py-3 rounded-3xl self-stretch relative transition-[300ms]">
-                <div className="text-white lg:text-xl font-medium tracking-wider mb-3">
-                    Emote sets
-                </div>
-
-                <div className="mt-2 border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-7 p-3 rounded-3xl self-stretch relative transition-[300ms]">
+                <div className="border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-7 p-3 rounded-3xl self-stretch relative transition-[300ms]">
                     <div className="flex flex-row justify-center items-center">
                         <div className="text-white lg:text-lg font-medium">
                             Want to see your emotes featured?
@@ -23,9 +19,6 @@ const Main: FC = () => {
                 </div>
 
                 <div className="mt-2 flex flex-col w-full p-0 self-stretch relative transition-[300ms]">
-                    <div className="text-white lg:text-xl font-medium tracking-wider mb-3 mt-3">
-                        Announcements
-                    </div>
                     <div className="flex flex-row">
                         <div className="m-1 h-44 border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-7 p-3 rounded-3xl self-stretch relative transition-[300ms]">
                             <div className="flex flex-col justify-center items-center">

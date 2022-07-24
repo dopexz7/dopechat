@@ -11,7 +11,7 @@ if (body) {
 }
 
 const container = document.getElementById("dopeChat");
-const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+const root = createRoot(container!);
 
 window.onload = () => {
     root.render(<App />);

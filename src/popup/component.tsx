@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { FunctionComponent } from "preact";
 import { useChromeStorageLocal } from "use-chrome-storage";
 import { PowerIcon, SettingsIcon } from "./Icons";
 
-const Popup: FC = () => {
+const Popup: FunctionComponent = (): JSX.Element => {
     const [value, setValue] = useChromeStorageLocal("dopeChatEnabled", false);
     return (
         <>

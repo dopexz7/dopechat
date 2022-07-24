@@ -1,10 +1,9 @@
-import { FC, forwardRef, useState } from "react";
-import { Select, Slider, Text } from "@mantine/core";
+import { FunctionComponent } from "preact";
 import { useChromeStorageLocal } from "use-chrome-storage";
 import { fontData } from "./fontData";
 import ColorComp from "../comps/ColorComp";
 
-const TextSettings: FC = (): JSX.Element => {
+const TextSettings: FunctionComponent = (): JSX.Element => {
     const [chatTextColor, setChatTextColor] = useChromeStorageLocal(
         "chatTextColor",
         null,
@@ -14,31 +13,11 @@ const TextSettings: FC = (): JSX.Element => {
         "Helvetica",
     );
     const [fontSize, setFontSize] = useChromeStorageLocal("chatTextSize", null);
-    const [fontSizeValue, setFontSizeValue] = useState(13);
-
-    const SelectItem = forwardRef(
-        (
-            {
-                image,
-                label,
-                description,
-                ...others
-            }: { image: any; label: string; description: string },
-            ref,
-        ) => (
-            <div ref={ref as any} {...others}>
-                <Text style={{ fontFamily: label }}>{label}</Text>
-            </div>
-        ),
-    );
-
-    const changeFontSize: Function = (e: any): void => {
-        setFontSize(e + "px");
-        setFontSizeValue(e);
-    };
-
     return (
-        <div className="flex items-center flex-col w-full">
+        <div id="text" className="flex flex-col w-full">
+            <div className="text-white text-xl font-medium tracking-wider mt-3">
+                Text settings
+            </div>
             <div className="flex flex-col w-full px-6 py-2 rounded-3xl self-stretch relative transition-[300ms]">
                 <ColorComp
                     value={chatTextColor}
@@ -46,59 +25,77 @@ const TextSettings: FC = (): JSX.Element => {
                     title={"Chat text color"}
                 />
 
-                <div className="text-white text-base font-medium tracking-wider mb-3 mt-3">
-                    Chat text font
-                </div>
-                <div className="border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-4 p-3 rounded-3xl self-stretch overflow-hidden relative transition-[300ms]">
-                    <div className="flex flex-row justify-center items-center">
-                        <Select
-                            placeholder="Search and select a font or input your own"
-                            itemComponent={SelectItem}
-                            classNames={{
-                                defaultVariant: "text-main-white ml-3",
-                                icon: "bg-darker-purple rounded-3xl",
-                                input: "text-main-white bg-transparent border-0",
-                            }}
-                            defaultValue={chatFont ? chatFont : "kekw"}
-                            className="w-full"
-                            data={fontData}
-                            nothingFound="Nothing found"
-                            searchable
-                            creatable
-                            onChange={setChatFont}
-                            getCreateLabel={(query) => `Set chat font ${query}`}
-                            onCreate={(query) => setChatFont(query)}
-                            maxDropdownHeight={400}
-                        />
+                <div className="mt-3 border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-4 py-3 rounded-3xl self-stretch overflow-hidden relative transition-[300ms]">
+                    <div className="flex flex-row justify-center items-center h-7">
+                        <div className="text-main-white text-base w-full">
+                            Text font
+                        </div>
+                        <div className="flex flex-row items-center w-full">
+                            <div className="text-main-white text-base text-center w-48">
+                                Input font
+                            </div>
+                            <input
+                                placeholder="Input font..."
+                                type="text"
+                                style={{
+                                    fontFamily: chatFont ? chatFont : "",
+                                }}
+                                className="text-sm w-full px-6 py-1 text-main-white ml-3 bg-transparent border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl rounded-3xl"
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>,
+                                ) => setChatFont(event.currentTarget.value)}
+                                value={chatFont ? chatFont : ""}
+                            />
+                        </div>
+                        <div className="text-main-white text-base ml-2">or</div>
+                        <div className="flex flex-row items-center w-full">
+                            <div className="text-main-white text-base text-center w-48">
+                                Select font
+                            </div>
+                            <select
+                                name="font"
+                                value={chatFont ? chatFont : ""}
+                                style={{
+                                    fontFamily: chatFont ? chatFont : "",
+                                }}
+                                onChange={(event: any) =>
+                                    setChatFont(event.currentTarget.value)
+                                }
+                                className="bg-transparent w-full text-main-white border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl rounded-3xl px-6 py-1 text-sm"
+                            >
+                                {fontData.map((font: any) => (
+                                    <option
+                                        style={{
+                                            fontFamily: font,
+                                        }}
+                                        value={font}
+                                        className="bg-darker-purple text-white"
+                                    >
+                                        {font}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div className="text-white text-base font-medium tracking-wider mb-3 mt-3">
-                    Chat text size
-                </div>
-                <div className="border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-4 p-3 rounded-3xl self-stretch overflow-hidden relative transition-[300ms]">
-                    <div className="flex flex-row justify-center items-center h-10">
-                        <Slider
-                            value={fontSizeValue}
-                            className="w-full"
-                            // @ts-ignore
-                            classNames={{
-                                bar: "bg-main-purple",
-                                thumb: "border-0",
-                                dragging: "bg-main-purple",
-                                label: "bg-transparent p-0 mt-3 text-white",
-                            }}
-                            styles={{
-                                label: { fontSize: fontSizeValue },
-                            }}
+                <div className="mt-3 border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-4 py-3 rounded-3xl self-stretch overflow-hidden relative transition-[300ms]">
+                    <div className="flex flex-row justify-center space-x-3 items-center h-7">
+                        <div className="text-main-white text-base w-full">
+                            Chat text size
+                        </div>
+                        <div className="text-main-white text-sm">
+                            {fontSize ? fontSize : 13}
+                        </div>
+                        <input
+                            type="range"
+                            min="1"
+                            max="23"
+                            step="1"
+                            value={fontSize ? fontSize.replace("px", "") : 350}
                             onChange={(e) => {
-                                changeFontSize(e);
+                                setFontSize(e.target.value + "px");
                             }}
-                            defaultValue={fontSize ? fontSize : 13}
-                            min={1}
-                            max={23}
-                            labelTransition="skew-down"
-                            labelTransitionDuration={150}
-                            labelTransitionTimingFunction="ease"
+                            className="slider w-full bg-black bg-opacity-10 border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl rounded-3xl"
                         />
                     </div>
                 </div>

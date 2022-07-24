@@ -1,6 +1,12 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "preact/hooks";
 
-const LeftNav: FC<any> = ({ disableGlobalEmotes, enableGlobalEmotes }) => {
+const LeftNav = ({
+    disableGlobalEmotes,
+    enableGlobalEmotes,
+}: {
+    disableGlobalEmotes: any;
+    enableGlobalEmotes: any;
+}) => {
     const [streamerImg, setStreamImg] = useState<string>("");
     const getStreamerImg: Function = async (): Promise<any> => {
         await fetch(

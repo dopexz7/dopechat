@@ -1,28 +1,20 @@
-const settings: {
-    volume: number;
-    volumeIncrement: number;
-} = {
-    volume: 20,
-    volumeIncrement: 3,
-};
-
 const handleScroll: Function = (event: WheelEvent, video: any): void => {
     if (!Boolean(video.webkitAudioDecodedByteCount)) return;
     let volume: number = 1;
 
     if (
-        video.volume > settings.volumeIncrement / 100 || // eslint-disable-next-line no-restricted-globals
-        (video.volume === settings.volumeIncrement / 100 && event.deltaY < 0)
+        video.volume > 3 / 100 || // eslint-disable-next-line no-restricted-globals
+        (video.volume === 3 / 100 && event.deltaY < 0)
     ) {
         volume =
             video.volume + // eslint-disable-next-line no-restricted-globals
-            (settings.volumeIncrement / 100) * ((event.deltaY / 100) * -1); //deltaY is how much the wheel scrolled, 100 up, -100 down. Divided by 100 to only get direction, then inverted
+            (3 / 100) * ((event.deltaY / 100) * -1); //deltaY is how much the wheel scrolled, 100 up, -100 down. Divided by 100 to only get direction, then inverted
 
         //Rounding the volume to the nearest increment, in case the original volume was not on the increment.
         volume = volume * 100;
-        volume = volume / settings.volumeIncrement;
+        volume = volume / 3;
         volume = Math.round(volume);
-        volume = volume * settings.volumeIncrement;
+        volume = volume * 3;
         volume = volume / 100;
     } else {
         volume = video.volume + (1 / 100) * ((event.deltaY / 100) * -1);

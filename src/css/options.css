@@ -59,6 +59,32 @@ body {
         background-position: 0% 50%;
     }
 }
+@keyframes opacityanimrtl {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes opacityanimltr {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.lll-opacity {
+    animation: opacityanimrtl 0.3s ease-in-out;
+}
+.ll2-opacity {
+    animation: opacityanimltr 0.3s ease-in-out;
+}
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 * {
     outline: none;
@@ -70,4 +96,29 @@ img {
 }
 a {
     text-decoration: none;
+}
+
+.slider {
+    -webkit-appearance: none;
+    outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--main-purple);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: var(--main-purple);
+    border-radius: 16px;
+    cursor: pointer;
 }
