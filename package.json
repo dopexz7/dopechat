@@ -3,25 +3,6 @@
     "version": "1.2.2",
     "description": "The dopest chat extension for FB Gaming livestreams built with React, TypeScript, Tailwind CSS, EsLint, Prettier & Webpack",
     "main": "index.js",
-    "changelog": {
-        "1.2.2": [
-            "-Added updated checker. Extension will now automatically update if there is a new version available. (no more delay of 1-5 hours)",
-            "Removed the popup menu. (clicking the icon will open up settings)",
-            "-Extension is now enabled by default.",
-            "-Emote menu is now enabled by default."
-        ],
-        "1.2.1": [
-            "-Performance optimizations, minor fixes and other improvements",
-            "Reworked & improved settings menu UI"
-        ],
-        "1.1": [
-            "-Rewrote some parts of the extension",
-            "-Fixed emotes (now load instantly)",
-            "-Fixed highlighting keywords",
-            "-Performance optimizations",
-            "-Other minor fixes, improvements"
-        ]
-    },
     "scripts": {
         "build": "webpack --config webpack.prod.js",
         "dev": "webpack -w --config webpack.dev.js",

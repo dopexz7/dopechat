@@ -9,7 +9,7 @@ import addPopoutChatButton from "./tweaks/popoutChat";
 import volumeScrollEnable from "./tweaks/volumeScroll";
 
 const versionCheck: Function = async (): Promise<void> => {
-    console.log("Checking dopeChat version...");
+    console.log("dopeChat: Checking version...");
     const githubRepo = "dopexz7/dopechat";
     const fileToFetch = "package.json";
     const response: Response = await fetch(
@@ -18,27 +18,27 @@ const versionCheck: Function = async (): Promise<void> => {
     const data: any = await response.json();
 
     if (data.version !== chrome.runtime.getManifest().version) {
-        console.log("New version available");
-
+        console.log("dopeChat: New version available.");
         chrome.runtime.sendMessage("updateAvailable", (response) => {
             if (response === "updated") {
                 let k = document.createElement("div");
                 k.id = "dopeChat-updateAvailable";
+                k.addEventListener("click", () => {
+                    window.location.reload();
+                });
                 k.className =
-                    "bg-black bg-opacity-50 blur-updateavail !text-5xl text-main-white backdrop-blur-xl h-screen w-screen fixed top-0 left-0 z-50 flex items-center justify-center";
-                k.textContent =
-                    "dopeChat new version available! Refresh the page to finish the update.";
-                for (let i = 0; i < data.changelog.length; i++) {
-                    for (var j = 0; j < data.changelog[i].length; j++) {
-                        console.log(data.changelog[i]);
-                    }
-                }
+                    "bg-black bg-opacity-50 blur-updateavail text-5xl text-main-white backdrop-blur-xl h-screen w-screen fixed top-0 left-0 z-50 flex flex-col space-y-1 items-center justify-center";
+                let kSpan = document.createElement("span");
+                kSpan.className = "updateavail-span";
+                kSpan.textContent =
+                    "dopeChat new version available! Refresh the page or click anywhere to finish the update.";
+                k.prepend(kSpan);
                 const body = document.querySelector("body");
                 if (body) body.prepend(k);
             }
         });
     } else {
-        console.log("No new version available");
+        console.log("dopeChat: No new version available");
     }
 };
 
