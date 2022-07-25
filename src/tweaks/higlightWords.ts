@@ -3,6 +3,7 @@ const setHighlightWords: Function = (): void => {
     var messageElement: HTMLElement | any = document.getElementsByClassName(
         "l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl",
     );
+
     chrome.storage.local.get(
         [
             "highlightEnable",

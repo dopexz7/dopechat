@@ -47,12 +47,6 @@ const OtherSettings: FunctionComponent = (): JSX.Element => {
                 />
 
                 <ToggleComp
-                    checked={emoteMenu}
-                    onChange={setEmoteMenu}
-                    title="Emote menu"
-                />
-
-                <ToggleComp
                     checked={timestamps}
                     onChange={setTimestamps}
                     title="Timestamps in chat"

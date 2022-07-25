@@ -2,7 +2,10 @@ import { FunctionComponent } from "preact";
 
 const Main: FunctionComponent = (): JSX.Element => {
     return (
-        <div className="flex items-center flex-col w-full">
+        <div id="main" className="flex flex-col w-full">
+            <div className=" text-white text-xl font-medium tracking-wider mb-3">
+                Latest updates
+            </div>
             <div className="flex flex-col w-full px-6 py-3 rounded-3xl self-stretch relative transition-[300ms]">
                 <div className="border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl flex flex-col w-full px-7 p-3 rounded-3xl self-stretch relative transition-[300ms]">
                     <div className="flex flex-row justify-center items-center">

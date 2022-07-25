@@ -13,13 +13,6 @@ const App: FunctionComponent = (): JSX.Element => {
                         id="containerElement"
                         className="flex flex-col py-6 px-6 overflow-auto max-w-7xl w-full anim"
                     >
-                        <div
-                            id="main"
-                            className=" text-white text-xl font-medium tracking-wider mb-3"
-                        >
-                            Latest updates
-                        </div>
-
                         {reactRoutes.map(
                             (route, index: number): JSX.Element => (
                                 <div key={index}>{route.element}</div>

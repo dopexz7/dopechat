@@ -8,6 +8,40 @@ import seperateChatMessages from "./tweaks/messageSeparate";
 import addPopoutChatButton from "./tweaks/popoutChat";
 import volumeScrollEnable from "./tweaks/volumeScroll";
 
+const versionCheck: Function = async (): Promise<void> => {
+    console.log("Checking dopeChat version...");
+    const githubRepo = "dopexz7/dopechat";
+    const fileToFetch = "package.json";
+    const response: Response = await fetch(
+        `https://raw.githubusercontent.com/${githubRepo}/main/${fileToFetch}`,
+    );
+    const data: any = await response.json();
+
+    if (data.version !== chrome.runtime.getManifest().version) {
+        console.log("New version available");
+
+        chrome.runtime.sendMessage("updateAvailable", (response) => {
+            if (response === "updated") {
+                let k = document.createElement("div");
+                k.id = "dopeChat-updateAvailable";
+                k.className =
+                    "bg-black bg-opacity-50 blur-updateavail !text-5xl text-main-white backdrop-blur-xl h-screen w-screen fixed top-0 left-0 z-50 flex items-center justify-center";
+                k.textContent =
+                    "dopeChat new version available! Refresh the page to finish the update.";
+                for (let i = 0; i < data.changelog.length; i++) {
+                    for (var j = 0; j < data.changelog[i].length; j++) {
+                        console.log(data.changelog[i]);
+                    }
+                }
+                const body = document.querySelector("body");
+                if (body) body.prepend(k);
+            }
+        });
+    } else {
+        console.log("No new version available");
+    }
+};
+
 const enableStyles: Function = (): void => {
     const customCSSLink: string =
         "https://dopexz7.github.io/emotes/content_new.css";
@@ -115,6 +149,7 @@ const substitute: Function = (nodes: any) => {
         "div:not(.tw-tooltip):not(.bttv-tooltip):not(.ffz__tooltip--inner)",
     );
     let emotes: any[] = [];
+
     chrome.storage.local.get("FULLSET", (r: { [key: string]: any }) => {
         emotes = r.FULLSET;
         for (let i = 0; i < elements?.length; i++) {
@@ -189,6 +224,8 @@ const initiate: Function = (): void => {
         subtree: true,
     });
 };
+
+versionCheck();
 
 enableStyles();
 initiate();

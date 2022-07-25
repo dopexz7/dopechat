@@ -35,7 +35,9 @@ const colorUsernames: Function = (): void => {
                     } else {
                         yourusobj[usernameElement[i].textContent] =
                             getRandomColor();
-                        chrome.storage.local.set({ userNameColors: yourusobj });
+                        chrome.storage.local.set({
+                            userNameColors: yourusobj,
+                        });
                         usernameElement[i].style.color =
                             yourusobj[usernameElement[i].textContent];
                     }
