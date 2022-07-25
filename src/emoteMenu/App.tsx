@@ -204,6 +204,10 @@ const App = () => {
                                 </>
                             ) : (
                                 <>
+                                    <div className="mb-2.5 opacity-75 text-xs font-medium mt-2.5 ml-1.5 p-0.5">
+                                        {window.location.pathname.split("/")[1]}
+                                        `s emotes
+                                    </div>
                                     {q.length >= 1 ? (
                                         <>
                                             <PostingEmotes
@@ -212,23 +216,11 @@ const App = () => {
                                             />
                                         </>
                                     ) : (
-                                        <>
-                                            <div className="mb-2.5 opacity-75  mt-2.5 ml-1.5 p-0.5">
-                                                <span className="text-xs font-medium">
-                                                    {
-                                                        window.location.pathname.split(
-                                                            "/",
-                                                        )[1]
-                                                    }
-                                                    's emotes
-                                                </span>
-                                            </div>
-                                            <StreamerEmotes
-                                                posts={posts}
-                                                next={getMorePost}
-                                                onChange={insertEmote}
-                                            />
-                                        </>
+                                        <StreamerEmotes
+                                            posts={posts}
+                                            next={getMorePost}
+                                            onChange={insertEmote}
+                                        />
                                     )}
                                 </>
                             )}
