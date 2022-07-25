@@ -1,6 +1,6 @@
 {
     "name": "dope-chat",
-    "version": "1.2.2",
+    "version": "1.2.3",
     "description": "The dopest chat extension for FB Gaming livestreams built with React, TypeScript, Tailwind CSS, EsLint, Prettier & Webpack",
     "main": "index.js",
     "scripts": {
