@@ -23,23 +23,7 @@ const addEmoteMenuButton: Function = (): void => {
         var observeForPop: MutationObserver = new MutationObserver(
             (mutations: MutationRecord[]): void => {
                 mutations.forEach((): void => {
-                    chrome.storage.local.get(
-                        ["emoteMenuCheck"],
-                        (r: { [key: string]: any }): void => {
-                            if (r.emoteMenuCheck === true) {
-                                addEmoteMenu();
-                            } else {
-                                if (
-                                    document.getElementById(
-                                        "dopechat-emotebutton",
-                                    )
-                                )
-                                    document.getElementById(
-                                        "dopechat-emotebutton",
-                                    )!.style.display = "none";
-                            }
-                        },
-                    );
+                    addEmoteMenu();
                 });
             },
         );

@@ -225,7 +225,11 @@ const initiate: Function = (): void => {
     });
 };
 
-versionCheck();
+const dopeChat_init = () => {
+    console.log("dopeChat: Initiating...");
+    versionCheck();
+    enableStyles();
+    initiate();
+};
 
-enableStyles();
-initiate();
+dopeChat_init();

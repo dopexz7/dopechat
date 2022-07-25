@@ -32,7 +32,7 @@ const LeftNav = ({
                     src={
                         streamerImg
                             ? streamerImg
-                            : chrome.runtime.getURL("icon.png")
+                            : chrome.runtime.getURL("icon64.png")
                     }
                 />
             </div>

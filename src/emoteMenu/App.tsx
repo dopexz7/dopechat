@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "preact/hooks";
-import { useChromeStorageLocal } from "use-chrome-storage";
 import { supabase } from "../lib/supabaseClient";
 import EmoteComponent from "./EmoteComponent";
 import LeftNav from "./LeftNav";
@@ -14,10 +13,6 @@ const App = () => {
     const [posts, setPosts] = useState<any[]>([]);
     const [currentEmotes, setCurrentEmotes] = useState<any[]>([]);
     const [globalSet, setGlobalSet] = useState<any[]>([]);
-    const [emoteMenu, setEmoteMenu] = useChromeStorageLocal(
-        "emoteMenuCheck",
-        false,
-    );
 
     const insertEmote: Function = (x: any): void => {
         let textbox4: Element | any = document.querySelector(
@@ -174,7 +169,7 @@ const App = () => {
 
     return (
         <>
-            {emoteTable && emoteMenu ? (
+            {emoteTable ? (
                 <div
                     id="emotetable"
                     className="z-50 w-[390px] h-[430px] flex flex-col absolute rounded-md bottom-[90px] right-[15px] bg-darker-purple bg-opacity-50 text-main-white overflow-hidden text-sm"
