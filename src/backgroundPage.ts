@@ -1,8 +1,12 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message === "updateAvailable") {
         sendResponse("updated");
-        chrome.runtime.reload();
+        //chrome.runtime.requestUpdateCheck();
     }
+});
+
+chrome.runtime.onUpdateAvailable.addListener((details) => {
+    chrome.runtime.reload();
 });
 
 chrome.action.onClicked.addListener(() => {

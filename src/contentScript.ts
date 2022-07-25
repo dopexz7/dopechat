@@ -19,6 +19,7 @@ const versionCheck: Function = async (): Promise<void> => {
 
     if (data.version !== chrome.runtime.getManifest().version) {
         console.log("dopeChat: New version available.");
+        console.log(data.version);
         chrome.runtime.sendMessage("updateAvailable", (response) => {
             if (response === "updated") {
                 let k = document.createElement("div");
@@ -227,7 +228,7 @@ const initiate: Function = (): void => {
 
 const dopeChat_init = () => {
     console.log("dopeChat: Initiating...");
-    versionCheck();
+    //versionCheck();
     enableStyles();
     initiate();
 };
