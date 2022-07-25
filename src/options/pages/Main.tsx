@@ -1,5 +1,4 @@
 import { FunctionComponent } from "preact";
-
 const Main: FunctionComponent = (): JSX.Element => {
     return (
         <div id="main" className="flex flex-col w-full">
