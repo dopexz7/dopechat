@@ -1,3 +1,5 @@
+import { emoteMenuIcon } from "./icons";
+
 const addEmoteMenu: Function = (): void => {
     var elements: HTMLElement | any = document.querySelectorAll(
         ".rq0escxv.l9j0dhe7.du4w35lb.j83agx80.pfnyh3mw.jifvfom9.bp9cbjyn.owycx6da.btwxx1t3.jb3vyjys.nkwizq5d.scwd0bx6.hop8lmos.ggphbty4",
@@ -8,8 +10,11 @@ const addEmoteMenu: Function = (): void => {
 
     if (elements && emotebtn === null) {
         var emotebutton: HTMLElement | any = document.createElement("div");
-        emotebutton.classList.add("emotebutton");
+        emotebutton.className =
+            "bottom-icon cursor-pointer text-white hover:text-main-purple duration-300";
+        emotebutton.innerHTML = emoteMenuIcon;
         emotebutton.setAttribute("title", "Emote menu");
+
         emotebutton.id = "dopechat-emotebutton";
         elements.insertBefore(emotebutton, elements.firstChild);
     }

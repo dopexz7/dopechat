@@ -5,50 +5,19 @@ import colorUsernames from "./tweaks/colorUsernames";
 import addEmoteMenuButton from "./tweaks/emoteMenu";
 import setHighlightWords from "./tweaks/higlightWords";
 import seperateChatMessages from "./tweaks/messageSeparate";
+import addPipButton from "./tweaks/pip";
 import addPopoutChatButton from "./tweaks/popoutChat";
 import volumeScrollEnable from "./tweaks/volumeScroll";
-
-const versionCheck: Function = async (): Promise<void> => {
-    console.log("dopeChat: Checking version...");
-    const githubRepo = "dopexz7/dopechat";
-    const fileToFetch = "package.json";
-    const response: Response = await fetch(
-        `https://raw.githubusercontent.com/${githubRepo}/main/${fileToFetch}`,
-    );
-    const data: any = await response.json();
-
-    if (data.version !== chrome.runtime.getManifest().version) {
-        console.log("dopeChat: New version available.");
-        console.log(data.version);
-        chrome.runtime.sendMessage("updateAvailable", (response) => {
-            if (response === "updated") {
-                let k = document.createElement("div");
-                k.id = "dopeChat-updateAvailable";
-                k.addEventListener("click", () => {
-                    window.location.reload();
-                });
-                k.className =
-                    "bg-black bg-opacity-50 blur-updateavail text-5xl text-main-white backdrop-blur-xl h-screen w-screen fixed top-0 left-0 z-50 flex flex-col space-y-1 items-center justify-center";
-                let kSpan = document.createElement("span");
-                kSpan.className = "updateavail-span";
-                kSpan.textContent =
-                    "dopeChat new version available! Refresh the page or click anywhere to finish the update.";
-                k.prepend(kSpan);
-                const body = document.querySelector("body");
-                if (body) body.prepend(k);
-            }
-        });
-    } else {
-        console.log("dopeChat: No new version available");
-    }
-};
 
 const enableStyles: Function = (): void => {
     const customCSSLink: string =
         "https://dopexz7.github.io/emotes/content_new.css";
 
     misc();
-    addEmoteMenuButton();
+    if (process.env.BROWSER !== "firefox") {
+        addEmoteMenuButton();
+    }
+    addPipButton();
     addPopoutChatButton();
 
     chrome.storage.local.get("experimentalCSS", (r: { [key: string]: any }) => {
@@ -62,6 +31,7 @@ const enableStyles: Function = (): void => {
             link.href = chrome.runtime.getURL("css/content_new.css");
         }
         head.appendChild(link);
+        console.log("dopeChat: Styles loaded");
     });
 
     const chatAppToggles: Function = (): void => {
@@ -143,6 +113,14 @@ gettingUserEmotes().then((res: any): void => {
         fullEmotes = globalEmotes;
     }
     chrome.storage.local.set({ FULLSET: fullEmotes });
+    console.log(
+        `dopeChat: Fetched ${fullEmotes.length} emotes (${globalEmotes.length} are global)`,
+    );
+    console.log(
+        `For streamer's full emotes list go to https://dopechat.ddns.net/dashboard/set/${
+            window.location.pathname.split("/")[1]
+        }`,
+    );
 });
 
 const substitute: Function = (nodes: any) => {
@@ -165,6 +143,9 @@ const substitute: Function = (nodes: any) => {
                             let found: boolean = false;
                             for (let l = 0; l < emotes?.length; l++) {
                                 if (text[k] === emotes[l].code) {
+                                    console.log(
+                                        `dopeChat: Replacing ${text[k]} with ${emotes[l].src}`,
+                                    );
                                     found = true;
                                     let wrapper: HTMLSpanElement =
                                         document.createElement("span");
@@ -220,6 +201,7 @@ let observer: MutationObserver = new MutationObserver(
 
 const initiate: Function = (): void => {
     substitute(document.body);
+    console.log("dopeChat: Replacing emotes");
     observer.observe(document.body, {
         childList: true,
         subtree: true,
@@ -228,7 +210,6 @@ const initiate: Function = (): void => {
 
 const dopeChat_init = () => {
     console.log("dopeChat: Initiating...");
-    //versionCheck();
     enableStyles();
     initiate();
 };
