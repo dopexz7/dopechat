@@ -113,7 +113,7 @@ const theatreFunc = () => {
     }
 };
 
-const altkey = navigator.userAgentData.platform.includes("Mac") ? "OPT" : "ALT";
+const altkey = navigator.platform.includes("Mac") ? "OPT" : "ALT";
 const buttons = [
     {
         id: "dopechat-emotebutton",

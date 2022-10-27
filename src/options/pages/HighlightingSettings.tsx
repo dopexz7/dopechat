@@ -42,9 +42,7 @@ const HighlightingSettings: FunctionComponent = (): JSX.Element => {
                                 placeholder="Input keyword...(ENTER to submit)"
                                 type="text"
                                 className="text-sm w-full px-6 py-1 text-main-white bg-transparent border-[1px] border-white border-opacity-5 backdrop-blur-sm shadow-2xl rounded-3xl"
-                                onKeyDown={(
-                                    event: React.KeyboardEvent<HTMLInputElement>,
-                                ) => {
+                                onKeyDown={(event: any) => {
                                     if (event.key === "Enter") {
                                         addKeyword(event.target.value);
                                     }
