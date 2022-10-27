@@ -2,23 +2,35 @@ import { supabase } from "./lib/supabaseClient";
 import { appToggles, storageSetValueSettingsData } from "./misc/dataForChecks";
 import misc from "./misc/misc";
 import colorUsernames from "./tweaks/colorUsernames";
-import addEmoteMenuButton from "./tweaks/emoteMenu";
 import setHighlightWords from "./tweaks/higlightWords";
 import seperateChatMessages from "./tweaks/messageSeparate";
-import addPipButton from "./tweaks/pip";
-import addPopoutChatButton from "./tweaks/popoutChat";
+import addDopeChatSettingsWrapper from "./tweaks/settingsWrapper/settingsWrapper";
 import volumeScrollEnable from "./tweaks/volumeScroll";
+import addButtons from "./tweaks/settingsWrapper/allButtons";
 
 const enableStyles: Function = (): void => {
     const customCSSLink: string =
         "https://dopexz7.github.io/emotes/content_new.css";
 
     misc();
-    if (process.env.BROWSER !== "firefox") {
-        addEmoteMenuButton();
+    addDopeChatSettingsWrapper();
+    if (!document.getElementById("dopechat-settingsbtn")) {
+        try {
+            let observeForPop: MutationObserver = new MutationObserver(
+                (mutations: MutationRecord[]): void => {
+                    mutations.forEach((): void => {
+                        addButtons();
+                    });
+                },
+            );
+            observeForPop.observe(document.body, {
+                childList: true,
+                subtree: true,
+            });
+        } catch (e) {
+            console.log(e);
+        }
     }
-    addPipButton();
-    addPopoutChatButton();
 
     chrome.storage.local.get("experimentalCSS", (r: { [key: string]: any }) => {
         let head: HTMLHeadElement = document.head;

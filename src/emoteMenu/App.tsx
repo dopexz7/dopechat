@@ -16,7 +16,7 @@ const App = () => {
 
     const insertEmote: Function = (x: any): void => {
         let textbox4: Element | any = document.querySelector(
-            ".oo9gr5id.lzcic4wl.l9j0dhe7.gsox5hk5.notranslate",
+            ".xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw.notranslate",
         )?.childNodes[0].childNodes[0].childNodes;
         if (textbox4[0]) {
             textbox4[0].textContent += " " + x;
@@ -33,8 +33,7 @@ const App = () => {
     let kekint: NodeJS.Timer = setInterval(() => {
         let emotebtn = document.getElementById("dopechat-emotebutton");
         if (emotebtn !== null) {
-            emotebtn.addEventListener("click", function (e) {
-                e.preventDefault();
+            emotebtn.addEventListener("click", (e) => {
                 setEmoteTable(!emoteTable);
             });
             clearInterval(kekint);
@@ -79,7 +78,7 @@ const App = () => {
 
     const handlingTab: Function = (): void => {
         let textbox4: Element | any = document.querySelector(
-            ".oo9gr5id.lzcic4wl.l9j0dhe7.gsox5hk5.notranslate",
+            ".xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw.notranslate",
         )?.childNodes[0].childNodes[0].childNodes;
         let textAr: any[] = [];
         let x: string = textbox4[0].textContent.split(" ");

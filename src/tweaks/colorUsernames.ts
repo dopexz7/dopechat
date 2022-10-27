@@ -8,8 +8,8 @@ const getRandomColor: Function = (): string =>
     "%)";
 
 const colorUsernames: Function = (): void => {
-    let usernameElement: HTMLElement | any = document.getElementsByClassName(
-        "d2edcug0 hpfvmrgz qv66sw1b c1et5uql lr9zc1uh a8c37x1j fe6kdd0r mau55g9w c8b282yb keod5gw0 nxhoafnm aigsh9s9 d9wwppkn mdeji52x",
+    let usernameElement: HTMLElement | any = document.querySelectorAll(
+        ".x1ye3gou.xwib8y2.xn6708d.x1y1aw1k > .x1q0g3np.xt0psk2.x6s0dn4 > span > span",
     );
     chrome.storage.local.get(
         [

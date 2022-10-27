@@ -1,0 +1,242 @@
+/* Follow btn */
+.xh8yej3.x14vqqas {
+    display: none !important;
+}
+/* Overview, livechat, your replies btns */
+.x9f619.x1n2onr6.x1ja2u2z.x1wsgfga.x9otpla.xwib8y2.x1y1aw1k {
+    display: none;
+}
+/* chat top bar */
+.x1jx94hy.x1w95jeb.x1pi30zi.x1swvt13.xyamay9 {
+    background: var(--chattopbarcolor) !important;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.04);
+    position: absolute;
+    display: var(--chattopbardisplay) !important;
+    height: 60px;
+    width: 87%;
+    border-radius: 3px;
+    margin-left: 7px;
+    margin-top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 9px 2px #000;
+}
+/* likes, replies count in top bar */
+.x6s0dn4.xi81zsa.x78zum5.x6prxxf.x13a6bvl.xvq8zen.x889kno {
+    display: none;
+}
+/* chat background */
+.x78zum5.x1iyjqo2.x2lwn1j {
+    background: var(--chatbg);
+}
+/* chat width */
+.x2bj2ny.x78zum5.xds687c.xdt5ytf.xnjgh8c.xixxii4.x1qrby5j.xjabf5u.xfmqk8h.xxzkxad {
+    width: var(--chatwidth);
+}
+/* also chat width */
+.xb57i2i.x1q594ok.x5lxg6s.x78zum5.xdt5ytf.x6ikm8r.x1ja2u2z.x1pq812k.x1rohswg.xfk6m8.x1yqm8si.xjx87ck.x1l7klhg.x1iyjqo2.xs83m0k.x2lwn1j.xx8ngbg.xwo3gff.x1oyok0e.x1odjw0f.x1e4zzel.x1n2onr6.xq1qtft.x1cvmir6 {
+    width: var(--chatwidth);
+    overflow: hidden;
+}
+/* left width */
+.x78zum5.xdt5ytf.x1iyjqo2.x1gvwcb.x1qjc9v5.xl56j7k {
+    min-width: calc(100% - var(--chatwidth));
+}
+/* chat input  */
+.x1ed109x.x1n2onr6.xmjcpbm.x1tlxs6b.x1g8br2z.x1gn5b1j.x230xth.x972fbf.xcfux6l.x1qhh985.xm0m39n.x78zum5.x1iyjqo2.x13a6bvl {
+    background: rgba(255, 255, 255, 0.03) !important;
+}
+/* chat profile pics */
+div[role="article"]
+    > .xqcrz7y.x14yjl9h.xudhj91.x18nykt9.xww2gxu.x1lliihq.x1w0mnb.xr9ek0c.x1n2onr6 {
+    display: var(--pfpdisplay) !important;
+    scale: 0.85;
+    margin: 0 !important;
+}
+/* chat msg */
+.xmjcpbm.x1tlxs6b.x1g8br2z.x1gn5b1j.x230xth.x9f619.xzsf02u.x1rg5ohu.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x193iq5w.x1mzt3pk.x1n2onr6.xeaf4i8.x13faqbe {
+    background: transparent !important;
+    min-width: 100% !important;
+}
+/* replying to.. */
+.x1vtvx1t.x1tlxs6b.x1g8br2z.x1gn5b1j.x230xth.xz9dl7a.xn6708d.x1ye3gou.xq1608w {
+    background: transparent !important;
+    padding: 0 !important;
+    padding-top: 4px !important;
+}
+.x9f619.x1n2onr6.x1ja2u2z.x78zum5.x2lah0s.x1nhvcw1.x6s0dn4.xozqiw3.x1q0g3np.xn6708d.x1ye3gou.xexx8yu.xwrv7xz.x8182xy.x1kgmq87.x12nagc {
+    margin: 0 !important;
+}
+.xovy0qw.x3yww96.xzbmw64.x8cwlx.x1n2onr6 {
+    display: var(--hidereplies) !important;
+    min-width: 100%;
+    margin: 0 !important;
+    bottom: 0 !important;
+    text-overflow: ellipsis;
+    overflow: hidden !important;
+    white-space: nowrap !important;
+    transform: scale(0.8);
+    opacity: 0.75;
+}
+/* identity badges */
+div[aria-label="Identity badges"] {
+    display: none !important;
+}
+/* new settings btn (selecting user -> selecting user + extension settings) */
+div[aria-label="Voice Selector"] > div {
+    border-radius: 50%;
+    background: url("./settings.png") center no-repeat !important;
+    background-size: 32px 32px !important;
+}
+div[aria-label="Voice Selector"] > div > svg > mask {
+    display: none;
+}
+div[aria-label="Voice Selector"] > div > svg > g {
+    display: none;
+}
+/* timestamps */
+.x1i10hfl.xjbqb8w.x6umtig.x1b1mbwd.xaqea5y.xav7gou.x9f619.x1ypdohk.xt0psk2.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x16tdsg8.x1hl2dhg.xggy1nq.x1a2a7pz.xt0b8zv.xi81zsa.x1fcty0u {
+    display: var(--timestamps) !important;
+}
+/* like reply btns in chat msg */
+.x1n0m28w.x1rg5ohu.x1wfe3co.xat24cr.xsgj6o6.x1o1nzlu.xyqdw3p
+    li:nth-child(-n + 2) {
+    display: var(--likereply) !important;
+}
+.x1n0m28w.x1rg5ohu.x1wfe3co.xat24cr.xsgj6o6.x1o1nzlu.xyqdw3p {
+    display: var(--likereply) !important;
+}
+/* right three dots */
+.x1rg5ohu.xxymvpz.x17z2i9w {
+    display: var(--chatthreedots) !important;
+}
+/*chat msg width */
+.xv55zj0.x1vvkbs.x1rg5ohu.xxymvpz {
+    width: 100% !important;
+}
+/* chat msg spacing, padding */
+.x1n2onr6.x1cy8zhl.x9f619.x2lah0s.xjkvuk6.x1pi30zi.x1swvt13.x1iorvi4.x78zum5.x1q0g3np.x1a2a7pz {
+    padding: 0 !important;
+    padding-left: 6px !important;
+    border-bottom: var(--messageSeparateBorder);
+    background: var(--);
+}
+/* top bar  */
+.x9f619.x1n2onr6.x1ja2u2z.x1ve1bff.x78zum5.xdt5ytf.x1s65kcs {
+    background: var(--topbarcolor);
+}
+/* chat text color */
+.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x1vvkbs {
+    color: var(--textcolor) !important;
+    font-family: var(--fontfamily) !important;
+    font-size: var(--textsize) !important;
+}
+/* emotes bottom of livestream */
+.xsag5q8.x1gryazu.xat24cr.xkrivgy.xdj266r.xl56j7k.x78zum5 {
+    display: none !important;
+}
+/* no messages message */
+.xh8yej3.x1d52u69.xat24cr.xktsk01.xdj266r.x6hvgyk.xt3gfkd.xu5ydu1.xdney7k.x1qpq9i9.xlhe6ec {
+    display: none;
+}
+
+/* reactions of msg */
+.x1ja2u2z.x10l6tqk.x177n6bx.x1ve5b48.xlshs6z {
+    display: var(--chatreacts);
+}
+/* input like btn  */
+.x1i10hfl.xjbqb8w.x9f619.x1ypdohk.xdl72j9.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x2lwn1j.xeuugli.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.x16tdsg8.x1hl2dhg.x1ja2u2z.x1t137rt.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x6s0dn4.x78zum5.x1iyjqo2.x2lah0s.xl56j7k.x5ve5x3.x1l1xfun.xv160w3.xwwskcc.xsb8bxb.x14yjl9h.xudhj91.x18nykt9.xww2gxu.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x178xt8z.xm81vs4.xso031l.xy80clv.x6ikm8r.x10wlt62 {
+    border: 0 !important;
+}
+/* input share btn */
+.x1i10hfl.x1qjc9v5.xjbqb8w.x9f619.x1ypdohk.xdl72j9.x2lah0s.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x2lwn1j.xeuugli.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.x16tdsg8.x1hl2dhg.xggy1nq.x1ja2u2z.x1t137rt.x3nfvp2.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x1l1xfun.xv160w3.xwwskcc.xsb8bxb.x14yjl9h.xudhj91.x18nykt9.xww2gxu.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x178xt8z.xm81vs4.xso031l.xy80clv.x90ne7k.x6ikm8r.x10wlt62.x1691je0 {
+    border: 0 !important;
+}
+/* chat input wrapper */
+.x1ye3gou.xsag5q8.xn6708d.xz9dl7a.x78zum5.x6s0dn4 {
+    background: rgba(0, 0, 0, 0.1);
+}
+/* follow btn near username */
+span.x193iq5w.xeuugli.x13faqbe.x1vvkbs.x1xmvt09.x1lliihq.x1s928wv.xhkezso.x1gmr53x.x1cpjm7i.x1fgarty.x1943h6x.x4zkp8e.x676frb.x1pg5gke.x1sibtaa.x1s688f.x1qq9wsj {
+    display: none;
+}
+/* message in threads */
+.x1kvlpi {
+    margin-left: 0;
+}
+/* replying to.. in threads */
+.x1d52u69.x1yztbdb.xktsk01.xw7yly9.x78zum5.x1cy8zhl {
+    z-index: 999999;
+    position: fixed;
+    margin-top: 95px;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 24px;
+    backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+/* like btn in threads */
+.x1i10hfl.xjbqb8w.xjqpnuy.xa49m3k.xqeqjp1.x2hbi6w.x13fuv20.xu3j5b3.x1q0q8m5.x26u7qi.x972fbf.xcfux6l.x1qhh985.xm0m39n.x9f619.x1ypdohk.xdl72j9.xe8uvvx.xdj266r.x11i5rnm.xat24cr.x1mh8g0r.x2lwn1j.xeuugli.xexx8yu.x4uap5.x18d9i69.xkhd6sd.x1n2onr6.x16tdsg8.x1hl2dhg.x1ja2u2z.x1t137rt.x1o1ewxj.x3x9cwd.x1e5q0jg.x13rtm0m.x1q0g3np.x87ps6o.x1lku1pv.x1a2a7pz.x6s0dn4.x78zum5.x1iyjqo2.x2lah0s.xl56j7k.x5ve5x3 {
+    background: transparent !important;
+}
+#dopechat-settingswrapper svg {
+    padding-right: 6px;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+body {
+    font-family: var(--fontfamily) !important;
+}
+
+span.emote_wrapper {
+    position: relative;
+}
+span.emote_wrapper img,
+span.emote_wrapper img.inserted_emote {
+    vertical-align: middle;
+    max-height: 25px !important;
+    width: auto;
+    display: inline-block;
+}
+span.emote_wrapper span.tooltiptext {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-radius: 14px;
+    position: absolute;
+    display: inline;
+    z-index: 10000;
+    top: -30%;
+    left: 120%;
+    font-size: 11px !important;
+    padding: 6px;
+    pointer-events: none;
+    visibility: hidden;
+    word-break: normal;
+}
+span.emote_wrapper:hover span.tooltiptext {
+    visibility: visible;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.03);
+}
+::-webkit-scrollbar-thumb {
+    height: 50px;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+#facebook ._-kb div,
+#facebook ._-kb span {
+    font-family: var(--fontfamily) !important;
+    font-size: var(--textsize);
+}
+
+span[data-outline-text="true"] {
+    color: var(--textcolor) !important;
+}

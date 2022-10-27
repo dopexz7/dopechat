@@ -1,7 +1,7 @@
 const setHighlightWords: Function = (): void => {
     var newc: any[] = [];
     var messageElement: HTMLElement | any = document.getElementsByClassName(
-        "l9j0dhe7 ll8tlv6m rq0escxv j83agx80 pfnyh3mw e5nlhep0 hv4rvrfc dati1w0a ecm0bbzt btwxx1t3 lzcic4wl",
+        "x1n2onr6 x1cy8zhl x9f619 x2lah0s xjkvuk6 x1pi30zi x1swvt13 x1iorvi4 x78zum5 x1q0g3np x1a2a7pz",
     );
 
     chrome.storage.local.get(

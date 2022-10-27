@@ -33,7 +33,7 @@ const handleScroll: Function = (event: WheelEvent, video: any): void => {
     var currentvol: number = Math.round(video.volume * 100);
     //document.querySelector('.k4urcfbm.j9ispegn.pmk7jnqg.pcp91wgn.iuny7tx3.p8fzw8mz.ipjc6fyt.rq0escxv.pqc7ok08').style.opacity = '0';
     var volSlider: Element | any = document.querySelector(
-        ".k4urcfbm.pmk7jnqg.i09qtzwb.qttc61fc.ihh4hy1g.kdgqqoy6.jk6sbkaj.bogkn74s",
+        ".xh8yej3.x10l6tqk.x1ey2m1c.x10y3i5r.xrt01vj.x1yr5g0i.x1lcm9me.x1spa7qu",
     );
     if (volSlider !== null && volSlider !== undefined) {
         volSlider.style.height = currentvol + "%";
