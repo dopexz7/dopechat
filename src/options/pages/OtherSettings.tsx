@@ -33,12 +33,15 @@ const OtherSettings: FunctionComponent = (): JSX.Element => {
                     onChange={setfbTopBar}
                     title={"Facebook top bar color"}
                 />
-
-                <ToggleComp
-                    checked={scrollVolume}
-                    onChange={setscrollVolume}
-                    title="Mousewheel scroll volume control"
-                />
+                {process.env.BROWSER != "firefox" ? (
+                    <ToggleComp
+                        checked={scrollVolume}
+                        onChange={setscrollVolume}
+                        title="Mousewheel scroll volume control"
+                    />
+                ) : (
+                    ""
+                )}
 
                 <ToggleComp
                     checked={experimentalCss}

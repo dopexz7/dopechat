@@ -129,13 +129,6 @@ const buttons = [
         function: () => popoutchatFunction(),
     },
     {
-        id: "dopechat-pipbtn",
-        icon: pipIcon,
-        title: "Picture-In-Picture",
-        text: `True Picture-In-Picture (${altkey}+P)`,
-        function: () => pipFunction(),
-    },
-    {
         id: "dopechat-theatrebtn",
         icon: theatreIcon,
         title: "Theatre mode",
@@ -150,9 +143,18 @@ const buttons = [
         function: () => window.open(chrome.runtime.getURL("options.html")),
     },
 ];
+if ((process.env.BROWSER as any) != "firefox") {
+    buttons.push({
+        id: "dopechat-pipbtn",
+        icon: pipIcon,
+        title: "Picture-In-Picture",
+        text: `True Picture-In-Picture (${altkey}+P)`,
+        function: () => pipFunction(),
+    });
+}
 
 const addButtons: Function = (): void => {
-    buttons.forEach((v) => {
+    buttons.forEach((v: any) => {
         let wrapper = document.getElementById("dopechat-settingswrapper");
         let currentButton: HTMLElement | any = document.getElementById(v.id);
         if (wrapper && currentButton === null) {
